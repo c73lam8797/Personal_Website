@@ -16,7 +16,7 @@ export default function Home() {
               left: 0,
               top: 0,
               opacity: 0.4,
-              zIndex: -1,
+              // zIndex: -1,
             }} 
             >          
         </video>
@@ -29,7 +29,7 @@ export default function Home() {
             transform: "translate(-50%, -50%)",
             fontFamily: 'Quicksand, sans-serif',
             color: "white",
-            zIndex: 1,
+            // zIndex: 1,
             }}>Welcome :)</h1>
         </div>
       </div>

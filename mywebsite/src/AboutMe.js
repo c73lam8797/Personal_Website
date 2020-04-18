@@ -4,9 +4,7 @@ import './index.css';
 export default function AboutMe() {
     return (
         <div className="about">
-            <p>
-                test123
-            </p>
+            <h1>About Me</h1>
         </div>
     )
 }
