@@ -27,6 +27,14 @@ li a {
   text-align: center;
 }
 
+#test {
+  color: white;
+  text-decoration: none; /*takes out underline from href */
+  padding: 15px;
+  display: block;
+  text-align: center;
+}
+
 li a:hover {
   background-color: cornflowerblue;
 }
@@ -44,6 +52,8 @@ ul {
 
 .about {
   color: white;
+  font-family: 'Raleway', sans-serif;
+  padding: 20px;
 }
 
 .home {
