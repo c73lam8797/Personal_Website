@@ -49,15 +49,24 @@ ul {
   padding: 0;
 }
 
-
-.about {
+.stuff {
+  position: absolute;
+  display: block;
   color: white;
+}
+
+.stuff h1 {
   font-family: 'Raleway', sans-serif;
   padding: 20px;
+  margin: 0px;
+}
+
+.about {
+  width: inherit;
+  height: 400px;
 }
 
 .home {
-  /* z-index: -1; */
   position: relative;
 }
 
@@ -66,9 +75,7 @@ ul {
   position: relative;
 }
 
-.stuff {
-  position: absolute;
-  /* top: 51px; */
+.contact {
+  clear: both;
 }
-
 

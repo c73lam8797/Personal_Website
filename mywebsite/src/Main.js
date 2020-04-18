@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './Home';
 import NavBar from './NavBar';
 import AboutMe from './AboutMe';
+import Contact from './Contact';
 import './index.css';
 
 class Main extends Component {
@@ -18,6 +19,7 @@ class Main extends Component {
                 <div className="stuff">
                     <Home />
                     <AboutMe />
+                    <Contact />
                 </div>
             </div>
         )

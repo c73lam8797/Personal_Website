@@ -1,11 +1,11 @@
 import React from 'react';
 import video from './2160p.mov';
 import './index.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 export default function Home() {
   return (
-      <div class="home" id="home">
+      <div className="home" id="home">
         <video
             autoPlay
             muted
