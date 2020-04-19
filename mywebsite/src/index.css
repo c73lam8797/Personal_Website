@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,12 +11,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgb(65, 73, 74);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.NavBar {
+  z-index: 1;
+  position: relative;
 }
 
 .NavBar li {
@@ -25,24 +33,35 @@ code {
   padding: 15px;
   display: block;
   text-align: center;
+  width: 75px;
 }
 
-.NavBar li a:hover {
-  background-color: cornflowerblue;
+
+.NavBar a:hover {
+  border-bottom: 2px solid white;
+  color: #b7cfee;
+  /* background-color: #3e5d86 ; */
 }
+
+/* .NavBar ul:hover {
+  opacity: 1;
+  background-color: black;
+} */
 
 .NavBar ul {
-  background-color: rgb(65, 73, 74);
+  background-color: transparent;
+  opacity: 0.5;
+  width: 100%;
   list-style-type: none;
   position: fixed;
-  width: 100%;
   top: 0;
   margin: 0;
   padding: 0;
 }
 
 .Socials ul {
-  background-color: rgb(65, 73, 74);  
+  /* background-color: rgb(65, 73, 74);   */
+  background-color: black ;
   list-style-type: none;
   position: fixed;
   width: 100%;
@@ -55,6 +74,7 @@ code {
   color: white;
   text-decoration: none; /*takes out underline from href */
   padding: 15px;
+  width: 75px;
   display: block;
   text-align: center;
 }
@@ -64,19 +84,25 @@ code {
 }
 
 .Socials li a:hover {
-  background-color: cornflowerblue;
+  background-color: #3e5d86 ;
 }
 
 .stuff {
   position: absolute;
   display: block;
+  background-color: rgb(65, 73, 74);  
   color: white;
+}
+
+.stuff2 {
+  padding: 20px;
+  margin: 0px;
+  /* background-color: #cdd8e8 */
 }
 
 .stuff h1 {
   font-family: 'Raleway', sans-serif;
-  padding: 20px;
-  margin: 0px;
+
 }
 
 .about {
@@ -86,11 +112,7 @@ code {
 
 .home {
   position: relative;
-}
-
-.NavBar {
-  z-index: 1;
-  position: relative;
+  background-color: rgb(65, 73, 74);
 }
 
 .contact {

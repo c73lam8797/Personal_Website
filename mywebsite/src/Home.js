@@ -28,6 +28,7 @@ export default function Home() {
             transform: "translate(-50%, -50%)",
             fontFamily: 'Quicksand, sans-serif',
             color: "white",
+            fontSize: "50px",
             }}>Welcome :)</h1>
         </div>
       </div>

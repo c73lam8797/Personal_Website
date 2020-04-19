@@ -6,7 +6,7 @@ export default function AboutMe() {
     return (
         <div className="about" id="about"> 
             <h1>About Me</h1>
-            <div style = {{padding: "20px"}}>
+            <div>
                 <p style = {{
                     position: "relative", 
                     display: "inline-block",

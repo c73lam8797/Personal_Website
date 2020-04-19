@@ -19,8 +19,13 @@ class Main extends Component {
                 <NavBar />
                 <div className="stuff">
                     <Home />
-                    <AboutMe />
-                    <Contact />
+                    <div className="stuff2">
+                        <AboutMe />
+                        <Contact />
+
+                    </div>
+                    <div style={{width: "100%", height: "62px"}}></div>
+                    {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
                 <Socials />
             </div>
