@@ -6,12 +6,13 @@ export default function AboutMe() {
     return (
         <div className="about" id="about"> 
             <h1>About Me</h1>
-            <div>
+            <div style = {{padding: "20px"}}>
                 <p style = {{
                     position: "relative", 
-                    display: "inline",
-                    padding: "10px",
-                    marginLeft: "10px",
+                    display: "inline-block",
+                    // padding: "01px",
+                    // marginLeft: "10px",
+                    // margin: "20px",
                 }}>
 
                     <img
@@ -23,11 +24,12 @@ export default function AboutMe() {
                             width: "450px",
                             visibility: "visible",
                             float: "left",
-                            margin: "10px",
+                            marginRight: "20px",
                         }}
                     >
                     </img>
-                    Insert something here
+
+                    Insert Something Here
                 </p>
             </div>
         </div>

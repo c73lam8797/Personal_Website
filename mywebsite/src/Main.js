@@ -3,6 +3,7 @@ import Home from './Home';
 import NavBar from './NavBar';
 import AboutMe from './AboutMe';
 import Contact from './Contact';
+import Socials from './Socials';
 import './index.css';
 
 class Main extends Component {
@@ -21,6 +22,7 @@ class Main extends Component {
                     <AboutMe />
                     <Contact />
                 </div>
+                <Socials />
             </div>
         )
     }

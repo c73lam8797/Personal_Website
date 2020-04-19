@@ -1,10 +1,5 @@
 import React from 'react';
 import './index.css';
-// import { Link, BrowserRouter, Route, Switch } from 'react-router-dom';
-
-// import Home from './Home';
-// import AboutMe from './AboutMe';
-// import Main from './Main';
 
 export default function NavBar() {
     return (

@@ -15,11 +15,11 @@ code {
     monospace;
 }
 
-li {
+.NavBar li {
   float: left;
 }
 
-li a {
+.NavBar li a {
   color: white;
   text-decoration: none; /*takes out underline from href */
   padding: 15px;
@@ -27,19 +27,11 @@ li a {
   text-align: center;
 }
 
-#test {
-  color: white;
-  text-decoration: none; /*takes out underline from href */
-  padding: 15px;
-  display: block;
-  text-align: center;
-}
-
-li a:hover {
+.NavBar li a:hover {
   background-color: cornflowerblue;
 }
 
-ul {
+.NavBar ul {
   background-color: rgb(65, 73, 74);
   list-style-type: none;
   position: fixed;
@@ -47,6 +39,32 @@ ul {
   top: 0;
   margin: 0;
   padding: 0;
+}
+
+.Socials ul {
+  background-color: rgb(65, 73, 74);  
+  list-style-type: none;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.Socials li a{
+  color: white;
+  text-decoration: none; /*takes out underline from href */
+  padding: 15px;
+  display: block;
+  text-align: center;
+}
+
+.Socials li {
+  float: left;
+}
+
+.Socials li a:hover {
+  background-color: cornflowerblue;
 }
 
 .stuff {
@@ -63,7 +81,7 @@ ul {
 
 .about {
   width: inherit;
-  height: 400px;
+  height: 450px;
 }
 
 .home {
