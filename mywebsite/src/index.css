@@ -40,13 +40,7 @@ code {
 .NavBar a:hover {
   border-bottom: 2px solid white;
   color: #b7cfee;
-  /* background-color: #3e5d86 ; */
 }
-
-/* .NavBar ul:hover {
-  opacity: 1;
-  background-color: black;
-} */
 
 .NavBar ul {
   background-color: transparent;
@@ -60,7 +54,6 @@ code {
 }
 
 .Socials ul {
-  /* background-color: rgb(65, 73, 74);   */
   background-color: black ;
   list-style-type: none;
   position: fixed;
@@ -90,19 +83,18 @@ code {
 .stuff {
   position: absolute;
   display: block;
-  background-color: rgb(65, 73, 74);  
+  background-color: rgb(65, 73, 74);   
   color: white;
 }
 
 .stuff2 {
   padding: 20px;
   margin: 0px;
-  /* background-color: #cdd8e8 */
+  background: linear-gradient(0deg, rgba(129,158,197,0.76234243697479) 4%, rgba(65,73,74,1) 79%);
 }
 
 .stuff h1 {
   font-family: 'Raleway', sans-serif;
-
 }
 
 .about {
@@ -119,3 +111,33 @@ code {
   clear: both;
 }
 
+.moreaboutme {
+  width: 100%;
+}
+
+.card {
+  box-shadow: 0 4px 6px 0 rgb(104, 109, 110);
+  text-align: center;
+  background-color: #f1f1f1;
+  /* border: 2px solid white; */
+  padding: 5px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  color: black;
+  border-radius: 5px;;
+}
+ 
+.column {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  width: 15%;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

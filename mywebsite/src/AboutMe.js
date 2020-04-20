@@ -5,7 +5,8 @@ import pic from './profile_pic.jpg'
 export default function AboutMe() {
     return (
         <div className="about" id="about"> 
-            <h1>About Me</h1>
+            <div style={{width: "100%", height: "62px"}}></div>
+            <h1 style={{marginTop: "0px"}}>About Me</h1>
             <div>
                 <p style = {{
                     position: "relative", 
