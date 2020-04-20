@@ -141,3 +141,7 @@ code {
   width: 100%;
   justify-content: center;
 }
+
+#icon :hover {
+  color: #3e5d86
+}
