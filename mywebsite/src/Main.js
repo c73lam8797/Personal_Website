@@ -18,14 +18,14 @@ class Main extends Component {
         return (
             <div className="main">
                 <NavBar />
-                <div className="stuff">
+                <div className="main_content">
                     <Home />
-                    <div className="stuff2">
+                    <div className="sub_content">
                         <AboutMe />
                         <MoreAboutMe />
                         <Contact />
                     </div>
-                    <div style={{width: "100%", height: "62px"}}></div>
+                    <div class="placeholder"></div>
                     {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
                 <Socials />

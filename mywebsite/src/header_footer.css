@@ -1,0 +1,61 @@
+.NavBar {
+  z-index: 1;
+  position: relative;
+}
+  
+.NavBar li {
+  float: left;
+}
+
+.NavBar li a {
+  color: white;
+  text-decoration: none; /*takes out underline from href */
+  padding: 15px;
+  display: block;
+  text-align: center;
+  width: 75px;
+}
+
+
+.NavBar a:hover {
+  border-bottom: 2px solid white;
+  color: #b7cfee;
+}
+
+.NavBar ul {
+  background-color: transparent;
+  opacity: 0.5;
+  width: 100%;
+  list-style-type: none;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.Socials ul {
+  background-color: black ;
+  list-style-type: none;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.Socials li a{
+  color: white;
+  text-decoration: none; /*takes out underline from href */
+  padding: 15px;
+  width: 75px;
+  display: block;
+  text-align: center;
+}
+
+.Socials li {
+  float: left;
+}
+
+.Socials li a:hover {
+  background-color: #3e5d86 ;
+}

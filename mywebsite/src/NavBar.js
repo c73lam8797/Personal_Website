@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './index.css';
+import './header_footer.css';
 
 
 export default function NavBar() {

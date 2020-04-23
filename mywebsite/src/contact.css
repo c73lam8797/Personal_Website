@@ -1,0 +1,16 @@
+.contact {
+    display: inline-block;
+    width: 100%;
+}
+
+#icon :hover {
+    color: #3e5d86
+}
+
+.contact_info {
+    display: block;
+}
+
+#contact_info {
+    vertical-align: middle;
+}

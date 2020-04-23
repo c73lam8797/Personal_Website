@@ -1,0 +1,35 @@
+.about {
+    width: 100%;
+    display: inline-block;
+}
+
+img {
+    width: 450px;
+    float: left;
+    margin-right: 20px;
+    display: block;
+}
+
+p {
+    display: inline-block;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+#description {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+@media screen and (max-width: 800px) {
+    .about #description {
+        display: block;
+    }
+
+    img {
+        width: 100%;
+    }
+}
