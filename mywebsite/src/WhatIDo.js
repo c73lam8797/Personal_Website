@@ -10,7 +10,7 @@ export default function WhatIDo() {
             <h1>— WHAT I DO —</h1>
 
             <div className="table">
-                <h3><i>Creating is My <span>Passion</span></i></h3>
+                <h3>Creating is My <i><span>Passion</span></i></h3>
                 <div className="row">
                     <div className="column">
                         <div className="card">
@@ -33,7 +33,7 @@ export default function WhatIDo() {
                         </div>
                     </div>
                 </div>
-                <h3><i>Giving Back to the <span>Community</span></i></h3>
+                <h3>Giving Back to the <i><span>Community</span></i></h3>
                 <div className="row">
                     <div className="column">
                         <div className="card">

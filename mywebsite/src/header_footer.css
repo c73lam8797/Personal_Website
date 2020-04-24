@@ -1,8 +1,12 @@
-.NavBar, .DropNavBar, #toggle {
+.NavBar, .DropNavBar, #toggle, .Socials {
   font-family: 'Raleway', sans-serif;
   z-index: 1;
   position: relative;
 }
+
+/* .NavBar {
+  display: inline-block;
+} */
   
 .NavBar li {
   float: left;
@@ -21,20 +25,6 @@
   border-bottom: 2px solid white;
   color: #b7cfee;
 }
-
-/* @media screen and (min-width: 1024.1px) {
-  .NavBar a:hover {
-    border-bottom: 2px solid white;
-    color: #b7cfee;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .NavBar a:active {
-    border-bottom: 2px solid white;
-    color: #b7cfee;
-  }
-} */
 
 .NavBar ul {
   background-color: transparent;
@@ -63,10 +53,8 @@
   width: 100%;
   list-style-type: none;
   position: fixed;
-  /* top: 0; */
   margin: 0;
   padding: 0;
-  /* display: none; */
 }
 
 .DropNavBar li a{
@@ -80,14 +68,11 @@
 
 .DropNavBar li {
   background-color: black;
-  /* display: none; */
 }
 
 .DropNavBar a:hover {
   background-color: #3e5d86 ;
 }
-
-
 
 .Socials ul {
   background-color: black ;

@@ -5,6 +5,7 @@ import './header_footer.css';
 
 export default function NavBar() {
     const [resize, handleResize] = useState(false);
+    const [clicked, handleClick] = useState(false);
 
     useEffect(() => {
         if(document.body.contains(document.getElementById('nb'))) {
@@ -20,7 +21,6 @@ export default function NavBar() {
     useEffect(() => {
         if(document.body.contains(document.getElementById('drop_nb'))) {
             const navbar = document.getElementById("drop_nb");
-            console.log(navbar.style.display)
             navbar.style.display= "none";
         }
     }, []);
@@ -62,9 +62,9 @@ export default function NavBar() {
     }
 
     function dropdown () {
+        handleClick(!clicked);
         if(document.body.contains(document.getElementById('drop_nb'))) {
             const navbar = document.getElementById('drop_nb');
-            console.log(navbar.style.display === "none");
             if (navbar.style.display === "none") {
                 navbar.style.display = "block"
             }
@@ -86,7 +86,7 @@ export default function NavBar() {
 
     const drop_navbar =
         <div className="DropNavBar" id="DropNavBar">
-            <button id="toggle" onClick={dropdown}>Click me!</button>
+            <button id="toggle" onClick={dropdown}>{clicked? "close":"open"}</button>
             <ul id="drop_nb">
                 <li id="panel" ><a href = "/#home">HOME</a></li>
                 <li id="panel" ><a href = "/#about">ABOUT ME</a></li>

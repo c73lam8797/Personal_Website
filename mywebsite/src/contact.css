@@ -4,9 +4,15 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-#icon :hover {
-    color: #3e5d86
+
+#icon {
+    color: white;
 }
+
+/* #icon :hover {
+    color: #3e5d86
+} */
+
 
 .contact_info {
     width: 100%;

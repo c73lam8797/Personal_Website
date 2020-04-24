@@ -1,6 +1,7 @@
 .home {
     position: relative;
     background-color: rgb(65, 73, 74);
+    top: 0px;
 }
 
 video {
