@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import AboutMe from './AboutMe';
 import Contact from './Contact';
 import Socials from './Socials';
-import MoreAboutMe from './MoreAboutMe';
+import WhatIDo from './WhatIDo';
 import './index.css';
 
 class Main extends Component {
@@ -22,10 +22,10 @@ class Main extends Component {
                     <Home />
                     <div className="sub_content">
                         <AboutMe />
-                        <MoreAboutMe />
+                        <WhatIDo />
                         <Contact />
                     </div>
-                    <div class="placeholder"></div>
+                    <div className="placeholder"></div>
                     {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
                 <Socials />

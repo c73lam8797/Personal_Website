@@ -6,7 +6,7 @@ import pic from './profile_pic.jpg'
 export default function AboutMe() {
     return (
         <div className="about" id="about"> 
-            <div class="placeholder"></div>
+            <div className="placeholder"></div>
 
             <h1>— ABOUT ME —</h1>
 

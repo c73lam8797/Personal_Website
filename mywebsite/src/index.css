@@ -26,10 +26,9 @@ code {
 }
 
 .main_content {
-  /* display: block; */
   background-color: rgb(65, 73, 74);   
   color: white;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .sub_content {
@@ -44,24 +43,3 @@ code {
   display: flex;
 }
 
-
-
-.moreaboutme p {
-  font-family: 'Open Sans', sans-serif;
-}
-
-.moreaboutme h3 {
-  font-family: 'Raleway', sans-serif;;
-}
-
-.moreaboutme h3 span {
-  font-size: 25px;
-  text-decoration: underline;
-}
-/* 
-#title {
-  border: 2px solid white;
-  border-radius: 5px;
-  display: inline;
-  padding: 5px;
-} */

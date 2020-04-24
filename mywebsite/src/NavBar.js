@@ -1,54 +1,124 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import './header_footer.css';
 
 
 export default function NavBar() {
+    const [resize, handleResize] = useState(false);
+
     useEffect(() => {
-        const navbar = document.getElementById("nb");
+        if(document.body.contains(document.getElementById('nb'))) {
+            const navbar = document.getElementById("nb");
+            navbar.addEventListener('mouseenter', hoverFunction);
+            navbar.addEventListener('mouseleave', leaveFunction);
+        }
+        
         window.addEventListener('scroll', scrollFunction);
-        navbar.addEventListener('mouseenter', hoverFunction);
-        navbar.addEventListener('mouseleave', leaveFunction);
+        window.addEventListener('resize', resizeFunction);
     });
 
-    const scrollFunction = () => {
-        const navbar = document.getElementById("nb");
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-            navbar.style.backgroundColor = "black";
-            navbar.style.opacity=1;
+    useEffect(() => {
+        if(document.body.contains(document.getElementById('drop_nb'))) {
+            const navbar = document.getElementById("drop_nb");
+            console.log(navbar.style.display)
+            navbar.style.display= "none";
         }
-        else {
-            navbar.style.backgroundColor = "transparent";
-            navbar.style.opacity=0.5;
+    }, []);
+
+    const scrollFunction = () => {
+        if(document.body.contains(document.getElementById('nb'))) {
+            const navbar = document.getElementById("nb");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                navbar.style.backgroundColor = "black";
+                navbar.style.opacity=1;
+            }
+            else {
+                navbar.style.backgroundColor = "transparent";
+                navbar.style.opacity=0.5;
+            }
         }
     };
 
     const hoverFunction = () => {
-        const navbar = document.getElementById("nb");
-        navbar.style.backgroundColor = "black";
-        navbar.style.opacity=1;
-    };
-
-    const leaveFunction = () => {        
-        const navbar = document.getElementById("nb");
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        if(document.body.contains(document.getElementById('nb'))) {
+            const navbar = document.getElementById("nb");
             navbar.style.backgroundColor = "black";
             navbar.style.opacity=1;
         }
-        else {
-            navbar.style.backgroundColor = "transparent";
-            navbar.style.opacity=0.5;
+    };
+
+    const leaveFunction = () => {        
+        if(document.body.contains(document.getElementById('nb'))) {
+            const navbar = document.getElementById("nb");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                navbar.style.backgroundColor = "black";
+                navbar.style.opacity=1;
+            }
+            else {
+                navbar.style.backgroundColor = "transparent";
+                navbar.style.opacity=0.5;
+            }
         }
     }
 
-    return (
+    function dropdown () {
+        if(document.body.contains(document.getElementById('drop_nb'))) {
+            const navbar = document.getElementById('drop_nb');
+            console.log(navbar.style.display === "none");
+            if (navbar.style.display === "none") {
+                navbar.style.display = "block"
+            }
+            else {
+                navbar.style.display = "none"
+            }
+        }
+    }
+
+    const display_navbar = 
         <div className="NavBar">
             <ul id="nb">
-                <li><a href = "/#home">Home</a></li>
-                <li><a href = "/#about">About Me</a></li>
-                <li><a href = "/#whatido">What I Do</a></li>
-                <li><a href = "/#contact">Contact</a></li>
+                <li><a href = "/#home">HOME</a></li>
+                <li><a href = "/#about">ABOUT ME</a></li>
+                <li><a href = "/#whatido">WHAT I DO</a></li>
+                <li><a href = "/#contact">CONTACT</a></li>
+            </ul> 
+        </div> 
+
+    const drop_navbar =
+        <div className="DropNavBar" id="DropNavBar">
+            <button id="toggle" onClick={dropdown}>Click me!</button>
+            <ul id="drop_nb">
+                <li id="panel" ><a href = "/#home">HOME</a></li>
+                <li id="panel" ><a href = "/#about">ABOUT ME</a></li>
+                <li id="panel" ><a href = "/#whatido">WHAT I DO</a></li>
+                <li id="panel" ><a href = "/#contact">CONTACT</a></li>
             </ul> 
         </div>
-    );
+    
+    const resizeFunction = () => {
+        if(window.innerWidth < 1024) {
+            handleResize(true);
+            if(document.body.contains(document.getElementById('drop_nb'))) {
+                const navbar = document.getElementById("drop_nb");
+                navbar.style.backgroundColor = "black";
+                navbar.style.opacity=1;
+                navbar.style.display="none";
+            }
+        }
+        else {
+            handleResize(false);
+            scrollFunction();
+        }
+    }
+
+    if (resize || window.innerWidth < 1024) {
+        return (
+            drop_navbar
+        )
+    }
+    else {
+        return (
+            display_navbar
+        )
+    }
 }; 

@@ -1,6 +1,7 @@
 .contact {
     display: inline-block;
     width: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #icon :hover {
@@ -8,9 +9,21 @@
 }
 
 .contact_info {
-    display: block;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
 }
 
 #contact_info {
     vertical-align: middle;
+}
+
+p {
+    margin: 15px;
+}
+
+#subtitle {
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+    display: flex;
 }

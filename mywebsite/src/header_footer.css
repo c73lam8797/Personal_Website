@@ -1,4 +1,5 @@
-.NavBar {
+.NavBar, .DropNavBar, #toggle {
+  font-family: 'Raleway', sans-serif;
   z-index: 1;
   position: relative;
 }
@@ -13,14 +14,27 @@
   padding: 15px;
   display: block;
   text-align: center;
-  width: 75px;
+  width: 85px;
 }
-
 
 .NavBar a:hover {
   border-bottom: 2px solid white;
   color: #b7cfee;
 }
+
+/* @media screen and (min-width: 1024.1px) {
+  .NavBar a:hover {
+    border-bottom: 2px solid white;
+    color: #b7cfee;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .NavBar a:active {
+    border-bottom: 2px solid white;
+    color: #b7cfee;
+  }
+} */
 
 .NavBar ul {
   background-color: transparent;
@@ -32,6 +46,48 @@
   margin: 0;
   padding: 0;
 }
+
+#toggle {
+  /* width: 15px; */
+  position: fixed;
+  display: inline-block;
+  margin: 0px;
+  padding: 3px;
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+}
+
+
+#drop_nb {
+  width: 100%;
+  list-style-type: none;
+  position: fixed;
+  /* top: 0; */
+  margin: 0;
+  padding: 0;
+  /* display: none; */
+}
+
+.DropNavBar li a{
+  color: white;
+  text-decoration: none; /*takes out underline from href */
+  padding: 15px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.DropNavBar li {
+  background-color: black;
+  /* display: none; */
+}
+
+.DropNavBar a:hover {
+  background-color: #3e5d86 ;
+}
+
+
 
 .Socials ul {
   background-color: black ;
@@ -47,7 +103,7 @@
   color: white;
   text-decoration: none; /*takes out underline from href */
   padding: 15px;
-  width: 75px;
+  width: 85px;
   display: block;
   text-align: center;
 }
