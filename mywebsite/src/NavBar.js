@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAlignJustify } from '@fortawesome/free-solid-svg-icons';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import './index.css';
 import './header_footer.css';
 
@@ -13,7 +16,27 @@ export default function NavBar() {
             navbar.addEventListener('mouseenter', hoverFunction);
             navbar.addEventListener('mouseleave', leaveFunction);
         }
-        
+
+        if(document.body.contains(document.querySelector('.nav'))) {
+            document.querySelectorAll('.nav').forEach(item => {
+                item.addEventListener('touchstart', function(){
+                    item.style.borderBottom= "2px solid white";
+                    item.style.color = "#b7cfee"
+                    setTimeout(()=>{
+                        item.style.borderBottom = "none";
+                        item.style.color = "white";
+                    }, 2000);  
+                });
+                item.addEventListener('mouseenter', function(){
+                    item.style.borderBottom= "2px solid white";
+                    item.style.color = "#b7cfee"   
+                });
+                item.addEventListener('mouseleave', function(){
+                    item.style.borderBottom= "none";
+                    item.style.color = "white"  
+                });
+            })
+        }
         window.addEventListener('scroll', scrollFunction);
         window.addEventListener('resize', resizeFunction);
     });
@@ -77,26 +100,27 @@ export default function NavBar() {
     const display_navbar = 
         <div className="NavBar">
             <ul id="nb">
-                <li><a href = "/#home">HOME</a></li>
-                <li><a href = "/#about">ABOUT ME</a></li>
-                <li><a href = "/#whatido">WHAT I DO</a></li>
-                <li><a href = "/#contact">CONTACT</a></li>
+                <li><a className="nav" href = "/#home">HOME</a></li>
+                <li><a className="nav" href = "/#about">ABOUT ME</a></li>
+                <li><a className="nav" href = "/#whatido">WHAT I DO</a></li>
+                <li><a className="nav" href = "/#contact">CONTACT</a></li>
             </ul> 
         </div> 
 
     const drop_navbar =
         <div className="DropNavBar" id="DropNavBar">
-            <button id="toggle" onClick={dropdown}>{clicked? "close":"open"}</button>
+            <button id="toggle" onClick={dropdown}>{clicked? <FontAwesomeIcon icon={faWindowClose} size="1x" />:<FontAwesomeIcon icon={faAlignJustify} size="1x" />}</button>
             <ul id="drop_nb">
-                <li id="panel" ><a href = "/#home">HOME</a></li>
-                <li id="panel" ><a href = "/#about">ABOUT ME</a></li>
-                <li id="panel" ><a href = "/#whatido">WHAT I DO</a></li>
-                <li id="panel" ><a href = "/#contact">CONTACT</a></li>
+                <li className="panel" ><a href = "/#home">HOME</a></li>
+                <li className="panel" ><a href = "/#whatido">WHAT I DO</a></li>
+                <li className="panel" ><a href = "/#contact">CONTACT</a></li>
+                <li className="panel" ><a href = "/#about">ABOUT ME</a></li>
             </ul> 
         </div>
     
     const resizeFunction = () => {
-        if(window.innerWidth < 1024) {
+        handleClick(false);
+        if(window.innerWidth <= 1024) {
             handleResize(true);
             if(document.body.contains(document.getElementById('drop_nb'))) {
                 const navbar = document.getElementById("drop_nb");
@@ -111,7 +135,7 @@ export default function NavBar() {
         }
     }
 
-    if (resize || window.innerWidth < 1024) {
+    if (resize || window.innerWidth <= 1024) {
         return (
             drop_navbar
         )

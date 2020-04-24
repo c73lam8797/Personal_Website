@@ -18,7 +18,7 @@ export default function Contact () {
         const icon = document.getElementById("icon");
         icon.style.color = "#3e5d86";
         setTimeout(()=>icon.style.color="white", 2000);
-    }
+    };
 
     const hoverFunction = () => {
         const navbar = document.getElementById("icon");
@@ -28,8 +28,7 @@ export default function Contact () {
     const leaveFunction = () => {        
         const navbar = document.getElementById("icon");
         navbar.style.color = "white";
-
-    }
+    };
     
     return (
         <div className="contact" id="contact">

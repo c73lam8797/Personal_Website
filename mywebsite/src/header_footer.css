@@ -21,10 +21,6 @@
   width: 85px;
 }
 
-.NavBar a:hover {
-  border-bottom: 2px solid white;
-  color: #b7cfee;
-}
 
 .NavBar ul {
   background-color: transparent;
@@ -38,14 +34,14 @@
 }
 
 #toggle {
-  /* width: 15px; */
   position: fixed;
   display: inline-block;
   margin: 0px;
-  padding: 3px;
-  border: 1px solid white;
+  padding: 7px;
+  border: 0.3px solid white;
   color: white;
   background-color: black;
+  opacity: 0.8;
 }
 
 
@@ -97,6 +93,6 @@
   float: left;
 }
 
-.Socials li a:hover {
+/* .Socials li a:hover {
   background-color: #3e5d86 ;
-}
+} */
