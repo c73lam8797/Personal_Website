@@ -1,22 +1,24 @@
-.table {
+.whatido .table {
     width: 100%;
     display: inline-block;
 }
 
-.row {
-    margin: 0 -5px;
+.whatido .row {
+    margin: 0 -7.5px;
     width: 100%;
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
-.column {
-    display: inline-block;
-    margin: 15px;
+.whatido .column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0px 15px;
     width: 21%;
 }
 
-.card {
+.whatido .card {
     box-shadow: 0 4px 6px 0 rgb(104, 109, 110);
     text-align: center;
     background-color: #f1f1f1;
@@ -24,30 +26,63 @@
     width: 100%;
     color: black;
     border-radius: 5px;
+    height: 100%;  
+    word-wrap:break-word;
 }
 
-.moreaboutme {
+.whatido {
     width: 100%;
     display: inline-block;
 }
 
-.moreaboutme p {
+.whatido p {
     font-family: 'Open Sans', sans-serif;
 }
 
-.moreaboutme h3 {
+.whatido h3, h5 {
     font-family: 'Raleway', sans-serif;;
 }
 
-.moreaboutme h3 span {
+.whatido h3 span {
     font-size: 25px;
     color: #8dbfff;
 }
 
+.whatido #interests {
+    /* list-style-type: none; */
+    display: inline-block;
+}
+
+.whatido #interests li {
+    margin-right: 30px;
+    float: left;
+}
   
+.whatido #firstpoint {
+    list-style-type: none;
+}
 @media screen and (max-width: 1000px) {
-    .column {
+    .whatido .row {
+        display: inline-block;
+
+    }
+    
+    .whatido .column {
         display: inline;
         margin: 15px;
+    }
+
+    .whatido #interests {
+        display: block;
+    }
+
+    .whatido #interests li{
+        float: none;
+        margin-right: 0px;
+        text-align: left;
+    }
+    
+    .whatido #firstpoint {
+        list-style-type: disc;
     }
 }

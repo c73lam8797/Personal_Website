@@ -4,25 +4,24 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-#icon {
+.contact #icon {
     color: white;
 }
 
-.contact_info {
+.contact .contact_info {
     width: 100%;
     display: inline-block;
-    /* text-align: center; */
     text-align: center;
 }
 
-#info {
+.contact #info {
     vertical-align: middle;
     position: relative;
     display: inline-block;
     /* left: 50%; */
 }
 
-p #email, #resume{
+.contact p #email, #resume{
     margin: 0px;
     float: left;
     clear: both;
@@ -31,17 +30,13 @@ p #email, #resume{
     vertical-align: center;
 }
 
-.color {
+.contact .color {
     color: #8dbfff;
     display: inline;
     margin: 0px;
 }
 
-/* FontAwesomeIcon {
-    vertical-align: bottom;
-} */
-
-.subtitle {
+.contact .subtitle {
     font-family: 'Raleway', sans-serif;
     justify-content: center;
     text-align: center;

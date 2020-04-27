@@ -4,14 +4,14 @@
     top: 0px;
 }
 
-video {
+.home video {
     width: 100%;
     left: 0;
     top: 0;
     opacity: 0.4;
 }
 
-#content {
+.home #content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,34 +21,34 @@ video {
     vertical-align: middle;
 }
 
-#content h1 {
+.home #content h1 {
     font-size: 50px;
     /* font-size: 5.336179295624333vh; */
     font-family: 'Quicksand', sans-serif;
 }
 
-#content h3 {
+.home #content h3 {
     font-family: 'Quicksand', sans-serif;
     font-size: 20px;
 }
 
 @media screen and (max-width: 730px) {
-    #content h1 {
+    .home #content h1 {
         font-size: 25px;
         font-family: 'Quicksand', sans-serif;
     }
-    #content h3 {
+    .home #content h3 {
         font-family: 'Quicksand', sans-serif;
         font-size: 15px;
     }
 }
 
 @media screen and (max-width: 350px) {
-    #content h1 {
+    .home #content h1 {
         font-size: 20px;
         font-family: 'Quicksand', sans-serif;
     }
-    #content h3 {
+    .home #content h3 {
         font-family: 'Quicksand', sans-serif;
         font-size: 10px;
     }

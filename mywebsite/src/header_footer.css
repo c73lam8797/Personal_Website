@@ -29,7 +29,7 @@
   padding: 0;
 }
 
-#toggle {
+.DropNavBar #toggle {
   position: fixed;
   display: inline-block;
   margin: 0px;
@@ -44,7 +44,7 @@
 }
 
 
-#drop_nb {
+.DropNavBar #drop_nb {
   width: 100%;
   list-style-type: none;
   position: fixed;

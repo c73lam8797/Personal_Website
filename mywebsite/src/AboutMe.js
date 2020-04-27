@@ -18,9 +18,15 @@ export default function AboutMe() {
                     border =  "3"
                     >
                 </img>
-                <p>
-                    Hi! My name is Charmaine and I am a Biomedical Engineering student from the University of Waterloo. 
-                </p>
+                <p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student at the University of Waterloo. </p>
+                <p>Here's 5 quick facts about me: </p>
+                <ul>
+                    <li>1. Testing</li>
+                    <li>2. Testing</li>
+                    <li>3. Testing</li>
+                    <li>4. Testing</li>
+                    <li>5. Testing</li>
+                </ul>
             </div>
         </div>
     )

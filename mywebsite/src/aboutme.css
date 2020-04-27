@@ -3,25 +3,29 @@
     display: inline-block;
 }
 
-img {
+.about img {
     width: 450px;
     float: left;
     margin-right: 20px;
     display: block;
 }
 
-/* p {
-    display: inline-block;
-} */
-
-h1 {
+.about h1 {
     margin-top: 0px;
 }
 
-#description {
+.about #description {
     position: relative;
     width: 100%;
     float: left;
+}
+
+.about ul {
+    list-style-type: none;
+}
+
+.about li {
+    padding: 5px;
 }
 
 @media screen and (max-width: 800px) {
@@ -29,7 +33,7 @@ h1 {
         display: block;
     }
 
-    img {
+    .about img {
         width: 100%;
         margin-right: 0px;
         margin-bottom: 20px;
