@@ -11,19 +11,38 @@
 .contact_info {
     width: 100%;
     display: inline-block;
+    /* text-align: center; */
     text-align: center;
 }
 
-#contact_info {
+#info {
     vertical-align: middle;
+    position: relative;
+    display: inline-block;
+    /* left: 50%; */
 }
 
-p {
-    margin: 15px;
+p #email, #resume{
+    margin: 0px;
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    vertical-align: center;
 }
 
-#subtitle {
+.color {
+    color: #8dbfff;
+    display: inline;
+    margin: 0px;
+}
+
+/* FontAwesomeIcon {
+    vertical-align: bottom;
+} */
+
+.subtitle {
     font-family: 'Raleway', sans-serif;
     justify-content: center;
-    display: flex;
+    text-align: center;
 }

@@ -19,7 +19,7 @@ export default function AboutMe() {
                     >
                 </img>
                 <p>
-                    Insert Something Here
+                    Hi! My name is Charmaine and I am a Biomedical Engineering student from the University of Waterloo. 
                 </p>
             </div>
         </div>

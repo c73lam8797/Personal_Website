@@ -3,10 +3,6 @@
   z-index: 1;
   position: relative;
 }
-
-/* .NavBar {
-  display: inline-block;
-} */
   
 .NavBar li {
   float: left;
