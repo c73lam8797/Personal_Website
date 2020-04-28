@@ -7,7 +7,6 @@
     width: 450px;
     float: left;
     margin-right: 20px;
-    display: block;
 }
 
 .about h1 {
@@ -16,19 +15,31 @@
 
 .about #description {
     position: relative;
-    width: 100%;
-    float: left;
+    display: flex;
+    /* width: 100%;
+    float: left; */
+}
+
+.about #description #image {
+    /* width: 50%; */
+    display: inline-block;
+}
+
+.about #text{
+    display: inline-block;
+    /* width: 50%; */
 }
 
 .about ul {
-    list-style-type: none;
+    list-style-type: decimal;
 }
 
 .about li {
     padding: 5px;
+    font-family: 'Open Sans', sans-serif;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .about #description {
         display: block;
     }

@@ -62,10 +62,10 @@ export default function WhatIDo() {
                         </div>
                     </div>
                 </div>
-                <h3>Interests + Hobbies</h3>
-                <h5>Just some of the things I do in my spare time!</h5>
+                <h3>Achievements</h3>
+                <h5>Here are some things I am proud of!</h5>
                 <div className="row">
-                    <ul id="interests"><li id="firstpoint"><p>Backpacking</p></li><li><p>Photography + Photo Editing</p></li><li><p>Baking</p></li><li><p>Testing</p></li></ul>
+                    <ul id="interests"><li id="firstpoint"><p>Testing</p></li><li><p>Testing</p></li><li><p>Testing</p></li><li><p>Testing</p></li></ul>
                 </div>
             </div>
         </div>    
