@@ -30,47 +30,7 @@
     word-wrap:break-word;
 }
 
-.whatido .slideshow {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    margin: 10px -5px;
-}
 
-.whatido #image_container {
-    display: inline-block;
-    text-align: center;
-    height: 100%;
-}
-
-.whatido #slides {
-    text-align: center;
-}
-
-.whatido .slide {
-    margin: 10px;
-    display: inline-block;
-    text-align: center;
-    height: auto;
-    max-height: 500px;
-    /* max-width: 800px; */
-    border: 2px solid white;
-    border-radius: 5px;
-}
-
-.whatido #left_button, #right_button {
-    margin: 15px 30px;
-    background-color: transparent;
-    border: none;
-    font-size: 30px;
-    opacity: 0.5;
-    color: white;
-    outline: none;
-}
-
-.whatido #left_button:hover, #right_button:hover {
-    opacity: 1;
-}
 
 .whatido {
     width: 100%;
@@ -89,12 +49,12 @@
 }
 
 .whatido h3 span {
-    font-size: 25px;
+    font-size: 35px;
     color: #8dbfff;
 }
 
-.whatido #interests {
-    /* list-style-type: none; */
+/* .whatido #interests {
+    list-style-type: none;
     display: inline-block;
     margin: 0px;
 }
@@ -106,7 +66,9 @@
   
 .whatido #firstpoint {
     list-style-type: none;
-}
+} */
+
+
 @media screen and (max-width: 1000px) {
     .whatido .row {
         display: inline-block;
@@ -133,42 +95,5 @@
     
     .whatido #firstpoint {
         list-style-type: disc;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .whatido .slide {
-        /* max-width: 500px; */
-        max-height: 300px;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .whatido .slide {
-        /* max-width: 325px; */
-        max-height: 250px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .whatido .slide {
-        /* max-width: 250px; */
-        max-height: 200px;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .whatido .slide {
-        max-width: 250px;
-        max-height: 270px;
-        vertical-align: middle;
-        /* bottom: 0px; */
-    }
-
-    .whatido #slides {
-        height: 300px;
-        max-height: 300px;
-        vertical-align: middle;
-        display: table-cell;
     }
 }

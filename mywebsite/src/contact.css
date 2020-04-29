@@ -31,7 +31,8 @@
 }
 
 .contact .color {
-    color: #8dbfff;
+    /* color: #8dbfff; */
+    color: #286fca;
     display: inline;
     margin: 0px;
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'; 
-import './index.css'
+import './index.css';
 import './whatido.css';
-
+import './whatido_slideshow.css';
+import Button from '@material-ui/core/Button';
 
 import notes from './edited_pics/IMG_1108.jpg';
 import gp from './edited_pics/IMG_1114.jpg';
@@ -79,7 +80,7 @@ export default function WhatIDo() {
                         </div>
                     </div>
                 </div>
-                <h5>Here is some art-related media of things I've done!</h5>
+                <h5>Here is some art-related media of things I've done:</h5>
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
@@ -92,8 +93,11 @@ export default function WhatIDo() {
                             <img className="slide" src={notes} alt="notes" />
                             <img className="slide" src={muscles} alt="muscles" />                          
                         </div>
-                        <button id="left_button" onClick={() => plusDivs(-1)}>&#10094;</button>
-                        <button id="right_button" onClick={() => plusDivs(1)}>&#10095;</button>
+                        <div id="buttons">
+                            <Button id="left_button" onClick={() => plusDivs(-1)}>&#10094;</Button>
+                            <Button id="right_button" onClick={() => plusDivs(1)}>&#10095;</Button>
+                        </div>
+
                     </div>
                 </div>
                 <h3>Leadership + Involvement in the <i><span>Community</span></i></h3>

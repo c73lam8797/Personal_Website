@@ -47,10 +47,8 @@ const NavBar = forwardRef(
                 });
             })
         }
-        // window.addEventListener('scroll', scrollFunction);
-        window.addEventListener('resize', resizeFunction);
-        // props.sb.current.onScroll = scrollFunction;
-        
+
+        window.addEventListener('resize', resizeFunction);       
 
     });
 
@@ -64,7 +62,7 @@ const NavBar = forwardRef(
     const scrollFunction = () => {
         if(document.body.contains(document.getElementById('nb'))) {
             const navbar = document.getElementById("nb");
-            // if (props.sb.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            
             if (props.sb.current.getScrollTop() > 200) {
                 console.log(props.sb.current.getScrollTop() > 200);
                 navbar.style.backgroundColor = "black";
@@ -88,7 +86,7 @@ const NavBar = forwardRef(
     const leaveFunction = () => {        
         if(document.body.contains(document.getElementById('nb'))) {
             const navbar = document.getElementById("nb");
-            // if (props.sb.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            
             if (props.sb.current.getScrollTop() > 200) {
                 navbar.style.backgroundColor = "black";
                 navbar.style.opacity=1;
