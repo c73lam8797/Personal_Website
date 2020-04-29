@@ -63,7 +63,7 @@ export default function WhatIDo() {
                     <div className="column">
                         <div className="card">
                             <h3>Art + Design</h3>
-                            <p>I draw, I guess. Through teaching myself, I've acquired a liking for black and white pencil sketches, but have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't get the chance to draw much, so I make my school notes visually elaborate to fit my desire to draw somewhere.</p>
+                            <p>I draw, I guess. Through teaching myself, I've acquired a liking for black and white pencil sketches, but have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't get the chance to draw much, so I make my school notes visually elaborate to satisfy my desire to draw.</p>
                             <p>For leisure, I've taken up photography and photo editing, and sometimes shoot short video clips.</p>
                         </div>
                     </div>

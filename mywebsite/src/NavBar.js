@@ -44,7 +44,7 @@ export default function NavBar() {
     useEffect(() => {
         if(document.body.contains(document.getElementById('drop_nb'))) {
             const navbar = document.getElementById("drop_nb");
-            navbar.style.display= "none";
+            navbar.style.visibility = "hidden";
         }
     }, []);
 
@@ -75,11 +75,9 @@ export default function NavBar() {
             const navbar = document.getElementById("nb");
             if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
                 navbar.style.backgroundColor = "black";
-                navbar.style.opacity=1;
             }
             else {
                 navbar.style.backgroundColor = "transparent";
-                navbar.style.opacity=0.5;
             }
         }
     }
@@ -88,11 +86,14 @@ export default function NavBar() {
         handleClick(!clicked);
         if(document.body.contains(document.getElementById('drop_nb'))) {
             const navbar = document.getElementById('drop_nb');
-            if (navbar.style.display === "none") {
-                navbar.style.display = "block"
+            if (navbar.style.visibility === "hidden") {
+                navbar.style.visibility = "visible"
+                navbar.style.transition = "opacity 0.5s ease-in"
+                navbar.style.opacity = 1;
             }
             else {
-                navbar.style.display = "none"
+                navbar.style.visibility="hidden";
+                navbar.style.opacity = 0;
             }
         }
     }
@@ -126,7 +127,8 @@ export default function NavBar() {
                 const navbar = document.getElementById("drop_nb");
                 navbar.style.backgroundColor = "black";
                 navbar.style.opacity=1;
-                navbar.style.display="none";
+                navbar.style.visibility="hidden";
+                navbar.style.opacity=0;
             }
         }
         else {
