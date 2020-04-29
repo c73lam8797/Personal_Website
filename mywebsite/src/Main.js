@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Home from './Home';
 import NavBar from './NavBar';
 import AboutMe from './AboutMe';
@@ -7,18 +7,18 @@ import Socials from './Socials';
 import WhatIDo from './WhatIDo';
 import './index.css';
 
-class Main extends Component {
-    // constructor (props){
-    //     super (props);
-    //     this.state = {
+import { Scrollbars } from 'react-custom-scrollbars';
+ 
+function Main () {
+    let scrollbar = useRef();
+    let navbar = useRef();
 
-    //     }
-    // }
-    render () {
-        return (
-            <div className="main">
-                <NavBar />
-                <div className="main_content">
+    return (
+        <div className="main">
+            <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} style={{ width: "100%", height: "100vh" }} onScroll={() => navbar.current.scroll()}>
+
+                <NavBar ref={navbar} sb={scrollbar} />
+                <div className="main_content" id="main_content">
                     <Home />
                     <div className="sub_content">
                         <AboutMe />
@@ -29,9 +29,11 @@ class Main extends Component {
                     {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
                 <Socials />
-            </div>
-        )
-    }
+
+            </Scrollbars>
+        </div>
+    )
+    
 };
 
 export default Main; 

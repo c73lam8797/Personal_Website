@@ -34,7 +34,7 @@
     display: inline-block;
     width: 100%;
     text-align: center;
-    margin: 10px -10px;
+    margin: 10px -5px;
 }
 
 .whatido #image_container {
@@ -44,7 +44,6 @@
 }
 
 .whatido #slides {
-    /* max-height: 300px; */
     text-align: center;
 }
 
@@ -54,11 +53,23 @@
     text-align: center;
     height: auto;
     max-height: 500px;
+    /* max-width: 800px; */
     border: 2px solid white;
+    border-radius: 5px;
 }
 
 .whatido #left_button, #right_button {
-    margin: 15px;
+    margin: 15px 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    opacity: 0.5;
+    color: white;
+    outline: none;
+}
+
+.whatido #left_button:hover, #right_button:hover {
+    opacity: 1;
 }
 
 .whatido {
@@ -122,5 +133,42 @@
     
     .whatido #firstpoint {
         list-style-type: disc;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .whatido .slide {
+        /* max-width: 500px; */
+        max-height: 300px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .whatido .slide {
+        /* max-width: 325px; */
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .whatido .slide {
+        /* max-width: 250px; */
+        max-height: 200px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .whatido .slide {
+        max-width: 250px;
+        max-height: 270px;
+        vertical-align: middle;
+        /* bottom: 0px; */
+    }
+
+    .whatido #slides {
+        height: 300px;
+        max-height: 300px;
+        vertical-align: middle;
+        display: table-cell;
     }
 }

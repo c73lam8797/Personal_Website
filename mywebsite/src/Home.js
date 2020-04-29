@@ -16,7 +16,7 @@ export default function Home() {
 
       <div id="content">
           <h1>Charmaine Lam</h1>
-          <h3>idk what to put here</h3>
+          <h3>A little bit about my story</h3>
       </div>
     </div>
   );

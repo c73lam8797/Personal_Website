@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignJustify } from '@fortawesome/free-solid-svg-icons';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
@@ -6,9 +6,19 @@ import './index.css';
 import './header_footer.css';
 
 
-export default function NavBar() {
+const NavBar = forwardRef( 
+    (props, ref) => {
     const [resize, handleResize] = useState(false);
     const [clicked, handleClick] = useState(false);
+
+    // const inputRef = useRef();
+
+    useImperativeHandle(ref, () => ({
+        scroll: () => {
+            scrollFunction();
+        }
+    }));
+
 
     useEffect(() => {
         if(document.body.contains(document.getElementById('nb'))) {
@@ -37,8 +47,11 @@ export default function NavBar() {
                 });
             })
         }
-        window.addEventListener('scroll', scrollFunction);
+        // window.addEventListener('scroll', scrollFunction);
         window.addEventListener('resize', resizeFunction);
+        // props.sb.current.onScroll = scrollFunction;
+        
+
     });
 
     useEffect(() => {
@@ -51,7 +64,9 @@ export default function NavBar() {
     const scrollFunction = () => {
         if(document.body.contains(document.getElementById('nb'))) {
             const navbar = document.getElementById("nb");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            // if (props.sb.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            if (props.sb.current.getScrollTop() > 200) {
+                console.log(props.sb.current.getScrollTop() > 200);
                 navbar.style.backgroundColor = "black";
                 navbar.style.opacity=1;
             }
@@ -73,11 +88,14 @@ export default function NavBar() {
     const leaveFunction = () => {        
         if(document.body.contains(document.getElementById('nb'))) {
             const navbar = document.getElementById("nb");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            // if (props.sb.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            if (props.sb.current.getScrollTop() > 200) {
                 navbar.style.backgroundColor = "black";
+                navbar.style.opacity=1;
             }
             else {
                 navbar.style.backgroundColor = "transparent";
+                navbar.style.opacity=0.5;
             }
         }
     }
@@ -126,7 +144,6 @@ export default function NavBar() {
             if(document.body.contains(document.getElementById('drop_nb'))) {
                 const navbar = document.getElementById("drop_nb");
                 navbar.style.backgroundColor = "black";
-                navbar.style.opacity=1;
                 navbar.style.visibility="hidden";
                 navbar.style.opacity=0;
             }
@@ -147,4 +164,6 @@ export default function NavBar() {
             display_navbar
         )
     }
-}; 
+}); 
+
+export default NavBar;

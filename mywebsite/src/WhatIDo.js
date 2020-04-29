@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'; 
 import './index.css'
 import './whatido.css';
+
+
 import notes from './edited_pics/IMG_1108.jpg';
 import gp from './edited_pics/IMG_1114.jpg';
 import muscles from './edited_pics/IMG_1119.jpg';
 import dance_vid from './274.mp4';
+import dance_photo from './edited_pics/2a8a0480.jpg';
+import triangle from './edited_pics/IMG_9958.JPG';
+import firework from './edited_pics/IMG_7804.JPG';
+import taio from './edited_pics/IMG_0347.JPG';
 
 export default function WhatIDo() {
     let [slideIndex, changeIndex] = useState(1);
@@ -27,11 +33,16 @@ export default function WhatIDo() {
                 x[i].style.display = "none";
             }
 
-            try{
+            try {
                 x[slideIndex-1].style.display="block";
             }   
             catch(err) {
                 
+            }
+
+            let vid = document.getElementById("dance_vid");
+            if (vid.style.display === "none") {
+                vid.pause();
             }
             
         }
@@ -63,16 +74,21 @@ export default function WhatIDo() {
                     <div className="column">
                         <div className="card">
                             <h3>Art + Design</h3>
-                            <p>I draw, I guess. Through teaching myself, I've acquired a liking for black and white pencil sketches, but have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't get the chance to draw much, so I make my school notes visually elaborate to satisfy my desire to draw.</p>
+                            <p>I draw, I guess. Through teaching myself, I've acquired a liking for black and white pencil sketches, but have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't have much time to do much art, so I make my school notes visually elaborate to satisfy my desire to draw.</p>
                             <p>For leisure, I've taken up photography and photo editing, and sometimes shoot short video clips.</p>
                         </div>
                     </div>
                 </div>
+                <h5>Here is some art-related media of things I've done!</h5>
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
+                            <img className="slide" src={triangle} alt="triangle" />
+                            <img className="slide" src={firework} alt="firework" />
+                            <img className="slide" src={taio} alt="taio" />
                             <img className="slide" src={gp} alt="gp" />
-                            <video className="slide" src={dance_vid} controls alt="dance_vid" />
+                            <video className="slide" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />
+                            <img className="slide" src={dance_photo} alt="dance_photo" />
                             <img className="slide" src={notes} alt="notes" />
                             <img className="slide" src={muscles} alt="muscles" />                          
                         </div>
