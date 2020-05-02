@@ -43,9 +43,9 @@
 }
 
 @media screen and (max-width: 600px) {
-    .whatido .slideshow {
+    /* .whatido .slideshow {
         height: 350px;
-    }
+    } */
 
     .whatido #slides {
         max-width: 100%;
