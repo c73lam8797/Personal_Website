@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useImperativeHandle, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignJustify } from '@fortawesome/free-solid-svg-icons';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
@@ -64,7 +64,6 @@ const NavBar = forwardRef(
             const navbar = document.getElementById("nb");
             
             if (props.sb.current.getScrollTop() > 200) {
-                console.log(props.sb.current.getScrollTop() > 200);
                 navbar.style.backgroundColor = "black";
                 navbar.style.opacity=1;
             }

@@ -1,6 +1,4 @@
 .contact {
-    display: inline-block;
-    width: 100%;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -18,7 +16,6 @@
     vertical-align: middle;
     position: relative;
     display: inline-block;
-    /* left: 50%; */
 }
 
 .contact p #email, #resume{
@@ -31,7 +28,6 @@
 }
 
 .contact .color {
-    /* color: #8dbfff; */
     color: #286fca;
     display: inline;
     margin: 0px;

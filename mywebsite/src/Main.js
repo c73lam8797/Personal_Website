@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Home from './Home';
 import NavBar from './NavBar';
 import AboutMe from './AboutMe';
@@ -13,11 +13,25 @@ function Main () {
     let scrollbar = useRef();
     let navbar = useRef();
 
+    useEffect(() => {
+        if (scrollbar.current.style !== undefined) {
+            scrollbar.current.style.width = "100%";
+            // scrollbar.current.style.overflowY = "scroll";
+            // scrollbar.current.style.overflowX = "hidden";
+        }
+    });
+
     return (
         <div className="main">
-            <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} style={{ width: "100%", height: "100vh" }} onScroll={() => navbar.current.scroll()}>
+            <NavBar ref={navbar} sb={scrollbar} />
+            <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} 
+                style={{ 
+                    width: "100%", 
+                    height: "100vh",
+                    // marginRight: "21px",
+                    }} onScroll={() => navbar.current.scroll()}>
 
-                <NavBar ref={navbar} sb={scrollbar} />
+                
                 <div className="main_content" id="main_content">
                     <Home />
                     <div className="sub_content">
@@ -28,9 +42,10 @@ function Main () {
                     <div className="placeholder"></div>
                     {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
-                <Socials />
+                
 
             </Scrollbars>
+            <Socials />
         </div>
     )
     

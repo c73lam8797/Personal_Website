@@ -1,7 +1,6 @@
-.about {
-    width: 100%;
+/* .about {
     display: inline-block;
-}
+} */
 
 .about img {
     width: 450px;
@@ -16,18 +15,11 @@
 .about #description {
     position: relative;
     display: flex;
-    /* width: 100%;
-    float: left; */
+    justify-content: center;
 }
 
-.about #description #image {
-    /* width: 50%; */
+.about #description #image, #text {
     display: inline-block;
-}
-
-.about #text{
-    display: inline-block;
-    /* width: 50%; */
 }
 
 .about ul {
@@ -44,9 +36,17 @@
         display: block;
     }
 
-    .about img {
-        width: 100%;
-        margin-right: 0px;
+    .about #description #image {
+        display: flex;
+        justify-content: center;
         margin-bottom: 20px;
+    }
+
+    .about img {
+        /* width: 100%; */
+        /* margin-right: 0px; */
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 100%;
     }
 }

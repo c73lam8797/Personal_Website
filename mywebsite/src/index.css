@@ -23,6 +23,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 100%;
   min-height: 100%;  
+  background-color: rgb(65, 73, 74); 
 }
 
 code {
@@ -33,25 +34,33 @@ code {
 .placeholder {
   width: 100%;
   height: 62px;
+  background: transparent;
 }
+
+/* .main {
+  width: 100%;
+} */
 
 .main_content {
   background-color: rgb(65, 73, 74);   
   color: white;
-
-  height: 100vh;
+  overflow-x: hidden;
+  /* margin: 0px 21px 0px 0px; */
 }
 
 .sub_content {
+  /* margin: 0px 21px 0px 0px; */
+  background: linear-gradient(0deg, rgba(123, 154, 196, 0.762) 4%, rgba(65,73,74,1) 79%);
+}
+
+.about, .whatido, .contact {
   padding: 20px;
-  margin: 0px;
-  background: linear-gradient(0deg, rgba(129,158,197,0.76234243697479) 4%, rgba(65,73,74,1) 79%);
 }
 
 .main_content h1 {
   font-family: 'Raleway', sans-serif;
-  justify-content: center;
   display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 730px) {

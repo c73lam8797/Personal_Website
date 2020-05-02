@@ -34,21 +34,23 @@ export default function Contact () {
         <div className="contact" id="contact">
             <div className="placeholder"></div>
 
-            <h1 id="title">— CONTACT —</h1>
-            <h3 class="subtitle">Let's connect!</h3>
-            <h3 class="subtitle">I am always looking to create new <h3 className="color">relationships</h3>, whether it's for a bubble tea (or coffee) chat or an opportunity to collaborate <span role="img" aria-label="smile">{'\u00A0'}🙂</span></h3>
-            <h3 class="subtitle">I am best reached through email or a message on LinkedIn.</h3>
+            <div className = "content">
+                <h1 id="title">— CONTACT —</h1>
+                <h3 className="subtitle">Let's connect!</h3>
+                <h3 className="subtitle">I am always looking to create new <span className="color">relationships</span>, whether it's for a bubble tea (or coffee) chat or an opportunity to collaborate <span role="img" aria-label="smile">{'\u00A0'}🙂</span></h3>
+                <h3 className="subtitle">I am best reached through email or a message on LinkedIn.</h3>
 
-            <div className="contact_info"> 
-                <div id="info">
-                    <p id="email">
-                    <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
-                    c73lam@edu.waterloo.ca</p>   
-                    <p id="resume">
-                    <a href={pdf} target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon id="icon" style={{marginRight: "10px", marginBottom:"-10px", color: "white"}} icon = {faDownload} size="3x" />
-                    </a>
-                    Download Resume</p>
+                <div className="contact_info"> 
+                    <div id="info">
+                        <p id="email">
+                        <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
+                        c73lam@edu.waterloo.ca</p>   
+                        <p id="resume">
+                        <a href={pdf} target="_blank" rel="noopener noreferrer">
+                            <FontAwesomeIcon id="icon" style={{marginRight: "10px", marginBottom:"-10px", color: "white"}} icon = {faDownload} size="3x" />
+                        </a>
+                        Download Resume</p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,6 +12,7 @@ import dance_photo from './edited_pics/2a8a0480.jpg';
 import triangle from './edited_pics/IMG_9958.JPG';
 import firework from './edited_pics/IMG_7804.JPG';
 import taio from './edited_pics/IMG_0347.JPG';
+import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
     let [slideIndex, changeIndex] = useState(1);
@@ -87,6 +88,7 @@ export default function WhatIDo() {
                             <img className="slide" src={triangle} alt="triangle" />
                             <img className="slide" src={firework} alt="firework" />
                             <img className="slide" src={taio} alt="taio" />
+                            <img className="slide" src={flower} alt="flower" />
                             <img className="slide" src={gp} alt="gp" />
                             <video className="slide" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />
                             <img className="slide" src={dance_photo} alt="dance_photo" />
