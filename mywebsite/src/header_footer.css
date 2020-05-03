@@ -93,6 +93,7 @@
   width: 120px;
   display: block;
   text-align: center;
+  outline: none;
 }
 
 .Socials li {

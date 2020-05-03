@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useEffect, useState, useRef, createRef } from 'react'; 
 import './index.css';
 import './whatido.css';
 import './whatido_slideshow.css';
 import Button from '@material-ui/core/Button';
+import ReactDOM from 'react-dom';
 
 import notes from './edited_pics/IMG_1108.jpg';
 import gp from './edited_pics/IMG_1114.jpg';
@@ -15,8 +16,21 @@ import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
-    let [slideIndex, changeIndex] = useState(1);
-
+    let [slideIndex,    changeIndex]       = useState(1);
+    const [Muscles,     changeMuscles]     = useState(<img className="slide" id="1" src={muscles} alt="muscles" />);
+    const [Triangle,    changeTriangle]    = useState(<img className="slide" id="2" src={triangle} alt="triangle" />);
+    const [Firework,    changeFirework]    = useState(<img className="slide" id="3" src={firework} alt="firework" />);
+    const [Taio,        changeTaio]        = useState(<img className="slide" id="4" src={taio} alt="taio" />);
+    const [Flower,      changeFlower]      = useState(<img className="slide" id="5" src={flower} alt="flower" />);
+    const [Gp,          changeGp]          = useState(<img className="slide" id="6" src={gp} alt="gp" />);
+    const [Dance_vid,   changeDance_vid]   = useState(<video className="slide" id="7" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />);
+    const [Dance_photo, changeDance_photo] = useState(<img className="slide" id="8" src={dance_photo} alt="dance_photo" />);
+    const [Notes,       changeNotes]       = useState(<img className="slide" id="9" src={notes} alt="notes" />);
+    const [prev,        changePrev]        = useState();
+    const [cur,         changeCur]         = useState(<p>No image found</p>);
+    const [next,        changeNext]        = useState();
+    const [img_array,   changeImg_array]   = useState([Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo, Notes])
+    
     useEffect( () => {
         showDivs(slideIndex);
     } )
@@ -27,28 +41,34 @@ export default function WhatIDo() {
     }
 
     const showDivs = (n) => {
-        if (document.body.contains(document.querySelector('.slide'))) {
-            var x = document.getElementsByClassName("slide");
-            if (n > x.length) {changeIndex(1)}
-            if (n < 1) {changeIndex(x.length)}
-            for (let i =0; i<x.length; i++) {
-                x[i].style.display = "none";
-            }
+        const x = img_array.length;
 
-            try {
-                x[slideIndex-1].style.display="block";
-            }   
-            catch(err) {
-                
-            }
-
-            let vid = document.getElementById("dance_vid");
-            if (vid.style.display === "none") {
-                vid.pause();
-            }
-            
+        let curIndex = slideIndex;
+        let nextIndex = slideIndex+1; 
+        let prevIndex = slideIndex-1;
+        if (nextIndex >= x) {
+            changeIndex(1);
+            nextIndex = 1;
         }
-    }
+        if (prevIndex < 0) {
+            changeIndex(x-1);
+            prevIndex = x-1;
+        }
+
+        changePrev(img_array[prevIndex]);
+        changeCur(img_array[curIndex]);
+        changeNext(img_array[nextIndex]);
+
+
+        if (document.body.contains(document.getElementById("slides"))) {
+            const middle = document.getElementById("cur_col")
+            const x = document.getElementById("slides");
+            console.log("scroll width", x.scrollWidth)
+            x.scrollTo(middle.offsetLeft/2, 0);
+
+            console.log(middle.offsetLeft);
+        } 
+    } 
 
     return (
         <div className="whatido" id="whatido">
@@ -85,15 +105,19 @@ export default function WhatIDo() {
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
-                            <img className="slide" src={triangle} alt="triangle" />
-                            <img className="slide" src={firework} alt="firework" />
-                            <img className="slide" src={taio} alt="taio" />
-                            <img className="slide" src={flower} alt="flower" />
-                            <img className="slide" src={gp} alt="gp" />
-                            <video className="slide" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />
-                            <img className="slide" src={dance_photo} alt="dance_photo" />
-                            <img className="slide" src={notes} alt="notes" />
-                            <img className="slide" src={muscles} alt="muscles" />                          
+                            {/* {prev}
+                            {cur}
+                            {next} */}
+                            <div className="img_col" id="prev_col">
+                                {prev}
+                            </div>
+                            <div className="img_col" id="cur_col">
+                                {cur}
+                            </div>
+                            <div className="img_col" id="next_col">
+                                {next}
+                            </div>
+                            
                         </div>
                         <div id="buttons">
                             <Button id="left_button" onClick={() => plusDivs(-1)}>&#10094;</Button>

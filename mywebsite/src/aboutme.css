@@ -21,7 +21,7 @@
 .about #description #image, #text {
     display: inline-block;
     position: relative;
-    margin: auto;
+    /* margin: auto; */
     height: auto;
 }
 
