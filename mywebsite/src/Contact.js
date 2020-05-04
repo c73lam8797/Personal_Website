@@ -9,7 +9,7 @@ import './contact.css'
 export default function Contact () {
     useEffect(() => {
         const icon = document.getElementById("icon");
-        icon.addEventListener('touchstart', handleTouch);
+        icon.addEventListener('touchstart', handleTouch, {passive: true});
         icon.addEventListener('mouseenter', hoverFunction);
         icon.addEventListener('mouseleave', leaveFunction);
     });

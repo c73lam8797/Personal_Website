@@ -36,7 +36,7 @@ const NavBar = forwardRef(
                         item.style.borderBottom = "none";
                         item.style.color = "white";
                     }, 2000);  
-                });
+                }, {passive: true});
                 item.addEventListener('mouseenter', function(){
                     item.style.borderBottom= "2px solid white";
                     item.style.color = "#b7cfee"   

@@ -10,7 +10,7 @@ export default function Socials() {
             item.addEventListener('touchstart', function() {
                 item.style.backgroundColor = "#3e5d86";
                 setTimeout(()=>item.style.backgroundColor="black", 2000);
-            })
+            }, {passive: true})
             item.addEventListener('mouseenter', function() {
                 item.style.backgroundColor = "#3e5d86";
             });

@@ -15,47 +15,49 @@ import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
-    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles" />          
-    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle" />      
-    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework" />
-    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio" />
-    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower" />
-    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp" />
-    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
-    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" />
-    const Notes       = <img   className="slide" id="9" src={notes}      alt="notes" />
+    const Muscles     = <img   className="slide" id="0" src={muscles}    alt="muscles" />          
+    const Triangle    = <img   className="slide" id="1" src={triangle}   alt="triangle" />      
+    const Firework    = <img   className="slide" id="2" src={firework}   alt="firework" />
+    const Taio        = <img   className="slide" id="3" src={taio}       alt="taio" />
+    const Flower      = <img   className="slide" id="4" src={flower}     alt="flower" />
+    const Gp          = <img   className="slide" id="5" src={gp}         alt="gp" />
+    const Dance_vid   = <video className="slide" id="6" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
+    const Dance_photo = <img   className="slide" id="7" src={dance_photo}alt="dance_photo" />
+    const Notes       = <img   className="slide" id="8" src={notes}      alt="notes" />
 
 
     let   [slideIndex,  changeIndex]       = useState(1);
     const [prev,        changePrev]        = useState();
     const [cur,         changeCur]         = useState(<p>No image found</p>);
     const [next,        changeNext]        = useState();
-    const [buffer,      changeBuffer]      = useState();
-
+    const [nextbuffer,  changeNextBuffer]  = useState();
+    const [prevbuffer,  changePrevBuffer]  = useState();
+    const [plus,        changePlus]        = useState(0);
     //this has to be a state because it bugs out otherwise :)
     const [img_array,   changeImg_array]   = useState([Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo, Notes])
     
     useEffect( () => {
         showDivs();
         window.addEventListener('resize', scroll);
-    } )
+    })
     
     const plusDivs = (n) => {
         changeIndex(slideIndex+=n)
+        changePlus(n);
         showDivs();
     }
 
     const scroll = () => {
         if (document.body.contains(document.getElementById("slides"))) {
-            const prev = document.getElementById("prev_col");
+            const previous = document.getElementById("prev_col");
             const middle = document.getElementById("cur_col");
             // const next = document.getElementById("next_col");
             const x = document.getElementById("slides");
 
 
-            let a = x.offsetWidth-prev.offsetWidth; //subtract viewing width - width of first col. 
+            let a = x.offsetWidth-previous.offsetWidth; //subtract viewing width - width of first col. 
             let b = Math.abs(middle.offsetWidth - a); //this is the amount the middle image shown w/o scrolling and how much you should scroll to see the middle image on the right
-            let c = prev.offsetWidth; //the amount to scroll to scrollpast the prev col and show the middle image on the left
+            let c = previous.offsetWidth; //the amount to scroll to scrollpast the prev col and show the middle image on the left
 
             
             x.scrollTo (
@@ -69,38 +71,62 @@ export default function WhatIDo() {
     const showDivs = () => {
         const x = img_array.length;
 
+        if (slideIndex >= x) {
+            changeIndex(0);
+        }
+
+        if (slideIndex < 0) {
+            changeIndex(x-1);
+            console.log("slide index", slideIndex)
+        }
+
         let curIndex = slideIndex;
         let nextIndex = slideIndex+1; 
         let prevIndex = slideIndex-1;
+        let prevBufferIndex = prevIndex-1;
+        let nextBufferIndex = nextIndex+1;         
 
-        if (nextIndex >= x) {
-            nextIndex = 0;
-        }
-        if (slideIndex >= x) {
-            changeIndex(0);
-            curIndex = slideIndex;
-            nextIndex = slideIndex+1;
-        }
-        if (prevIndex >= x) {
-            prevIndex = 0;
-        }
+        if (nextBufferIndex >= x){ nextBufferIndex = 0; }
+        if (nextIndex >= x)      { nextIndex = 0;       }
 
-        if (nextIndex < 0) {
-            nextIndex = x-1;
-        }
-        if (slideIndex < 0) {
-            changeIndex(x-1);
-            curIndex = slideIndex;
-            prevIndex = slideIndex-1;
-        }
-        if (prevIndex < 0) {
-            prevIndex = x-1;
-        }
+        if (prevIndex >= x)      { prevIndex = 0;       }
+        if (prevBufferIndex >= x){ prevBufferIndex = 0; }
+
+
+        if (nextBufferIndex < 0) { nextBufferIndex = x-1; }
+        if (nextIndex < 0)       { nextIndex = x-1;       }
+
+        if (prevIndex < 0)       { prevIndex = x-1;       }
+        if (prevBufferIndex < 0) { prevBufferIndex = x-1; }
+
+
 
         changePrev(img_array[prevIndex]);
-        changeCur(img_array[curIndex]);
+        changeCur (img_array[curIndex]);
         changeNext(img_array[nextIndex]);
 
+        changeNextBuffer(img_array[nextBufferIndex]);
+        changePrevBuffer(img_array[prevBufferIndex]);
+
+        const prevBuffer     = document.getElementById("prev_buffer_col");
+        const prev_col       = document.getElementById("prev_col");
+        const middle_col     = document.getElementById("cur_col");
+        const next_col       = document.getElementById("next_col");
+        const nextBuffer     = document.getElementById("next_buffer_col");
+
+        // if (plus===(-1)) {
+        //     prevBuffer.replaceWith(prev_col);
+        //     prev_col.replaceWith(middle_col);
+        //     middle_col.replaceWith(next_col);
+        //     next_col.replaceWith(nextBuffer);
+        // }
+
+        // if (plus===(1)) {
+        //     prev_col.id = "prev_buffer_col";
+        //     middle_col.id = "prev_col";
+        //     next_col.id = "cur_col";
+        // }
+        
 
         scroll();
     } 
@@ -140,6 +166,9 @@ export default function WhatIDo() {
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
+                            <div className="img_col" id="prev_buffer_col">
+                                {prevbuffer}
+                            </div>
                             <div className="img_col" id="prev_col">
                                 {prev}
                             </div>
@@ -149,7 +178,9 @@ export default function WhatIDo() {
                             <div className="img_col" id="next_col">
                                 {next}
                             </div>
-                            
+                            <div className="img_col" id="next_buffer_col">
+                                {nextbuffer}
+                            </div>
                         </div>
                         <div id="buttons">
                             <Button id="left_button" onClick={() => plusDivs(-1)}>&#10094;</Button>
@@ -171,7 +202,6 @@ export default function WhatIDo() {
                             <h3>Teaching and Mentorship</h3>
                             <p>To me, education is one of the most powerful tools that exists.</p>
                             <p>Though I'm not any Einstein, I actively try my best to share my experiences with others. Since I was 11, I've volunteered at my dance studio and have taught kids as young as 3 and as old as 15. I'm currently also planning an initiative to help students with preparation and transitioning to post-secondary through mentorship.</p>
-                            {/* <p>Occasionally, I get involved through volunteering at local barbequeues and community fairs.</p> */}
                         </div>
                     </div>
                     <div className="column">
@@ -181,11 +211,6 @@ export default function WhatIDo() {
                         </div>
                     </div>
                 </div>
-                {/* <h3>Achievements</h3> */}
-                {/* <h5>Here are some things I am proud of!</h5>
-                <div className="row">
-                    <ul id="interests"><li id="firstpoint"><p>Testing</p></li><li><p>Testing</p></li><li><p>Testing</p></li><li><p>Testing</p></li></ul>
-                </div> */}
             </div>
         </div>    
     );

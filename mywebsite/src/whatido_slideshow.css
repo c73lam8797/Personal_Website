@@ -44,8 +44,12 @@
     min-width: 75%;
 }
 
-.whatido #cur_col .slide {
-    animation: slide 3s ease;
+.whatido .img_col .slide {
+    animation: slide 5s ease;
+}
+
+.whatido #prev_buffer_col, #next_buffer_col {
+    display: none;
 }
 
 @keyframes slide {
