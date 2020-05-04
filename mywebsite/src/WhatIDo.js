@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef, createRef } from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import './index.css';
 import './whatido.css';
 import './whatido_slideshow.css';
 import Button from '@material-ui/core/Button';
-import ReactDOM from 'react-dom';
 
 import notes from './edited_pics/IMG_1108.jpg';
 import gp from './edited_pics/IMG_1114.jpg';
@@ -16,54 +15,37 @@ import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
-    const Muscles    = <img className="slide" id="1" src={muscles} alt="muscles" />          
-    const Triangle   = <img className="slide" id="2" src={triangle} alt="triangle" />      
-    const Firework   = <img className="slide" id="3" src={firework} alt="firework" />
-    const Taio       = <img className="slide" id="4" src={taio} alt="taio" />
-    const Flower     = <img className="slide" id="5" src={flower} alt="flower" />
-    const Gp         = <img className="slide" id="6" src={gp} alt="gp" />
-    const Dance_vid  = <video className="slide" id="7" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />
-    const Dance_photo = <img className="slide" id="8" src={dance_photo} alt="dance_photo" />
-    const Notes      = <img className="slide" id="9" src={notes} alt="notes" />
+    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles" />          
+    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle" />      
+    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework" />
+    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio" />
+    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower" />
+    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp" />
+    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
+    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" />
+    const Notes       = <img   className="slide" id="9" src={notes}      alt="notes" />
 
 
-    let [slideIndex,    changeIndex]       = useState(1);
+    let   [slideIndex,  changeIndex]       = useState(1);
     const [prev,        changePrev]        = useState();
     const [cur,         changeCur]         = useState(<p>No image found</p>);
     const [next,        changeNext]        = useState();
+    const [buffer,      changeBuffer]      = useState();
 
     //this has to be a state because it bugs out otherwise :)
     const [img_array,   changeImg_array]   = useState([Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo, Notes])
     
     useEffect( () => {
-        showDivs(slideIndex);
+        showDivs();
+        window.addEventListener('resize', scroll);
     } )
     
     const plusDivs = (n) => {
         changeIndex(slideIndex+=n)
-        showDivs(slideIndex);
+        showDivs();
     }
 
-    const showDivs = (n) => {
-        const x = img_array.length;
-
-        let curIndex = slideIndex;
-        let nextIndex = slideIndex+1; 
-        let prevIndex = slideIndex-1;
-        if (nextIndex >= x) {
-            changeIndex(1);
-            nextIndex = 1;
-        }
-        if (prevIndex < 0) {
-            changeIndex(x-1);
-            prevIndex = x-1;
-        }
-
-        changePrev(img_array[prevIndex]);
-        changeCur(img_array[curIndex]);
-        changeNext(img_array[nextIndex]);
-
-
+    const scroll = () => {
         if (document.body.contains(document.getElementById("slides"))) {
             const prev = document.getElementById("prev_col");
             const middle = document.getElementById("cur_col");
@@ -80,18 +62,47 @@ export default function WhatIDo() {
                 (b+c)/2
             ,0);
 
-            // console.log("slides offset left", x.offsetLeft); //from the edge of the screen
-            // console.log("cur offset left", middle.offsetLeft);//from the edge of the screen
-
-            // console.log("slides offset width", x.offsetWidth); //width of slides div
-
-            // console.log("prev offset width", prev.offsetWidth); //width of column
-            // console.log("middle offset width", middle.offsetWidth); //width of column
-            // console.log("next offset width", next.offsetWidth); //width of column
-
             // console.log("scroll width", x.scrollWidth) //length of how much the scroll is
-       
         } 
+    }
+
+    const showDivs = () => {
+        const x = img_array.length;
+
+        let curIndex = slideIndex;
+        let nextIndex = slideIndex+1; 
+        let prevIndex = slideIndex-1;
+
+        if (nextIndex >= x) {
+            nextIndex = 0;
+        }
+        if (slideIndex >= x) {
+            changeIndex(0);
+            curIndex = slideIndex;
+            nextIndex = slideIndex+1;
+        }
+        if (prevIndex >= x) {
+            prevIndex = 0;
+        }
+
+        if (nextIndex < 0) {
+            nextIndex = x-1;
+        }
+        if (slideIndex < 0) {
+            changeIndex(x-1);
+            curIndex = slideIndex;
+            prevIndex = slideIndex-1;
+        }
+        if (prevIndex < 0) {
+            prevIndex = x-1;
+        }
+
+        changePrev(img_array[prevIndex]);
+        changeCur(img_array[curIndex]);
+        changeNext(img_array[nextIndex]);
+
+
+        scroll();
     } 
 
     return (
@@ -129,9 +140,6 @@ export default function WhatIDo() {
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
-                            {/* {prev}
-                            {cur}
-                            {next} */}
                             <div className="img_col" id="prev_col">
                                 {prev}
                             </div>
