@@ -16,19 +16,23 @@ import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
+    const Muscles    = <img className="slide" id="1" src={muscles} alt="muscles" />          
+    const Triangle   = <img className="slide" id="2" src={triangle} alt="triangle" />      
+    const Firework   = <img className="slide" id="3" src={firework} alt="firework" />
+    const Taio       = <img className="slide" id="4" src={taio} alt="taio" />
+    const Flower     = <img className="slide" id="5" src={flower} alt="flower" />
+    const Gp         = <img className="slide" id="6" src={gp} alt="gp" />
+    const Dance_vid  = <video className="slide" id="7" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />
+    const Dance_photo = <img className="slide" id="8" src={dance_photo} alt="dance_photo" />
+    const Notes      = <img className="slide" id="9" src={notes} alt="notes" />
+
+
     let [slideIndex,    changeIndex]       = useState(1);
-    const [Muscles,     changeMuscles]     = useState(<img className="slide" id="1" src={muscles} alt="muscles" />);
-    const [Triangle,    changeTriangle]    = useState(<img className="slide" id="2" src={triangle} alt="triangle" />);
-    const [Firework,    changeFirework]    = useState(<img className="slide" id="3" src={firework} alt="firework" />);
-    const [Taio,        changeTaio]        = useState(<img className="slide" id="4" src={taio} alt="taio" />);
-    const [Flower,      changeFlower]      = useState(<img className="slide" id="5" src={flower} alt="flower" />);
-    const [Gp,          changeGp]          = useState(<img className="slide" id="6" src={gp} alt="gp" />);
-    const [Dance_vid,   changeDance_vid]   = useState(<video className="slide" id="7" src={dance_vid} controls alt="dance_vid" controlsList="nodownload" id="dance_vid" />);
-    const [Dance_photo, changeDance_photo] = useState(<img className="slide" id="8" src={dance_photo} alt="dance_photo" />);
-    const [Notes,       changeNotes]       = useState(<img className="slide" id="9" src={notes} alt="notes" />);
     const [prev,        changePrev]        = useState();
     const [cur,         changeCur]         = useState(<p>No image found</p>);
     const [next,        changeNext]        = useState();
+
+    //this has to be a state because it bugs out otherwise :)
     const [img_array,   changeImg_array]   = useState([Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo, Notes])
     
     useEffect( () => {
@@ -61,12 +65,32 @@ export default function WhatIDo() {
 
 
         if (document.body.contains(document.getElementById("slides"))) {
-            const middle = document.getElementById("cur_col")
+            const prev = document.getElementById("prev_col");
+            const middle = document.getElementById("cur_col");
+            // const next = document.getElementById("next_col");
             const x = document.getElementById("slides");
-            console.log("scroll width", x.scrollWidth)
-            x.scrollTo(middle.offsetLeft/2, 0);
 
-            console.log(middle.offsetLeft);
+
+            let a = x.offsetWidth-prev.offsetWidth; //subtract viewing width - width of first col. 
+            let b = Math.abs(middle.offsetWidth - a); //this is the amount the middle image shown w/o scrolling and how much you should scroll to see the middle image on the right
+            let c = prev.offsetWidth; //the amount to scroll to scrollpast the prev col and show the middle image on the left
+
+            
+            x.scrollTo (
+                (b+c)/2
+            ,0);
+
+            // console.log("slides offset left", x.offsetLeft); //from the edge of the screen
+            // console.log("cur offset left", middle.offsetLeft);//from the edge of the screen
+
+            // console.log("slides offset width", x.offsetWidth); //width of slides div
+
+            // console.log("prev offset width", prev.offsetWidth); //width of column
+            // console.log("middle offset width", middle.offsetWidth); //width of column
+            // console.log("next offset width", next.offsetWidth); //width of column
+
+            // console.log("scroll width", x.scrollWidth) //length of how much the scroll is
+       
         } 
     } 
 
