@@ -15,43 +15,29 @@ import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
 export default function WhatIDo() {
-    const Muscles     = <img   className="slide" id="0" src={muscles}    alt="muscles" />          
-    const Triangle    = <img   className="slide" id="1" src={triangle}   alt="triangle" />      
-    const Firework    = <img   className="slide" id="2" src={firework}   alt="firework" />
-    const Taio        = <img   className="slide" id="3" src={taio}       alt="taio" />
-    const Flower      = <img   className="slide" id="4" src={flower}     alt="flower" />
-    const Gp          = <img   className="slide" id="5" src={gp}         alt="gp" />
-    const Dance_vid   = <video className="slide" id="6" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
-    const Dance_photo = <img   className="slide" id="7" src={dance_photo}alt="dance_photo" />
-    const Notes       = <img   className="slide" id="8" src={notes}      alt="notes" />
-
-
-    let   [slideIndex,  changeIndex]       = useState(1);
-    const [prev,        changePrev]        = useState();
-    const [cur,         changeCur]         = useState(<p>No image found</p>);
-    const [next,        changeNext]        = useState();
-    const [nextbuffer,  changeNextBuffer]  = useState();
-    const [prevbuffer,  changePrevBuffer]  = useState();
-    const [plus,        changePlus]        = useState(0);
+    const Notes       = <img   className="slide" id="0" src={notes}      alt="notes" />
+    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles" />          
+    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle" />      
+    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework" />
+    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio" />
+    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower" />
+    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp" />
+    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
+    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" />
+   
     //this has to be a state because it bugs out otherwise :)
-    const [img_array,   changeImg_array]   = useState([Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo, Notes])
+    const [img_array,   changeImg_array]   = useState([Notes, Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo])
     
     useEffect( () => {
-        showDivs();
+        showDivs(0);
         window.addEventListener('resize', scroll);
     })
     
-    const plusDivs = (n) => {
-        changeIndex(slideIndex+=n)
-        changePlus(n);
-        showDivs();
-    }
 
     const scroll = () => {
         if (document.body.contains(document.getElementById("slides"))) {
             const previous = document.getElementById("prev_col");
             const middle = document.getElementById("cur_col");
-            // const next = document.getElementById("next_col");
             const x = document.getElementById("slides");
 
 
@@ -60,73 +46,53 @@ export default function WhatIDo() {
             let c = previous.offsetWidth; //the amount to scroll to scrollpast the prev col and show the middle image on the left
 
             
-            x.scrollTo (
-                (b+c)/2
-            ,0);
+            x.scrollTo ( (b+c)/2, 0);
 
             // console.log("scroll width", x.scrollWidth) //length of how much the scroll is
         } 
     }
 
-    const showDivs = () => {
+    const showDivs = (plus) => {
         const x = img_array.length;
 
-        if (slideIndex >= x) {
-            changeIndex(0);
+        let all_img = document.getElementById("slides");
+        //if we move forwards, append the first element at the end
+        if (plus === (1)) { console.log("move forward"); all_img.appendChild(document.getElementById("first")); }
+
+        //if we move backwards, append the last element at the beginning
+        if (plus === (-1)) { console.log("move backward"); all_img.insertBefore(document.getElementById("last"), all_img.childNodes[0]); }
+
+
+        let prevIndex = 1;
+        let curIndex = 2;
+        let nextIndex = 3; 
+
+        let cols = document.getElementsByClassName("img_col");
+
+        for (let i =0; i<cols.length; i++) {
+            //add buffer to everything and remove all ids before continuing
+            if (!cols[i].classList.contains("buffer")) {
+                cols[i].removeAttribute("id");
+                cols[i].classList.add("buffer");
+            }
+            //remove buffer, add ids, and fix display for corresponding indices 
+            if (i===prevIndex || i===curIndex || i===nextIndex) {
+                cols[i].classList.remove("buffer");
+                cols[i].style.display = "flex";
+                if (i===prevIndex) { cols[i].id="prev_col"; }
+                if (i===curIndex)  { cols[i].id="cur_col";  }
+                if (i===nextIndex) { cols[i].id="next_col"; } 
+            }
+
+            //finally modify display of buffer cols
+            if (cols[i].classList.contains("buffer")) {
+                cols[i].style.display = "none";
+                cols[i].removeAttribute("id");
+            }
+
+            if (i===0) { cols[i].id = "first"; }
+            if (i===x-1) {cols[i].id = "last"; }
         }
-
-        if (slideIndex < 0) {
-            changeIndex(x-1);
-            console.log("slide index", slideIndex)
-        }
-
-        let curIndex = slideIndex;
-        let nextIndex = slideIndex+1; 
-        let prevIndex = slideIndex-1;
-        let prevBufferIndex = prevIndex-1;
-        let nextBufferIndex = nextIndex+1;         
-
-        if (nextBufferIndex >= x){ nextBufferIndex = 0; }
-        if (nextIndex >= x)      { nextIndex = 0;       }
-
-        if (prevIndex >= x)      { prevIndex = 0;       }
-        if (prevBufferIndex >= x){ prevBufferIndex = 0; }
-
-
-        if (nextBufferIndex < 0) { nextBufferIndex = x-1; }
-        if (nextIndex < 0)       { nextIndex = x-1;       }
-
-        if (prevIndex < 0)       { prevIndex = x-1;       }
-        if (prevBufferIndex < 0) { prevBufferIndex = x-1; }
-
-
-
-        changePrev(img_array[prevIndex]);
-        changeCur (img_array[curIndex]);
-        changeNext(img_array[nextIndex]);
-
-        changeNextBuffer(img_array[nextBufferIndex]);
-        changePrevBuffer(img_array[prevBufferIndex]);
-
-        const prevBuffer     = document.getElementById("prev_buffer_col");
-        const prev_col       = document.getElementById("prev_col");
-        const middle_col     = document.getElementById("cur_col");
-        const next_col       = document.getElementById("next_col");
-        const nextBuffer     = document.getElementById("next_buffer_col");
-
-        // if (plus===(-1)) {
-        //     prevBuffer.replaceWith(prev_col);
-        //     prev_col.replaceWith(middle_col);
-        //     middle_col.replaceWith(next_col);
-        //     next_col.replaceWith(nextBuffer);
-        // }
-
-        // if (plus===(1)) {
-        //     prev_col.id = "prev_buffer_col";
-        //     middle_col.id = "prev_col";
-        //     next_col.id = "cur_col";
-        // }
-        
 
         scroll();
     } 
@@ -166,25 +132,37 @@ export default function WhatIDo() {
                 <div className="slideshow">  
                     <div id="image_container">
                         <div id="slides">
-                            <div className="img_col" id="prev_buffer_col">
-                                {prevbuffer}
+                            <div className="img_col buffer">
+                                {img_array[0]}
                             </div>
                             <div className="img_col" id="prev_col">
-                                {prev}
+                                {img_array[1]}
                             </div>
                             <div className="img_col" id="cur_col">
-                                {cur}
+                                {img_array[2]}
                             </div>
                             <div className="img_col" id="next_col">
-                                {next}
+                                {img_array[3]}
                             </div>
-                            <div className="img_col" id="next_buffer_col">
-                                {nextbuffer}
+                            <div className="img_col buffer">
+                                {img_array[4]}
+                            </div>
+                            <div className="img_col buffer">
+                                {img_array[5]}
+                            </div>
+                            <div className="img_col buffer">
+                                {img_array[6]}
+                            </div>
+                            <div className="img_col buffer">
+                                {img_array[7]}
+                            </div>
+                            <div className="img_col buffer">
+                                {img_array[8]}
                             </div>
                         </div>
                         <div id="buttons">
-                            <Button id="left_button" onClick={() => plusDivs(-1)}>&#10094;</Button>
-                            <Button id="right_button" onClick={() => plusDivs(1)}>&#10095;</Button>
+                            <Button id="left_button" onClick={() => showDivs(-1)}>&#10094;</Button>
+                            <Button id="right_button" onClick={() => showDivs(1)}>&#10095;</Button>
                         </div>
 
                     </div>
