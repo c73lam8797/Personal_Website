@@ -75,5 +75,8 @@ code {
   }
 }
 
+#scrollbar > div:nth-child(1) {
+  scroll-behavior: smooth;
+}
 
 

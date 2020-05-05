@@ -13,12 +13,6 @@ function Main () {
     let scrollbar = useRef();
     let navbar = useRef();
 
-    useEffect(() => {
-        if (scrollbar.current.style !== undefined) {
-            scrollbar.current.style.width = "100%";
-        }
-    });
-
     return (
         <div className="main">
             <NavBar ref={navbar} sb={scrollbar} />
