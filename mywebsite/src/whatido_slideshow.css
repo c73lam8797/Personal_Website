@@ -21,34 +21,18 @@
     overflow-x: hidden;
     overflow-y: hidden;
     white-space: nowrap;
-}
+    padding: 5px;
 
+}
 
 .whatido .img_col {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
-    min-width: 500px;
-    scroll-snap-align: center;
 }
 
-.whatido #cur_col .slide{
-    justify-content: center;
-    margin: auto;
-}
-
-.whatido .img_col .slide {
-    animation: slide 3s ease;
-}
-
-
-@keyframes slide {
-    from {
-        opacity: 0.4;
-    }
-    to {
-        opacity: 1;
-    }
+.whatido #cur_col {
+    width: fit-content;
 }
 
 .whatido #prev_col {
@@ -61,21 +45,30 @@
     opacity: 0.3;
 }
 
-.whatido #prev_col .slide{
-    float: right;
+.whatido #cur_col .slide{
+    justify-content: center;
+    margin: auto; 
 }
 
-.whatido #next_col .slide{
-    float: left;
+@keyframes slide {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .whatido .slide {
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    max-width: 95%;
-    max-height: 400px;
+    max-height: 100%;
+    width: auto;
     border: 2px solid white;
     border-radius: 5px;
-    margin: auto 5px;
+    margin: auto 10px;
+    animation: slide 3s ease;
 }
 
 @media screen and (max-width: 600px) {

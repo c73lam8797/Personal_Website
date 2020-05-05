@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import './whatido.css';
 import './whatido_slideshow.css';
-import Slideshow from './slideshow';
+import Slideshow from './Slideshow';
 
 export default function WhatIDo() {
     return (

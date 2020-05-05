@@ -93,6 +93,10 @@ export default function Slideshow() {
             if (i===x-1) {cols[i].id = "last"; }
         }
 
+        if (document.getElementById("7").style.opacity != 1) {
+            document.getElementById("7").pause();
+        }
+
         scroll();
     } 
 
