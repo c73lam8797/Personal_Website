@@ -12,7 +12,7 @@
 
 .whatido #slides {
     height: 85%;
-    max-width: 700px;
+    max-width: 800px;
     display: flex;
     margin: auto;
     text-align: center;
@@ -29,10 +29,9 @@
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
-}
-
-.whatido #cur_col {
     width: fit-content;
+    height: 100%;
+    width: 100%;
 }
 
 .whatido #prev_col {
@@ -60,15 +59,16 @@
 }
 
 .whatido .slide {
-    display: flex;
-    flex-direction: column;
+    /* display: inline-block; */
     text-align: center;
     max-height: 100%;
+    /* height: 100%; */
     width: auto;
     border: 2px solid white;
     border-radius: 5px;
     margin: auto 10px;
     animation: slide 3s ease;
+    align-self: center;
 }
 
 @media screen and (max-width: 600px) {
@@ -76,8 +76,13 @@
         max-width: 100%;
     }
 
+    .whatido .slide {
+        max-width: 90%;
+        display: block;
+    }
+
     .whatido .img_col {
-        min-width: 250px;
+        min-width: 80%;
     }
 }
 

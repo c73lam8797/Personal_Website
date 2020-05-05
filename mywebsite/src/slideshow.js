@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react'; 
 import './index.css';
 import './whatido.css';
 import './whatido_slideshow.css';
@@ -14,26 +14,14 @@ import firework from './edited_pics/IMG_7804.JPG';
 import taio from './edited_pics/IMG_0347.JPG';
 import flower from './edited_pics/IMG_1345.JPG';
 
-export default function Slideshow() {
-    const Notes       = <img   className="slide" id="0" src={notes}      alt="notes" />
-    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles" />          
-    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle" />      
-    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework" />
-    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio" />
-    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower" />
-    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp" />
-    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" />
-    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" />
-   
-    //this has to be a state because it bugs out otherwise :)
-    const [img_array,   changeImg_array]   = useState([Notes, Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo])
-    
-    useEffect( () => {
-        showDivs(0);
-        window.addEventListener('resize', scroll);
-    })
-    
-
+const Slideshow = forwardRef(
+    (props, ref) => {
+        
+    useImperativeHandle(ref, () => ({
+        x: () => {
+            scroll();
+        }
+    }));
     const scroll = () => {
         if (document.body.contains(document.getElementById("slides"))) {
             const previous = document.getElementById("prev_col");
@@ -45,12 +33,28 @@ export default function Slideshow() {
             let b = Math.abs(middle.offsetWidth - a); //this is the amount the middle image shown w/o scrolling and how much you should scroll to see the middle image on the right
             let c = previous.offsetWidth; //the amount to scroll to scrollpast the prev col and show the middle image on the left
 
-            
-            x.scrollTo ( (b+c)/2, 0);
-
-            // console.log("scroll width", x.scrollWidth) //length of how much the scroll is
+            //scroll to method doesn't work in edge
+            x.scrollLeft = (b+c)/2;
         } 
     }
+
+    const Notes       = <img   className="slide" id="0" src={notes}      alt="notes"       onLoad = {scroll} />
+    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles"     onLoad = {scroll} />          
+    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle"    onLoad = {scroll} />      
+    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework"    onLoad = {scroll} />
+    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio"        onLoad = {scroll} />
+    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower"      onLoad = {scroll} />
+    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp"          onLoad = {scroll} />
+    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" onLoad = {scroll} />
+    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" onLoad = {scroll} />
+   
+    //this has to be a state because it bugs out otherwise :)
+    const [img_array,   changeImg_array]   = useState([Notes, Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo])
+    
+    useEffect( () => {
+        showDivs(0);
+        window.addEventListener('resize', scroll);
+    })
 
     const showDivs = (plus) => {
         const x = img_array.length;
@@ -93,7 +97,7 @@ export default function Slideshow() {
             if (i===x-1) {cols[i].id = "last"; }
         }
 
-        if (document.getElementById("7").style.opacity != 1) {
+        if (document.getElementById("7").style.opacity !== 1) {
             document.getElementById("7").pause();
         }
 
@@ -139,4 +143,6 @@ export default function Slideshow() {
             </div>
         </div>
     );
-};
+});
+
+export default Slideshow;

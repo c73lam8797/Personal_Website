@@ -16,8 +16,6 @@ function Main () {
     useEffect(() => {
         if (scrollbar.current.style !== undefined) {
             scrollbar.current.style.width = "100%";
-            // scrollbar.current.style.overflowY = "scroll";
-            // scrollbar.current.style.overflowX = "hidden";
         }
     });
 
@@ -28,7 +26,6 @@ function Main () {
                 style={{ 
                     width: "100%", 
                     height: "100vh",
-                    // marginRight: "21px",
                     }} onScroll={() => navbar.current.scroll()}>
 
                 
@@ -38,12 +35,11 @@ function Main () {
                         <AboutMe />
                         <WhatIDo />
                         <Contact />
+                        <div className="placeholder"></div>
+                        <div className="placeholder"></div>
                     </div>
-                    <div className="placeholder"></div>
                     {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                 </div>
-                
-
             </Scrollbars>
             <Socials />
         </div>

@@ -1,10 +1,12 @@
-import React from 'react'; 
+import React, { useRef } from 'react'; 
 import './index.css';
 import './whatido.css';
 import './whatido_slideshow.css';
 import Slideshow from './Slideshow';
 
 export default function WhatIDo() {
+    let scroll = useRef();
+
     return (
         <div className="whatido" id="whatido">
             <div className="placeholder"></div>
@@ -37,7 +39,7 @@ export default function WhatIDo() {
                     </div>
                 </div>
                 <h5>Here is some art-related media of things I've done:</h5>
-                    <Slideshow />
+                    <Slideshow ref= {e => {scroll.current = e;}}/>
                 <h3>Leadership + Involvement in the <i><span>Community</span></i></h3>
                 <div className="row">
                     <div className="column">
