@@ -30,17 +30,18 @@
 }
 
 .DropNavBar #toggle {
-  position: fixed;
+  /* position: fixed; */
   display: inline-block;
   margin: 0px;
   padding: 7px;
-  border: 0.3px solid white;
+  /* border: 0.3px solid white; */
+  border: none;
   color: white;
   background-color: black;
-  opacity: 0.9;
+  /* opacity: 0.9; */
   border-radius: 2px;
-  top: 3px;
-  left: 3px;
+  /* top: 3px;
+  left: 3px; */
   outline: none;
 }
 
@@ -55,8 +56,6 @@
 
 
   opacity: 0;
-  
-  /* visibility: hidden; */
 }
 
 .DropNavBar li a{
@@ -74,6 +73,34 @@
 
 .DropNavBar a:hover {
   background-color: #3e5d86 ;
+}
+
+.DropNavBar #placeholderBar {
+  width: 100%;
+  display: inline-block;
+  opacity: 0.5;
+  background-color: black;
+}
+
+.DropNavBar .switch, .NavBar .switch {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* .DropNavBar #switch_container, .Navbar #switch_container { */
+#switch_container {
+  position: absolute;
+  display: inline-block;
+  height: 100%;
+  right: 0px;
+  margin-right: 5px;
+  max-width: fit-content;
+}
+
+.DropNavBar {
+  width: 100%;
+  position: fixed;
+  z-index: 999;
 }
 
 .Socials ul {

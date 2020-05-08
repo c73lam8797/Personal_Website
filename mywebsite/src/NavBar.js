@@ -2,16 +2,14 @@ import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'rea
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAlignJustify } from '@fortawesome/free-solid-svg-icons';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
-import './index.css';
-import './header_footer.css';
-
+import './CSS/index.css';
+import './CSS/header_footer.css';
+import Switch from '@material-ui/core/Switch';
 
 const NavBar = forwardRef( 
     (props, ref) => {
-    const [resize, handleResize] = useState(false);
+    const [resize, handleResize] = useState( window.innerWidth <= 1024 ? true:false);
     const [clicked, handleClick] = useState(false);
-
-    // const inputRef = useRef();
 
     useImperativeHandle(ref, () => ({
         scroll: () => {
@@ -21,11 +19,12 @@ const NavBar = forwardRef(
 
 
     useEffect(() => {
-        if(document.body.contains(document.getElementById('nb'))) {
-            const navbar = document.getElementById("nb");
-            navbar.addEventListener('mouseenter', hoverFunction);
-            navbar.addEventListener('mouseleave', leaveFunction);
-        }
+        let navbar;
+        if(document.body.contains(document.getElementById('nb'))) {  navbar = document.getElementById("nb"); }
+        if(document.body.contains(document.getElementById('placeholderBar'))) { navbar = document.getElementById("placeholderBar"); }
+        navbar.addEventListener('mouseenter', hoverFunction);
+        navbar.addEventListener('mouseleave', leaveFunction);
+        
 
         if(document.body.contains(document.querySelector('.nav'))) {
             document.querySelectorAll('.nav').forEach(item => {
@@ -54,62 +53,105 @@ const NavBar = forwardRef(
 
     useEffect(() => {
         if(document.body.contains(document.getElementById('drop_nb'))) {
-            const navbar = document.getElementById("drop_nb");
-            navbar.style.visibility = "hidden";
+            const dropdown = document.getElementById("drop_nb");
+            hideDropdownMenu(dropdown);
         }
     }, []);
 
+    const showBar = (navbar) => {
+        navbar.style.backgroundColor = "black";
+        navbar.style.opacity=1;
+    }
+
+    const hideNavBar = (navbar) => {
+        navbar.style.backgroundColor = "transparent";
+        navbar.style.opacity=0.5;
+    }
+
+    const hideDropdownBar = (navbar) => {
+        navbar.style.opacity=0.5;
+    }
+
+    const hideDropdownMenu = (dropdown) => {
+        dropdown.style.backgroundColor = "black";
+        dropdown.style.visibility="hidden";
+        dropdown.style.opacity=0;
+    }
+
     const scrollFunction = () => {
+        let navbar;
         if(document.body.contains(document.getElementById('nb'))) {
-            const navbar = document.getElementById("nb");
-            
-            if (props.sb.current.getScrollTop() > 200) {
-                navbar.style.backgroundColor = "black";
-                navbar.style.opacity=1;
-            }
-            else {
-                navbar.style.backgroundColor = "transparent";
-                navbar.style.opacity=0.5;
-            }
+            navbar = document.getElementById("nb");
+            if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
+            else { hideNavBar(navbar); }
+        } 
+        else {
+            navbar = document.getElementById("placeholderBar")
+            if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
+            else if (!clicked) { hideDropdownBar(navbar); }
         }
     };
 
     const hoverFunction = () => {
-        if(document.body.contains(document.getElementById('nb'))) {
-            const navbar = document.getElementById("nb");
-            navbar.style.backgroundColor = "black";
-            navbar.style.opacity=1;
+        if (!clicked) {
+            let navbar;
+            if (document.body.contains(document.getElementById('nb'))) { navbar = document.getElementById("nb"); }
+            else { navbar = document.getElementById("placeholderBar"); }
+            showBar(navbar);
         }
     };
 
-    const leaveFunction = () => {        
-        if(document.body.contains(document.getElementById('nb'))) {
-            const navbar = document.getElementById("nb");
-            
-            if (props.sb.current.getScrollTop() > 200) {
-                navbar.style.backgroundColor = "black";
-                navbar.style.opacity=1;
-            }
-            else {
-                navbar.style.backgroundColor = "transparent";
-                navbar.style.opacity=0.5;
-            }
-        }
+    const leaveFunction = () => {    
+        if (!clicked) {
+            // let navbar;   
+            // if(document.body.contains(document.getElementById('nb'))) {
+            //     navbar = document.getElementById("nb");
+            //     if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
+            //     else { hideNavBar(navbar); }
+            // }
+            // else {
+            //     navbar = document.getElementById("placeholderBar");
+            //     if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
+            //     else { hideDropdownBar(navbar) }
+            // }
+            scrollFunction();
+        } 
     }
 
     function dropdown () {
         handleClick(!clicked);
+       
         if(document.body.contains(document.getElementById('drop_nb'))) {
-            const navbar = document.getElementById('drop_nb');
-            if (navbar.style.visibility === "hidden") {
-                navbar.style.visibility = "visible"
-                navbar.style.transition = "opacity 0.5s ease-in"
-                navbar.style.opacity = 1;
+            const dropdown = document.getElementById('drop_nb');
+            const header = document.getElementById("placeholderBar");
+            if (dropdown.style.visibility === "hidden") {
+                dropdown.style.visibility = "visible"
+                dropdown.style.transition = "opacity 0.5s ease-in"
+                dropdown.style.opacity = 1;
+
+                header.style.opacity = 1;
+                header.removeEventListener('mouseenter', hoverFunction);
+                header.removeEventListener('mouseleave', leaveFunction);
             }
             else {
-                navbar.style.visibility="hidden";
-                navbar.style.opacity = 0;
+                hideDropdownMenu(dropdown);
+                scrollFunction();
             }
+        }
+    }
+
+    const resizeFunction = () => {
+        handleClick(false);
+        if(window.innerWidth <= 1024) {
+            handleResize(true);
+            if(document.body.contains(document.getElementById('drop_nb'))) {
+                const dropdown = document.getElementById("drop_nb");
+                hideDropdownMenu(dropdown);
+            }
+        }
+        else {
+            handleResize(false);
+            scrollFunction();
         }
     }
 
@@ -120,47 +162,35 @@ const NavBar = forwardRef(
                 <li><a className="nav" href = "/#about">ABOUT ME</a></li>
                 <li><a className="nav" href = "/#whatido">WHAT I DO</a></li>
                 <li><a className="nav" href = "/#contact">CONTACT</a></li>
+                <div id="switch_container">
+                    <Switch size="small" color="primary" classes={{root:'switch'}}/>
+                </div>
             </ul> 
         </div> 
 
     const drop_navbar =
         <div className="DropNavBar" id="DropNavBar">
-            <button id="toggle" onClick={dropdown}>{clicked? <FontAwesomeIcon icon={faWindowClose} size="1x" />:<FontAwesomeIcon icon={faAlignJustify} size="1x" />}</button>
+            <div id="placeholderBar">
+                <div style={{display: "inline-block", position:"relative"}}> 
+                    <button id="toggle" onClick={dropdown}>
+                        {clicked? <FontAwesomeIcon icon={faWindowClose} size="1x" />:<FontAwesomeIcon icon={faAlignJustify} size="1x" />}
+                    </button>
+                </div>
+                <div id="switch_container" >
+                    <Switch size="small" color="primary" classes={{root:'switch'}}/>
+                </div>    
+            </div>
             <ul id="drop_nb">
-                <li className="panel" ><a href = "/#home">HOME</a></li>
-                <li className="panel" ><a href = "/#whatido">WHAT I DO</a></li>
-                <li className="panel" ><a href = "/#contact">CONTACT</a></li>
-                <li className="panel" ><a href = "/#about">ABOUT ME</a></li>
+                <li><a href = "/#home">HOME</a></li>
+                <li><a href = "/#whatido">WHAT I DO</a></li>
+                <li><a href = "/#contact">CONTACT</a></li>
+                <li><a href = "/#about">ABOUT ME</a></li>
             </ul> 
         </div>
     
-    const resizeFunction = () => {
-        handleClick(false);
-        if(window.innerWidth <= 1024) {
-            handleResize(true);
-            if(document.body.contains(document.getElementById('drop_nb'))) {
-                const navbar = document.getElementById("drop_nb");
-                navbar.style.backgroundColor = "black";
-                navbar.style.visibility="hidden";
-                navbar.style.opacity=0;
-            }
-        }
-        else {
-            handleResize(false);
-            scrollFunction();
-        }
-    }
-
-    if (resize || window.innerWidth <= 1024) {
-        return (
-            drop_navbar
-        )
-    }
-    else {
-        return (
-            display_navbar
-        )
-    }
+    return (
+        (resize || window.innerWidth <= 1024) ? drop_navbar: display_navbar
+    )
 }); 
 
 export default NavBar;

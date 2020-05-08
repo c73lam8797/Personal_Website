@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import pdf from './CharmaineLam_Resume.pdf'
-import './index.css'
-import './contact.css'
+import pdf from './Media/CharmaineLam_Resume.pdf'
+import './CSS/index.css'
+import './CSS/contact.css'
 
 export default function Contact () {
     useEffect(() => {

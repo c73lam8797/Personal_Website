@@ -1,24 +1,50 @@
-import React from 'react';
-import './index.css';
-import './aboutme.css';
-import pic from './profile_pic.jpg'
+import React, { useState, useEffect } from 'react';
+import './CSS/index.css';
+import './CSS/aboutme.css';
+import pic from './Media/profile_pic.jpg'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function AboutMe() {
+    const [isLoaded, changeLoaded] = useState(false);
+
+    function check () {
+        const img = document.getElementById("profile");
+        let x = img.complete;
+        changeLoaded(x);
+    }
+
+    useEffect(() => {
+        if (document.body.contains (document.getElementById("profile"))) {
+            let img = document.getElementById("profile");
+            if (!isLoaded) {
+                img.style.display = "none";
+            }
+            else {
+                img.style.display = "block";
+            }
+        }   
+        check();
+    })
+
     return (
         <div className="about" id="about"> 
             <div className="placeholder"></div>
 
             <h1>— ABOUT ME —</h1>
             <div id="description">
+                {isLoaded ? null : 
+                <div style={{width: "30%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <CircularProgress color="secondary"/>
+                </div>}  
                 <div id="image">        
                     <img
                         id = "profile"
                         src = {pic}
                         alt = "Profile"
                         border =  "3"
-                        >
-                    </img>
-                </div>  
+                        onLoad = {check}
+                    />        
+                </div>
                 <div id="text">
                     <p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student at the University of Waterloo.</p>
                     <p>Here's some (perhaps, random) things about me that I would like to share with you! </p>

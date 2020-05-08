@@ -1,27 +1,28 @@
-import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react'; 
-import './index.css';
-import './whatido.css';
-import './whatido_slideshow.css';
+import React, { useState, useEffect, forwardRef } from 'react'; 
+import './CSS/index.css';
+import './CSS/whatido.css';
+import './CSS/whatido_slideshow.css';
 import Button from '@material-ui/core/Button';
 
-import notes from './edited_pics/IMG_1108.jpg';
-import gp from './edited_pics/IMG_1114.jpg';
-import muscles from './edited_pics/IMG_1119.jpg';
-import dance_vid from './274.mp4';
-import dance_photo from './edited_pics/2a8a0480.jpg';
-import triangle from './edited_pics/IMG_9958.JPG';
-import firework from './edited_pics/IMG_7804.JPG';
-import taio from './edited_pics/IMG_0347.JPG';
-import flower from './edited_pics/IMG_1345.JPG';
+import notes from './Media/IMG_1108.jpg';
+import gp from './Media/IMG_1114.jpg';
+import muscles from './Media/IMG_1119.jpg';
+import dance_vid from './Media/274.mp4';
+import dance_photo from './Media/2a8a0480.jpg';
+import triangle from './Media/IMG_9958.jpg';
+import firework from './Media/IMG_7804.jpg';
+import taio from './Media/IMG_0347.jpg';
+import flower from './Media/IMG_1345.jpg';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const Slideshow = forwardRef(
     (props, ref) => {
-        
-    useImperativeHandle(ref, () => ({
-        x: () => {
-            scroll();
-        }
-    }));
+    const [isLoaded,    changeLoaded]      = useState(false);
+    const [imgError,    changeError]       = useState(false);
+       
+
     const scroll = () => {
         if (document.body.contains(document.getElementById("slides"))) {
             const previous = document.getElementById("prev_col");
@@ -38,25 +39,64 @@ const Slideshow = forwardRef(
         } 
     }
 
-    const Notes       = <img   className="slide" id="0" src={notes}      alt="notes"       onLoad = {scroll} />
-    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles"     onLoad = {scroll} />          
-    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle"    onLoad = {scroll} />      
-    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework"    onLoad = {scroll} />
-    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio"        onLoad = {scroll} />
-    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower"      onLoad = {scroll} />
-    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp"          onLoad = {scroll} />
-    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" onLoad = {scroll} />
-    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" onLoad = {scroll} />
+    function check (){
+        let x = false;
+        const imgs = Array.from(document.getElementsByClassName("slide"));
+
+        for (let i =1; i<4; i++) {
+            x = imgs[i].complete;
+        }
+        changeLoaded(x);
+        scroll();
+    }
+
+    const Notes       = <img   className="slide" id="0" src={notes}      alt="notes"       onLoad = {check} />
+    const Muscles     = <img   className="slide" id="1" src={muscles}    alt="muscles"     onLoad = {check} />          
+    const Triangle    = <img   className="slide" id="2" src={triangle}   alt="triangle"    onLoad = {check} />      
+    const Firework    = <img   className="slide" id="3" src={firework}   alt="firework"    onLoad = {check} />
+    const Taio        = <img   className="slide" id="4" src={taio}       alt="taio"        onLoad = {check} />
+    const Flower      = <img   className="slide" id="5" src={flower}     alt="flower"      onLoad = {check} />
+    const Gp          = <img   className="slide" id="6" src={gp}         alt="gp"          onLoad = {check} />
+    const Dance_vid   = <video className="slide" id="7" src={dance_vid}  alt="dance_vid" controls controlsList="nodownload" onLoad = {check} />
+    const Dance_photo = <img   className="slide" id="8" src={dance_photo}alt="dance_photo" onLoad = {check} />
    
     //this has to be a state because it bugs out otherwise :)
-    const [img_array,   changeImg_array]   = useState([Notes, Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo])
+    let [img_array,   changeImg_array]   = useState([Notes, Muscles, Triangle, Firework, Taio, Flower, Gp, Dance_vid, Dance_photo])
     
+
     useEffect( () => {
         showDivs(0);
         window.addEventListener('resize', scroll);
+        
+        const imgs = Array.from(document.getElementsByClassName("slide"));
+
+        if (!isLoaded) {
+            imgs.forEach((img) => {
+                img.style.visibility = "hidden";
+            })
+        }
+        else {
+            imgs.forEach((img) => {
+                img.style.visibility = "visible";
+            })
+        }
+
+        check();
     })
 
+    useEffect ( () => {
+        if(document.body.contains(document.querySelector('.slide'))) {
+            document.querySelectorAll('.slide').forEach(item => {
+                item.addEventListener('error', function(){
+                    item.src = "https://www.asap-utilities.com/screenshots/tools/en_us/0211-File-not-found.png";
+                    item.alt = "oops! error :("
+                    changeError(true);
+            })
+        })
+    }})
+
     const showDivs = (plus) => {
+        check(); 
         const x = img_array.length;
 
         let all_img = document.getElementById("slides");
@@ -84,7 +124,7 @@ const Slideshow = forwardRef(
                 cols[i].style.display = "flex";
                 if (i===prevIndex) { cols[i].id="prev_col"; }
                 if (i===curIndex)  { cols[i].id="cur_col";  }
-                if (i===nextIndex) { cols[i].id="next_col"; } 
+                if (i===nextIndex) { cols[i].id="next_col"; }
             }
 
             //finally modify display of buffer cols
@@ -100,13 +140,13 @@ const Slideshow = forwardRef(
         if (document.getElementById("7").style.opacity !== 1) {
             document.getElementById("7").pause();
         }
-
         scroll();
     } 
 
     return (
         <div className="slideshow">  
             <div id="image_container">
+            {isLoaded? null: <div style= {{position: "relative", top: "50%", height: "fit-content"}}><CircularProgress color="secondary" /></div>}
                 <div id="slides">
                     <div className="img_col buffer">
                         {img_array[0]}
@@ -136,7 +176,9 @@ const Slideshow = forwardRef(
                         {img_array[8]}
                     </div>
                 </div>
+                
                 <div id="buttons">
+                    <p>{imgError? 'Error Loading Image' : ''}</p>
                     <Button id="left_button" onClick={() => showDivs(-1)}>&#10094;</Button>
                     <Button id="right_button" onClick={() => showDivs(1)}>&#10095;</Button>
                 </div>

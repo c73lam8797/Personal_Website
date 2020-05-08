@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'; 
-import './index.css';
-import './whatido.css';
-import './whatido_slideshow.css';
+import './CSS/index.css';
+import './CSS/whatido.css';
+import './CSS/whatido_slideshow.css';
 import Slideshow from './Slideshow';
 
 export default function WhatIDo() {

@@ -11,6 +11,13 @@
     opacity: 0.4;
 }
 
+.home #main_vid {
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+}
+
 .home #content {
     position: absolute;
     top: 50%;

@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from 'react';
-import Home from './Home';
-import NavBar from './NavBar';
-import AboutMe from './AboutMe';
-import Contact from './Contact';
-import Socials from './Socials';
-import WhatIDo from './WhatIDo';
-import './index.css';
-
+import React, { useRef, lazy, Suspense } from 'react';
+import './CSS/index.css';
 import { Scrollbars } from 'react-custom-scrollbars';
+
+import Load from './Load';
+const Home = lazy(() => import('./Home'));
+const NavBar = lazy(() => import('./NavBar'));
+const AboutMe = lazy(() => import('./AboutMe'));
+const Contact = lazy(() => import('./Contact'));
+const Socials = lazy(() => import('./Socials'));
+const WhatIDo = lazy(() => import('./WhatIDo'));
+
+// const Load = lazy(() => import('./Load'));
+
  
 function Main () {
     let scrollbar = useRef();
@@ -15,27 +19,29 @@ function Main () {
 
     return (
         <div className="main">
-            <NavBar ref={navbar} sb={scrollbar} />
-            <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} 
-                style={{ 
-                    width: "100%", 
-                    height: "100vh",
-                    }} onScroll={() => navbar.current.scroll()}>
+            <Suspense fallback={<Load />}>
+                <NavBar ref={navbar} sb={scrollbar} />
+                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} 
+                    style={{ 
+                        width: "100%", 
+                        height: "100vh",
+                        }} onScroll={() => navbar.current.scroll()}>
 
-                
-                <div className="main_content" id="main_content">
-                    <Home />
-                    <div className="sub_content">
-                        <AboutMe />
-                        <WhatIDo />
-                        <Contact />
-                        <div className="placeholder"></div>
-                        <div className="placeholder"></div>
+                    
+                    <div className="main_content" id="main_content">
+                        <Home />
+                        <div className="sub_content">
+                            <AboutMe />
+                            <WhatIDo />
+                            <Contact />
+                            <div className="placeholder"></div>
+                            <div className="placeholder"></div>
+                        </div>
+                        {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                     </div>
-                    {/* <div style={{width: "100%", height: "2000px"}}></div> */}
-                </div>
-            </Scrollbars>
-            <Socials />
+                </Scrollbars>
+                <Socials />
+            </Suspense>
         </div>
     )
     
