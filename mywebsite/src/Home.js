@@ -5,11 +5,10 @@ import './CSS/index.css';
 import './CSS/home.css';
 
 
-export default function Home() {
-  const [showVideo, changeShowVideo] = useState(false);
+export default function Home(props) {
   return (
     <div className="home" id="home">
-      {showVideo? 
+      {props.showVideo? 
       <video
           id="main_vid"
           autoPlay

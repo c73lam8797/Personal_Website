@@ -1,4 +1,4 @@
-import React, { useRef, lazy, Suspense } from 'react';
+import React, { useRef, lazy, Suspense, useState } from 'react';
 import './CSS/index.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -17,10 +17,12 @@ function Main () {
     let scrollbar = useRef();
     let navbar = useRef();
 
+    const [showVideo, handleShowVideo] = useState(false);
+
     return (
         <div className="main">
             <Suspense fallback={<Load />}>
-                <NavBar ref={navbar} sb={scrollbar} />
+                <NavBar ref={navbar} sb={scrollbar} showVideo={showVideo} handleShowVideo={handleShowVideo} />
                 <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;}} 
                     style={{ 
                         width: "100%", 
@@ -29,7 +31,7 @@ function Main () {
 
                     
                     <div className="main_content" id="main_content">
-                        <Home />
+                        <Home showVideo={showVideo}/>
                         <div className="sub_content">
                             <AboutMe />
                             <WhatIDo />

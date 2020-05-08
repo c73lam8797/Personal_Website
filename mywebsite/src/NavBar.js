@@ -21,7 +21,10 @@ const NavBar = forwardRef(
     useEffect(() => {
         let navbar;
         if(document.body.contains(document.getElementById('nb'))) {  navbar = document.getElementById("nb"); }
-        if(document.body.contains(document.getElementById('placeholderBar'))) { navbar = document.getElementById("placeholderBar"); }
+        if(document.body.contains(document.getElementById('placeholderBar'))) { 
+            navbar = document.getElementById("placeholderBar"); 
+            navbar.addEventListener('touchstart', scrollFunction)
+        }
         navbar.addEventListener('mouseenter', hoverFunction);
         navbar.addEventListener('mouseleave', leaveFunction);
         
@@ -57,6 +60,12 @@ const NavBar = forwardRef(
             hideDropdownMenu(dropdown);
         }
     }, []);
+    
+    const handleChange = (e) => {
+        console.log(e.target.checked)
+        if (e.target.checked) { props.handleShowVideo(true); }
+        else { props.handleShowVideo(false); }
+    }
 
     const showBar = (navbar) => {
         navbar.style.backgroundColor = "black";
@@ -103,17 +112,6 @@ const NavBar = forwardRef(
 
     const leaveFunction = () => {    
         if (!clicked) {
-            // let navbar;   
-            // if(document.body.contains(document.getElementById('nb'))) {
-            //     navbar = document.getElementById("nb");
-            //     if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
-            //     else { hideNavBar(navbar); }
-            // }
-            // else {
-            //     navbar = document.getElementById("placeholderBar");
-            //     if (props.sb.current.getScrollTop() > 200) { showBar(navbar); }
-            //     else { hideDropdownBar(navbar) }
-            // }
             scrollFunction();
         } 
     }
@@ -163,7 +161,7 @@ const NavBar = forwardRef(
                 <li><a className="nav" href = "/#whatido">WHAT I DO</a></li>
                 <li><a className="nav" href = "/#contact">CONTACT</a></li>
                 <div id="switch_container">
-                    <Switch size="small" color="primary" classes={{root:'switch'}}/>
+                    <Switch checked={props.showVideo} size="small" color="primary" classes={{root:'switch'}} onChange={handleChange}/>
                 </div>
             </ul> 
         </div> 
@@ -177,7 +175,7 @@ const NavBar = forwardRef(
                     </button>
                 </div>
                 <div id="switch_container" >
-                    <Switch size="small" color="primary" classes={{root:'switch'}}/>
+                    <Switch checked={props.showVideo} size="small" color="primary" classes={{root:'switch'}} onChange={handleChange}/>
                 </div>    
             </div>
             <ul id="drop_nb">
