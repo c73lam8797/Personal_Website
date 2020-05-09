@@ -10,7 +10,7 @@
     height: 85%;
 }
 
-.whatido #slides {
+.whatido #art_dance, #photography {
     height: 85%;
     max-width: 800px;
     display: flex;
@@ -33,17 +33,17 @@
     width: 100%;
 }
 
-.whatido #prev_col {
+.whatido #art_dance_prev_col, #photography_prev_col {
     justify-content: flex-end;
     opacity: 0.3;
 }
 
-.whatido #next_col {
+.whatido #art_dance_next_col, #photography_next_col {
     justify-content: flex-start;
     opacity: 0.3;
 }
 
-.whatido #cur_col .slide{
+.whatido #art_dance_cur_col .slide, #photography_cur_col .photo{
     justify-content: center;
     margin: auto; 
 }
@@ -57,23 +57,23 @@
     }
 }
 
-.whatido .slide {
+.whatido .slide, .photo {
     text-align: center;
     max-height: 100%;
     width: auto;
-    border: 2px solid white;
+    /* border: 2px solid white; */
     border-radius: 5px;
-    margin: auto 10px;
+    /* margin: auto 10px; */
     animation: slide 3s ease;
     align-self: center;
 }
 
 @media screen and (max-width: 600px) {
-    .whatido #slides {
+    .whatido #art_dance, #photography {
         max-width: 100%;
     }
 
-    .whatido .slide {
+    .whatido .slide, .photo {
         max-width: 90%;
         display: block;
     }

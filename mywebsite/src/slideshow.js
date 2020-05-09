@@ -6,23 +6,26 @@ import './CSS/whatido_slideshow.css';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import {
-    art_dance,
-    photography
-} from './Media/export';
-
-
-const Slideshow = () => {
+const Slideshow = (props) => {
     const [isLoaded, changeLoaded] = useState(false);
     const [imgError, changeError]  = useState(false);
+    
+    const id = props.name; //name of the photo set
+    const mediaId = props.mediaName; //className for the images in the slideshow
+    const colName = props.colName; //
+    const first = props.first;
+    const last = props.last; 
+    const prev_col = props.prev_col;
+    const cur_col = props.cur_col;
+    const next_col = props.next_col;
        
 
     const scroll = () => {
-        if (document.body.contains(document.getElementById("prev_col")) 
-        && document.body.contains(document.getElementById("cur_col") )) {
-            const previous = document.getElementById("prev_col");
-            const middle = document.getElementById("cur_col");
-            const x = document.getElementById("slides");
+        if (document.body.contains(document.getElementById(prev_col)) 
+        && document.body.contains(document.getElementById(cur_col) )) {
+            const previous = document.getElementById(prev_col);
+            const middle = document.getElementById(cur_col);
+            const x = document.getElementById(id);
 
 
             let a = x.offsetWidth-previous.offsetWidth; //subtract viewing width - width of first col. 
@@ -36,7 +39,7 @@ const Slideshow = () => {
 
     function check (){
         let x = false;
-        const imgs = Array.from(document.getElementsByClassName("slide"));
+        const imgs = Array.from(document.getElementsByClassName(mediaId));
 
         for (let i =1; i<4; i++) {
             x = imgs[i].complete;
@@ -46,7 +49,7 @@ const Slideshow = () => {
     }
 
     //this has to be a state because it bugs out otherwise :)
-    let [slideshowMedia,   changeImg_array]   = useState([...art_dance.map(item => {
+    const [slideshowMedia,   changeImg_array]   = useState([...props.media.map(item => {
         return (React.cloneElement(item, {onLoad: () => check()}));
     })]);
     
@@ -54,7 +57,7 @@ const Slideshow = () => {
     useEffect( () => {
         showDivs(0);
         window.addEventListener('resize', scroll);
-        const imgs = Array.from(document.getElementsByClassName("slide"));
+        const imgs = Array.from(document.getElementsByClassName(mediaId));
         if (!isLoaded) {
             imgs.forEach((img) => {
                 img.style.visibility = "hidden";
@@ -63,14 +66,16 @@ const Slideshow = () => {
         else {
             imgs.forEach((img) => {
                 img.style.visibility = "visible";
+                img.style.border = "2px solid white";
+                img.style.margin = "auto 10px";
             })
         }
         check();
     })
 
     useEffect ( () => {
-        if(document.body.contains(document.querySelector('.slide'))) {
-            document.querySelectorAll('.slide').forEach(item => {
+        if(document.body.contains(document.querySelector(`.${mediaId}`))) {
+            document.querySelectorAll(`.${mediaId}`).forEach(item => {
                 item.addEventListener('error', function(){
                     item.src = "https://www.asap-utilities.com/screenshots/tools/en_us/0211-File-not-found.png";
                     item.alt = "oops! error :("
@@ -83,18 +88,18 @@ const Slideshow = () => {
         check(); 
         const x = slideshowMedia.length;
 
-        let all_img = document.getElementById("slides");
+        let all_img = document.getElementById(id);
         //if we move forwards, append the first element at the end
-        if (plus === (1)) { all_img.appendChild(document.getElementById("first")); }
+        if (plus === (1)) { all_img.appendChild(document.getElementById(first)); }
         //if we move backwards, append the last element at the beginning
-        if (plus === (-1)) { all_img.insertBefore(document.getElementById("last"), all_img.childNodes[0]); }
+        if (plus === (-1)) { all_img.insertBefore(document.getElementById(last), all_img.childNodes[0]); }
 
 
         let prevIndex = 1;
         let curIndex = 2;
         let nextIndex = 3; 
 
-        let cols = document.getElementsByClassName("img_col");
+        let cols = document.getElementsByClassName(colName);
 
         for (let i =0; i<cols.length; i++) {
             //add buffer to everything and remove all ids before continuing
@@ -106,9 +111,9 @@ const Slideshow = () => {
             if (i===prevIndex || i===curIndex || i===nextIndex) {
                 cols[i].classList.remove("buffer");
                 cols[i].style.display = "flex";
-                if (i===prevIndex) { cols[i].id="prev_col"; }
-                if (i===curIndex)  { cols[i].id="cur_col";  }
-                if (i===nextIndex) { cols[i].id="next_col"; }
+                if (i===prevIndex) { cols[i].id=prev_col; }
+                if (i===curIndex)  { cols[i].id=cur_col;  }
+                if (i===nextIndex) { cols[i].id=next_col; }
             }
 
             //finally modify display of buffer cols
@@ -117,8 +122,8 @@ const Slideshow = () => {
                 cols[i].removeAttribute("id");
             }
 
-            if (i===0) { cols[i].id = "first"; }
-            if (i===x-1) {cols[i].id = "last"; }
+            if (i===0) { cols[i].id = first; }
+            if (i===x-1) {cols[i].id = last; }
         }
 
         if (document.getElementById("dance_vid").style.opacity !== 1) {
@@ -131,9 +136,9 @@ const Slideshow = () => {
         <div className="slideshow">  
             <div id="image_container">
             {isLoaded? null: <div style= {{position: "relative", top: "50%", height: "fit-content"}}><CircularProgress color="secondary" /></div>}
-                <div id="slides">
+                <div id={id} >
                 {slideshowMedia.map((img, index)=> {
-                    return (<div className="img_col buffer" key={index}>
+                    return (<div className={`img_col buffer ${colName}`} key={index}>
                         {img}
                     </div>)
                 })}
