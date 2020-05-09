@@ -10,9 +10,7 @@ const Contact = lazy(() => import('./Contact'));
 const Socials = lazy(() => import('./Socials'));
 const WhatIDo = lazy(() => import('./WhatIDo'));
 
-// const Load = lazy(() => import('./Load'));
 
- 
 function Main () {
     let scrollbar = useRef();
     let navbar = useRef();

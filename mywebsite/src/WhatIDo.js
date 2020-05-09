@@ -1,12 +1,11 @@
-import React, { useRef } from 'react'; 
+import React, { lazy, Suspense } from 'react'; 
 import './CSS/index.css';
 import './CSS/whatido.css';
 import './CSS/whatido_slideshow.css';
-import Slideshow from './Slideshow';
+// import Slideshow from './Slideshow';
+const Slideshow = lazy(() => import('./Slideshow'));
 
 export default function WhatIDo() {
-    let scroll = useRef();
-
     return (
         <div className="whatido" id="whatido">
             <div className="placeholder"></div>
@@ -39,7 +38,9 @@ export default function WhatIDo() {
                     </div>
                 </div>
                 <h5>Here is some art-related media of things I've done:</h5>
-                    <Slideshow ref= {e => {scroll.current = e;}}/>
+                    <Suspense fallback={<p>Loading</p>}>
+                        <Slideshow />
+                    </Suspense>
                 <h3>Leadership + Involvement in the <i><span>Community</span></i></h3>
                 <div className="row">
                     <div className="column">

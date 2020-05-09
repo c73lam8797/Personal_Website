@@ -87,7 +87,6 @@
   transform: translateY(-50%);
 }
 
-/* .DropNavBar #switch_container, .Navbar #switch_container { */
 #switch_container {
   position: absolute;
   display: inline-block;

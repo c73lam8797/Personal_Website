@@ -23,7 +23,7 @@ const NavBar = forwardRef(
         if(document.body.contains(document.getElementById('nb'))) {  navbar = document.getElementById("nb"); }
         if(document.body.contains(document.getElementById('placeholderBar'))) { 
             navbar = document.getElementById("placeholderBar"); 
-            navbar.addEventListener('touchstart', scrollFunction)
+            navbar.addEventListener('touchstart', scrollFunction, {passive: true})
         }
         navbar.addEventListener('mouseenter', hoverFunction);
         navbar.addEventListener('mouseleave', leaveFunction);

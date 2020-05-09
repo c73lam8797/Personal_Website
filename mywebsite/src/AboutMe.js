@@ -33,7 +33,7 @@ export default function AboutMe() {
             <h1>— ABOUT ME —</h1>
             <div id="description">
                 {isLoaded ? null : 
-                <div style={{width: "30%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                <div style={{width: "30%", display: "flex", justifyContent: "center", alignItems: "center", margin: "auto"}}>
                     <CircularProgress color="secondary"/>
                 </div>}  
                 <div id="image">        

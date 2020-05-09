@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import video from './Media/2160p.mp4';
 import alt_background from './Media/IMG_1481.jpg'
 import './CSS/index.css';
