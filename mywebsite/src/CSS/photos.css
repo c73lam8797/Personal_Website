@@ -1,0 +1,17 @@
+.photos #expand_photography, #expand_art_dance {
+    max-height: 600px;
+    overflow: hidden;
+}
+
+.photos .expand_button_container {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    bottom: 0px;
+    transform: translateY(-100%);
+}
+
+.photos .expand_button {
+    opacity: 1;
+
+}

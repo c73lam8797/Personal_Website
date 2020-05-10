@@ -5,18 +5,17 @@ import './CSS/slideshow.css';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const Slideshow = (props) => {
+const Slideshow = ({media, name, mediaId}) => {
     const [isLoaded, changeLoaded] = useState(false);
     const [imgError, changeError]  = useState(false);
     
-    const id = props.name; //name of the photo set
-    const mediaId = props.mediaName; //className for the images in the slideshow
-    const colName = props.colName; //
-    const first = props.first;
-    const last = props.last; 
-    const prev_col = props.prev_col;
-    const cur_col = props.cur_col;
-    const next_col = props.next_col;
+    const id = name; //name of the photo set
+    const colName = name+"_col"; 
+    const first = "first_"+name;
+    const last = "last_"+name; 
+    const prev_col = name+"_prev_col";
+    const cur_col = name+"cur_col";
+    const next_col = name+"next_col";
        
 
     const scroll = () => {
@@ -48,7 +47,7 @@ const Slideshow = (props) => {
     }
 
     //this has to be a state because it bugs out otherwise :)
-    const [slideshowMedia,   changeImg_array]   = useState([...props.media.map(item => {
+    const [slideshowMedia,   changeImg_array]   = useState([...media.map(item => {
         return (React.cloneElement(item, {onLoad: () => check()}));
     })]);
     

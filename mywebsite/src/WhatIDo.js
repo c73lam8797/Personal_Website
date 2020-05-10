@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react'; 
+import React from 'react'; 
 import './CSS/index.css';
 import './CSS/whatido.css';
 

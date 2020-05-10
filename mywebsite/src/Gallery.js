@@ -10,7 +10,7 @@ export default function Gallery(props) {
 
     useEffect(()=> {
         if (document.body.contains(document.getElementById("gallery"))) {
-            const imgs = Array.from(document.getElementsByClassName(props.mediaName));
+            const imgs = Array.from(document.getElementsByClassName(props.mediaId));
             imgs.forEach ((item) => {
                 item.style.maxHeight = "100%";
                 item.style.objectFit = "contain";
