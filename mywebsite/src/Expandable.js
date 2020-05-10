@@ -14,6 +14,7 @@ export default function Expandable({media, name, mediaId}) {
 
     useEffect(() => {
         window.addEventListener('resize', resizeFunction);
+        document.getElementById(`expand_${name}`).style.opacity = 0.5;
     }, [])
 
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function Expandable({media, name, mediaId}) {
         else {changeShowSlideshow(false); }
     }
 
-    const handleClickExpand = (e) => {
+    const handleClickExpand = ()=> {
         const expand = document.getElementById(`expand_${name}`)
         const overlay = document.getElementById(`overlay_${name}`);
         if ( expanded ) {

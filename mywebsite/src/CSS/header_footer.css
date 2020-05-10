@@ -83,17 +83,24 @@
 }
 
 .DropNavBar .switch, .NavBar .switch {
-  top: 50%;
-  transform: translateY(-50%);
+  /* top: 50%;
+  transform: translateY(-50%); */
+  margin-left: 5px;
 }
 
 #switch_container {
   position: absolute;
-  display: inline-block;
+  display: flex;
   height: 100%;
   right: 0px;
-  margin-right: 5px;
+  margin-right: 10px;
   max-width: fit-content;
+  font-family: 'Raleway', sans-serif;
+  top: 0px;
+}
+
+.MuiTypography-body1 {
+  font-family: 'Raleway', sans-serif;
 }
 
 .DropNavBar {

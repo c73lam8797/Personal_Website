@@ -5,6 +5,7 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import './CSS/index.css';
 import './CSS/header_footer.css';
 import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked, handleClick, hideDropdownBar, hideDropdownMenu, showBar, scrollFunction}) {
 
@@ -75,7 +76,16 @@ export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked
                     </button>
                 </div>
                 <div id="switch_container" >
-                    <Switch checked={showVideo} size="small" color="primary" classes={{root:'switch'}} onChange={handleChange}/>
+                    <FormControlLabel style={{color: "white"}}
+                                        labelPlacement="start"
+                                        label="Toggle For a Video Background"
+                                        control={
+                                            <Switch checked={showVideo} 
+                                                    size="small" 
+                                                    classes={{root:'switch'}}
+                                                    color="primary"  
+                                                    onChange={handleChange}/>}  />
+                    
                 </div>    
             </div>
             <ul id="drop_nb">
