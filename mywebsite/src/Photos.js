@@ -22,7 +22,6 @@ export default function Photos() {
                         name="photography" 
                         mediaId="photo" 
                         />
-
         </div>
     );
 }

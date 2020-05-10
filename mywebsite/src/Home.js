@@ -14,7 +14,9 @@ export default function Home(props) {
           autoPlay
           muted
           loop
+          controls={false}
           src = {video}
+          playsInline
           >          
       </video>
       :

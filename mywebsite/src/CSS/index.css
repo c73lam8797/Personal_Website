@@ -33,19 +33,13 @@ code {
   background: transparent;
 }
 
-/* .main {
-  width: 100%;
-} */
-
 .main_content {
   background-color: rgb(65, 73, 74);   
   color: white;
   overflow-x: hidden;
-  /* margin: 0px 21px 0px 0px; */
 }
 
 .sub_content {
-  /* margin: 0px 21px 0px 0px; */
   background: linear-gradient(0deg, rgba(123, 154, 196, 0.762) 4%, rgba(65,73,74,1) 79%);
 }
 
