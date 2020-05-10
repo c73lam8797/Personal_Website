@@ -159,6 +159,7 @@ const NavBar = forwardRef(
                 <li><a className="nav" href = "/#home">HOME</a></li>
                 <li><a className="nav" href = "/#about">ABOUT ME</a></li>
                 <li><a className="nav" href = "/#whatido">WHAT I DO</a></li>
+                <li><a className="nav" href = "/#photos">PHOTOS</a></li>
                 <li><a className="nav" href = "/#contact">CONTACT</a></li>
                 <div id="switch_container">
                     <Switch checked={props.showVideo} size="small" color="primary" classes={{root:'switch'}} onChange={handleChange}/>
@@ -180,9 +181,10 @@ const NavBar = forwardRef(
             </div>
             <ul id="drop_nb">
                 <li><a href = "/#home">HOME</a></li>
-                <li><a href = "/#whatido">WHAT I DO</a></li>
-                <li><a href = "/#contact">CONTACT</a></li>
                 <li><a href = "/#about">ABOUT ME</a></li>
+                <li><a href = "/#whatido">WHAT I DO</a></li>
+                <li><a href = "/#photos">PHOTOS</a></li>
+                <li><a href = "/#contact">CONTACT</a></li>
             </ul> 
         </div>
     

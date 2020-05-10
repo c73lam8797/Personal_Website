@@ -9,6 +9,7 @@ const AboutMe = lazy(() => import('./AboutMe'));
 const Contact = lazy(() => import('./Contact'));
 const Socials = lazy(() => import('./Socials'));
 const WhatIDo = lazy(() => import('./WhatIDo'));
+const Photos = lazy(() => import('./Photos'));
 
 
 function Main () {
@@ -33,6 +34,7 @@ function Main () {
                         <div className="sub_content">
                             <AboutMe />
                             <WhatIDo />
+                            <Photos />
                             <Contact />
                             <div className="placeholder"></div>
                             <div className="placeholder"></div>

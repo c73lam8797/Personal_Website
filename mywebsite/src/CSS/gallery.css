@@ -1,4 +1,4 @@
-.gallery .photo {
+.gallery .photo, .slide {
     max-height: 100%;
     object-fit: contain;
     border-radius: 5px;
@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    margin: 20px 0px;
+    margin: 50px 0px;
     align-content: center;
     max-width: 100%;
 }

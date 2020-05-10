@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react'; 
 import './CSS/index.css';
-import './CSS/whatido.css';
-import './CSS/whatido_slideshow.css';
+import './CSS/slideshow.css';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 

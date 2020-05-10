@@ -1,14 +1,6 @@
-import React, { lazy, Suspense } from 'react'; 
+import React, { lazy, Suspense, useEffect, useState } from 'react'; 
 import './CSS/index.css';
 import './CSS/whatido.css';
-import './CSS/whatido_slideshow.css';
-import Slideshow from './Slideshow';
-import Gallery from './Gallery';
-
-import {
-    art_dance,
-    photography
-} from './Media/export';
 
 
 
@@ -44,27 +36,7 @@ export default function WhatIDo() {
                         </div>
                     </div>
                 </div>
-                <h5>Here is some art-related media of things I've done:</h5>
-                    <Slideshow media={art_dance} 
-                        name="art_dance" 
-                        mediaName="slide" 
-                        colName="art_dance_col"
-                        first = "first_art_dance"
-                        last = "last_art_dance"
-                        prev_col = "art_dance_prev_col" 
-                        cur_col = "art_dance_cur_col"
-                        next_col = "art_dance_next_col"/>
-                    {window.innerWidth < 1000 ? 
-                        <Slideshow media={photography} 
-                                    name="photography" 
-                                    mediaName="photo" 
-                                    colName="photography_col"
-                                    first="first_photography"
-                                    last="last_photography"
-                                    prev_col="photography_prev_col"
-                                    cur_col="photography_cur_col"
-                                    next_col="photography_next_col"/> : 
-                        <Gallery media={photography} mediaName="photo" />}
+
                 <h3>Leadership + Involvement in the <i><span>Community</span></i></h3>
                 <div className="row">
                     <div className="column">

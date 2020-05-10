@@ -53,7 +53,7 @@ code {
   background: linear-gradient(0deg, rgba(123, 154, 196, 0.762) 4%, rgba(65,73,74,1) 79%);
 }
 
-.about, .whatido, .contact {
+.about, .whatido, .contact, .photos {
   padding: 20px;
 }
 
