@@ -14,6 +14,9 @@ export default function Expandable({media, name, mediaId}) {
 
     useEffect(() => {
         window.addEventListener('resize', resizeFunction);
+    }, [])
+
+    useEffect(() => {
         resizeFunction();
     })
 
@@ -23,12 +26,18 @@ export default function Expandable({media, name, mediaId}) {
     }
 
     const handleClickExpand = (e) => {
-        if ( document.getElementById(`expand_${name}`).style.maxHeight === "none" ) {
-            document.getElementById(`expand_${name}`).style.maxHeight = "600px";
+        const expand = document.getElementById(`expand_${name}`)
+        const overlay = document.getElementById(`overlay_${name}`);
+        if ( expanded ) {
+            expand.style.maxHeight = "500px";
+            expand.style.opacity = 0.5;
+            overlay.style.background = "linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)"
             changeExpanded(false);
         }
         else {
-            document.getElementById(`expand_${name}`).style.maxHeight = "none";
+            expand.style.maxHeight = expand.scrollHeight+"px";
+            expand.style.opacity = 1;
+            overlay.style.background = "transparent";
             changeExpanded(true);
         }
        
@@ -36,7 +45,8 @@ export default function Expandable({media, name, mediaId}) {
 
     return (
         <div className="expand_container">
-            <div id={`expand_${name}`}>
+            <div className="expandable" id={`expand_${name}`}>
+            { (window.innerWidth < 1000 || showSlideshow )? null: <div className="overlay" id={`overlay_${name}`}></div> }
             { (window.innerWidth < 1000 || showSlideshow )? 
                 <Slideshow media={media} 
                     name={name} 

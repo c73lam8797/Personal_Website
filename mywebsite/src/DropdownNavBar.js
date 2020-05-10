@@ -53,6 +53,7 @@ export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked
             header.style.opacity = 1;
             header.removeEventListener('mouseenter', hoverFunction);
             header.removeEventListener('mouseleave', leaveFunction);
+            header.removeEventListener('touchstart', scrollFunction, {passive: true})
         }
         else {
             hideDropdownMenu(dropdown);

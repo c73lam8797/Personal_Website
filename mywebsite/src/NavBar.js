@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAlignJustify } from '@fortawesome/free-solid-svg-icons';
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import './CSS/index.css';
 import './CSS/header_footer.css';
-import Switch from '@material-ui/core/Switch';
 
 import DropdownNavBar from './DropdownNavBar';
 import LinearNavBar from './LinearNavBar';

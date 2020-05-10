@@ -9,6 +9,7 @@
     max-height: 300px;
     object-fit: contain;
     padding: 4px;
+    max-width: fit-content;
 }
 
 .gallery {

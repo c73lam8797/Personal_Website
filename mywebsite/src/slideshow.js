@@ -14,8 +14,8 @@ const Slideshow = ({media, name, mediaId}) => {
     const first = "first_"+name;
     const last = "last_"+name; 
     const prev_col = name+"_prev_col";
-    const cur_col = name+"cur_col";
-    const next_col = name+"next_col";
+    const cur_col = name+"_cur_col";
+    const next_col = name+"_next_col";
        
 
     const scroll = () => {
