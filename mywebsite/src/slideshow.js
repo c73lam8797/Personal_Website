@@ -50,11 +50,19 @@ const Slideshow = ({media, name, mediaId}) => {
     const [slideshowMedia,   changeImg_array]   = useState([...media.map(item => {
         return (React.cloneElement(item, {onLoad: () => check()}));
     })]);
+
+    useEffect ( () => {
+        window.addEventListener('resize', scroll);
+
+        return (() => {
+            window.removeEventListener('resize', scroll);
+        })
+    }, [])
     
 
     useEffect( () => {
         showDivs(0);
-        window.addEventListener('resize', scroll);
+
         const imgs = Array.from(document.getElementsByClassName(mediaId));
         if (!isLoaded) {
             imgs.forEach((img) => {
@@ -64,15 +72,16 @@ const Slideshow = ({media, name, mediaId}) => {
         else {
             imgs.forEach((img) => {
                 img.style.visibility = "visible";
-                img.style.border = "2px solid white";
+
+                if (img.id !== "dance_vid") {
+                    img.style.border = "2px solid white";
+                }
+                
                 img.style.margin = "auto 10px";
             })
         }
+        
         check();
-
-        return (() => {
-            window.removeEventListener('resize', scroll);
-        })
     })
 
     useEffect ( () => {
@@ -84,7 +93,7 @@ const Slideshow = ({media, name, mediaId}) => {
                     changeError(true);
             })
         })
-    }})
+    }}, [])
 
     const showDivs = (plus) => {
         check(); 
