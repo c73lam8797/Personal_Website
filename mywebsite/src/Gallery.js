@@ -1,12 +1,25 @@
-import React, { useEffect, useState } from 'react'; 
-import './CSS/gallery.css'
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+import './CSS/photogallery.css';
+import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-export default function Gallery({media, mediaId}) {
+export default function Gallery({media, mediaId, name, showSlideshow, changeShowSlideshow}) {
     //this has to be a state because it bugs out otherwise :)
     let [slideshowMedia, changeImg_array] = useState([...media.map(item => {
         return (React.cloneElement(item));
     })]);
+
+   
+    const [expanded, changeExpanded] = useState(false);
+
+
+
+    useEffect(() => {
+        hideGallery();
+    },[showSlideshow])
 
     useEffect(()=> {
         if (document.body.contains(document.getElementById("gallery"))) {
@@ -17,8 +30,6 @@ export default function Gallery({media, mediaId}) {
                 item.style.borderRadius = "5px";
             })
         }
-
-        // createGallery();
     })
 
     const createGallery = () => {
@@ -46,16 +57,62 @@ export default function Gallery({media, mediaId}) {
         return columns;
     }
 
+
+
+    const handleClickExpand = ()=> {
+        if ( expanded ) {
+            hideGallery();
+            
+        }
+        else {
+            showGallery();
+            
+        }
+       
+    }
+
+    const hideGallery = () => {
+        if (!showSlideshow) {
+            const expand = document.getElementById(`expand_${name}`)
+            const overlay = document.getElementById(`overlay_${name}`);
+            expand.style.maxHeight = "500px";
+            expand.style.opacity = 0.5;
+            overlay.style.opacity = 1;
+            overlay.style.backgroundImage = "linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)";
+            changeExpanded(false);
+        }
+    }
+
+    const showGallery = () => {
+        if (!showSlideshow) {
+            const expand = document.getElementById(`expand_${name}`)
+            const overlay = document.getElementById(`overlay_${name}`);
+            expand.style.maxHeight = expand.scrollHeight+"px";
+            expand.style.opacity = 1;
+            overlay.style.opacity = 0;
+            overlay.style.backgroundImage = "none";
+            changeExpanded(true);
+        }
+    }
+
+   
+
     return ( 
-        <div className="gallery" id="gallery">
-            {/* {slideshowMedia.map ((item, index) => {
-                return (
-                    <div className="gallery_column" key={index}>
-                        {item}
-                    </div>
-                )
-            })} */}
-            {createGallery()}
+        <div className="gallery">
+            <div className="expand_container">
+                
+                <div className="expandable" id={`expand_${name}`}>
+                <div className="overlay" id={`overlay_${name}`}></div>    
+                    {createGallery()}
+                </div>
+                <div className="expand_button_container">
+                    <Button variant="outlined" className="expand_button" value={`expand_${name}`} onClick={handleClickExpand}>
+                        {expanded?
+                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleUp} size="2x" /> : 
+                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleDown} size="2x" /> }
+                    </Button>
+                </div>
+            </div>
         </div>
     );   
 };

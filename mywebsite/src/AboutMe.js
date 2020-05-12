@@ -60,6 +60,7 @@ export default function AboutMe() {
                     </ul>
                 </div>
             </div>
+            <div className="placeholder"></div>
         </div>
     )
 }

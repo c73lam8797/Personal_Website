@@ -57,7 +57,8 @@ export default function WhatIDo() {
             <h1>— WHAT I DO —</h1>
 
             <div className="table">
-                <h3>Creating is My <i><span>Passion</span></i></h3>
+                <h3 className="top">Creating is My </h3>
+                <h3 className="bottom">PASSION</h3>
                 <div className="row">
                     {row1.map((card,index) => {
                         return (
@@ -75,6 +76,7 @@ export default function WhatIDo() {
                     })}
                 </div>
             </div>
+            <div className="placeholder"></div>
         </div>    
     );
 };

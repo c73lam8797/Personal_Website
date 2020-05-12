@@ -1,6 +1,6 @@
 .NavBar, .DropNavBar, #toggle, .Socials {
   font-family: 'Raleway', sans-serif;
-  z-index: 1;
+  z-index: 999;
   position: relative;
 }
   

@@ -1,7 +1,7 @@
 import React from 'react';
-import Expandable from './Expandable';
+import Images from './Images';
 
-import './CSS/photos.css';
+import './CSS/photogallery.css';
 
 import {
     art_dance,
@@ -13,15 +13,16 @@ export default function Photos() {
         <div className="photos" id="photos">
             <div className="placeholder" />
             <h1>— PHOTOS —</h1>
-            <Expandable media={art_dance} 
+            <Images media={art_dance} 
                         name="art_dance" 
                         mediaId="slide"  
                         />
 
-            <Expandable media={photography} 
+            <Images media={photography} 
                         name="photography" 
                         mediaId="photo" 
                         />
+            <div className="placeholder"></div>
         </div>
     );
 }

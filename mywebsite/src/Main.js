@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, lazy, Suspense, useState } from 'react';
 import './CSS/index.css';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Button from '@material-ui/core/Button';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Initial } from './Load';
 const Home = lazy(() => import('./Home'));
@@ -50,17 +53,21 @@ function Main () {
         // console.log(scrollbar.current.getClientWidth());
     }
 
+    const scrollUp = () => {
+        scrollbar.current.scrollToTop();
+    }
+
     return (
         <div className="main">
             <Suspense fallback={<Initial />}>
-                <NavBar ref={navbar} sb={scrollbar} showVideo={showVideo} handleShowVideo={handleShowVideo} isMobile={isMobile} />
-                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;} }  noScrollX
+                
+                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;} }  noScrollX universal
                     style={{ 
                         width: "100%", 
                         height: "100vh",
                         }} onScroll={() => navbar.current.scroll()}>
 
-                    
+                    <NavBar ref={navbar} sb={scrollbar} showVideo={showVideo} handleShowVideo={handleShowVideo} isMobile={isMobile} />
                     <div className="main_content" id="main_content">
                         <Home showVideo={showVideo} isMobile={isMobile}/>
                         <div className="sub_content">
@@ -68,13 +75,16 @@ function Main () {
                             <WhatIDo />
                             <Photos />
                             <Contact />
-                            {/* <div className="placeholder"></div>
-                            <div className="placeholder"></div> */}
+       
+                            <Button id="scrollTop" onClick={scrollUp}><FontAwesomeIcon icon={faAngleUp} /></Button>
+                            <div className="placeholder"></div>
+                            <div className="placeholder"></div>
                         </div>
                         {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                     </div>
+                    <Socials />
                 </Scrollbars>
-                <Socials />
+               
             </Suspense>
         </div>
     )

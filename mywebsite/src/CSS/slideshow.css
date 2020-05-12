@@ -56,7 +56,7 @@
 }
 
 .photos #art_dance_cur_col .slide, #photography_cur_col .photo{
-
+    z-index: 99;
     margin: auto; 
 }
 
@@ -96,7 +96,7 @@
     }
 
     .photos .img_col {
-        min-width: 80%;
+        min-width: 85%;
     }
 }
 

@@ -51,6 +51,8 @@ const NavBar = forwardRef(
     }
 
     const scrollFunction = () => {
+        let scrollUp = document.getElementById("scrollTop");
+
         let navbar;
         if(document.body.contains(document.getElementById('nb'))) {
             navbar = document.getElementById("nb");
@@ -61,6 +63,16 @@ const NavBar = forwardRef(
             navbar = document.getElementById("placeholderBar")
             if (sb.current.getScrollTop() > 200) { showBar(navbar); }
             else if (!clicked) { hideDropdownBar(navbar); }
+        }
+
+        if (sb.current.getScrollTop() > 200) {
+            scrollUp.style.visibility = "visible";
+            scrollUp.style.opacity = 1;
+        }
+        else {
+            scrollUp.style.opacity = 0;
+            scrollUp.style.visibility = "hidden";
+            
         }
     };
 
