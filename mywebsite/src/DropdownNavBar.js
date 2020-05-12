@@ -7,7 +7,7 @@ import './CSS/header_footer.css';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked, handleClick, hideDropdownBar, hideDropdownMenu, showBar, scrollFunction}) {
+export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked, handleClick, hideDropdownBar, hideDropdownMenu, showBar, scrollFunction, isMobile}) {
 
     useEffect(() => {
         let navbar = document.getElementById("placeholderBar"); 
@@ -75,10 +75,11 @@ export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked
                         <FontAwesomeIcon icon={faAlignJustify} size="1x" />}
                     </button>
                 </div>
+                {isMobile? null :
                 <div id="switch_container" >
                     <FormControlLabel style={{color: "white"}}
                                         labelPlacement="start"
-                                        label="Toggle For a Video Background"
+                                        label="Toggle Background"
                                         control={
                                             <Switch checked={showVideo} 
                                                     size="small" 
@@ -86,7 +87,8 @@ export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked
                                                     color="primary"  
                                                     onChange={handleChange}/>}  />
                     
-                </div>    
+                </div>
+                }    
             </div>
             <ul id="drop_nb">
                 {directories.map((dir, index) => {

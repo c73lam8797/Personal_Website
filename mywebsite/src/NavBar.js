@@ -1,12 +1,17 @@
-import React, { useState, useEffect, useImperativeHandle, forwardRef } from 'react';
+import React, { useState, useEffect, useImperativeHandle, forwardRef, lazy, Suspense } from 'react';
 import './CSS/index.css';
 import './CSS/header_footer.css';
 
-import DropdownNavBar from './DropdownNavBar';
-import LinearNavBar from './LinearNavBar';
+// import DropdownNavBar from './DropdownNavBar';
+// import LinearNavBar from './LinearNavBar';
+
+import { BlackBar } from './Load';
+
+const DropdownNavBar = lazy(()=>import('./DropdownNavBar'));
+const LinearNavBar = lazy(()=>import('./LinearNavBar'));
 
 const NavBar = forwardRef( 
-    ({sb, showVideo, handleShowVideo}, ref) => {
+    ({sb, showVideo, handleShowVideo, isMobile}, ref) => {
     const [resize, handleResize] = useState( window.innerWidth <= 1024 ? true:false);
     const [clicked, handleClick] = useState(false);
 
@@ -19,6 +24,10 @@ const NavBar = forwardRef(
 
     useEffect(() => {
         window.addEventListener('resize', resizeFunction);       
+
+        return (()=> {
+            window.removeEventListener('resize', resizeFunction);
+        })
     });
     
     const showBar = (navbar) => {
@@ -48,7 +57,7 @@ const NavBar = forwardRef(
             if (sb.current.getScrollTop() > 200) { showBar(navbar); }
             else { hideNavBar(navbar); }
         } 
-        else {
+        else if (document.body.contains(document.getElementById('placeholderBar'))) {
             navbar = document.getElementById("placeholderBar")
             if (sb.current.getScrollTop() > 200) { showBar(navbar); }
             else if (!clicked) { hideDropdownBar(navbar); }
@@ -73,23 +82,29 @@ const NavBar = forwardRef(
     
     return (
         (resize || window.innerWidth <= 1024) ? 
-        <DropdownNavBar 
-            sb={sb}
-            showVideo={showVideo}
-            handleShowVideo={handleShowVideo}
-            clicked={clicked}
-            handleClick={handleClick}
-            hideDropdownBar={hideDropdownBar} 
-            hideDropdownMenu={hideDropdownMenu}
-            showBar={showBar}
-            scrollFunction={scrollFunction}/>: 
-        <LinearNavBar
-            sb={sb}
-            showVideo={showVideo}
-            handleShowVideo={handleShowVideo}
-            showBar={showBar}
-            hideNavBar={hideNavBar}
-            scrollFunction={scrollFunction} />
+        <Suspense fallback={<BlackBar />} >
+            <DropdownNavBar 
+                sb={sb}
+                showVideo={showVideo}
+                handleShowVideo={handleShowVideo}
+                clicked={clicked}
+                handleClick={handleClick}
+                hideDropdownBar={hideDropdownBar} 
+                hideDropdownMenu={hideDropdownMenu}
+                showBar={showBar}
+                scrollFunction={scrollFunction}
+                isMobile={isMobile}/>
+        </Suspense>: 
+        <Suspense fallback={<BlackBar />}>
+            <LinearNavBar
+                sb={sb}
+                showVideo={showVideo}
+                handleShowVideo={handleShowVideo}
+                showBar={showBar}
+                hideNavBar={hideNavBar}
+                scrollFunction={scrollFunction}
+                isMobile={isMobile} />
+        </Suspense>
     )
 }); 
 

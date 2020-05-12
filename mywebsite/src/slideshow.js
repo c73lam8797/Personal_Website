@@ -69,6 +69,10 @@ const Slideshow = ({media, name, mediaId}) => {
             })
         }
         check();
+
+        return (() => {
+            window.removeEventListener('resize', scroll);
+        })
     })
 
     useEffect ( () => {

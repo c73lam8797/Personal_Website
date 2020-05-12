@@ -1,68 +1,104 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
+import './CSS/photos.css';
 import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+// import Slideshow from './Slideshow';
+// import Gallery from './Gallery';
 
-import Slideshow from './Slideshow';
-import Gallery from './Gallery';
+import { PhotoPlaceholder } from './Load';
 
-import './CSS/photos.css';
+const Gallery = lazy(() => import('./Gallery'));
+const Slideshow = lazy(() => import('./Slideshow'));
+
+
 
 export default function Expandable({media, name, mediaId}) {
-    const [showSlideshow, changeShowSlideshow] = useState(false);
+    const [showSlideshow, changeShowSlideshow] = useState(window.innerWidth < 1000 ? true: false);
     const [expanded, changeExpanded] = useState(false);
 
     useEffect(() => {
         window.addEventListener('resize', resizeFunction);
-        document.getElementById(`expand_${name}`).style.opacity = 0.5;
+        resizeFunction();
+
+        return ( ()=> {
+            window.removeEventListener('resize', resizeFunction);
+        })
     }, [])
 
     useEffect(() => {
-        resizeFunction();
-    })
+        hideGallery();
+    },[showSlideshow])
 
     const resizeFunction = () => {
-        if (window.innerWidth < 1000) { changeShowSlideshow(true); }
-        else {changeShowSlideshow(false); }
+        if (window.innerWidth < 1000) {changeShowSlideshow(true); document.getElementById(`expand_${name}`).style.opacity = 1;}
+        else {changeShowSlideshow(false); hideGallery();}
     }
 
     const handleClickExpand = ()=> {
-        const expand = document.getElementById(`expand_${name}`)
-        const overlay = document.getElementById(`overlay_${name}`);
         if ( expanded ) {
-            expand.style.maxHeight = "500px";
-            expand.style.opacity = 0.5;
-            overlay.style.background = "linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)"
-            changeExpanded(false);
+            hideGallery();
+            
         }
         else {
-            expand.style.maxHeight = expand.scrollHeight+"px";
-            expand.style.opacity = 1;
-            overlay.style.background = "transparent";
-            changeExpanded(true);
+            showGallery();
+            
         }
        
+    }
+
+    const hideGallery = () => {
+        if (!showSlideshow) {
+            const expand = document.getElementById(`expand_${name}`)
+            const overlay = document.getElementById(`overlay_${name}`);
+            expand.style.maxHeight = "500px";
+            expand.style.opacity = 0.5;
+            overlay.style.opacity = 1;
+            overlay.style.backgroundImage = "linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)";
+            changeExpanded(false);
+        }
+    }
+
+    const showGallery = () => {
+        if (!showSlideshow) {
+            const expand = document.getElementById(`expand_${name}`)
+            const overlay = document.getElementById(`overlay_${name}`);
+            expand.style.maxHeight = expand.scrollHeight+"px";
+            expand.style.opacity = 1;
+            overlay.style.opacity = 0;
+            overlay.style.backgroundImage = "none";
+            changeExpanded(true);
+        }
     }
 
     return (
         <div className="expand_container">
             <div className="expandable" id={`expand_${name}`}>
-            { (window.innerWidth < 1000 || showSlideshow )? null: <div className="overlay" id={`overlay_${name}`}></div> }
-            { (window.innerWidth < 1000 || showSlideshow )? 
-                <Slideshow media={media} 
-                    name={name} 
-                    mediaId={mediaId}/> :
-                <Gallery media={media} mediaName={mediaId} />
-            }
+                { (showSlideshow )? null: <div className="overlay" id={`overlay_${name}`}></div> }
+                { (showSlideshow )? 
+                    <Suspense fallback={<PhotoPlaceholder />} >
+                        <Slideshow media={media} 
+                            name={name} 
+                            mediaId={mediaId}/> 
+                    </Suspense>
+                    :
+                    <Suspense fallback={<PhotoPlaceholder />} >
+                        <Gallery media={media} mediaId={mediaId} />
+                    </Suspense>
+                   
+                }
             </div>
-            {(window.innerWidth < 1000 || showSlideshow) ? null :
-                <div className="expand_button_container">
-                    <Button variant="outlined" className="expand_button" value={`expand_${name}`} onClick={handleClickExpand}>
-                        {expanded?
-                        <FontAwesomeIcon icon={faAngleDoubleUp} size="2x" /> : 
-                        <FontAwesomeIcon icon={faAngleDoubleDown} size="2x" /> }
-                    </Button>
-                </div>
+            {(showSlideshow) ? null :
+                <Suspense fallback={null}>
+                    <div className="expand_button_container">
+                        <Button variant="outlined" className="expand_button" value={`expand_${name}`} onClick={handleClickExpand}>
+                            {expanded?
+                            <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleUp} size="2x" /> : 
+                            <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleDown} size="2x" /> }
+                        </Button>
+                    </div>
+                </Suspense>
             }
         </div>
     )

@@ -3,6 +3,7 @@ import './CSS/index.css';
 import './CSS/aboutme.css';
 import pic from './Media/profile_pic.jpg'
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function AboutMe() {
     const [isLoaded, changeLoaded] = useState(false);
@@ -36,14 +37,15 @@ export default function AboutMe() {
                 <div style={{width: "30%", display: "flex", justifyContent: "center", alignItems: "center", margin: "auto"}}>
                     <CircularProgress color="secondary"/>
                 </div>}  
-                <div id="image">        
+                <div id="image">
+                    <div style={{position: "absolute", width: "450px", height: "300px" }} />        
                     <img
                         id = "profile"
                         src = {pic}
                         alt = "Profile"
                         border =  "3"
                         onLoad = {check}
-                    />        
+                    /> 
                 </div>
                 <div id="text">
                     <p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student at the University of Waterloo.</p>

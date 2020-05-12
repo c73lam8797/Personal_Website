@@ -53,6 +53,8 @@ export default function Contact () {
                     </div>
                 </div>
             </div>
+            <div className="placeholder"></div>
+            <div className="placeholder"></div>
         </div>
     )
 }

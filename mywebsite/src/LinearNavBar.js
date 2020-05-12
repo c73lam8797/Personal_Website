@@ -4,7 +4,7 @@ import './CSS/header_footer.css';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, hideNavBar, scrollFunction}) {
+export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, hideNavBar, scrollFunction, isMobile}) {
     useEffect(() => {
         let navbar = document.getElementById("nb"); 
         navbar.addEventListener('mouseenter', hoverFunction);
@@ -65,7 +65,7 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
                 <div id="switch_container">
                     <FormControlLabel style={{color: "white"}}
                                         labelPlacement="start"
-                                        label="Toggle For a Video Background"
+                                        label="Toggle Background"
                                         control={
                                             <Switch checked={showVideo} 
                                                     size="small" 

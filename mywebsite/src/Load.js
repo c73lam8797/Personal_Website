@@ -1,7 +1,7 @@
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-export default function Load() {
+export function Initial() {
     return (
         <div style={{ 
         width: "100%", 
@@ -13,6 +13,22 @@ export default function Load() {
                 top: "50%",
                 left: "50%",
             }}/>
+        </div>
+    )
+}
+
+export  function BlackBar() {
+    return (
+        <div style={{width: "100%", height: "30px", backgroundColor: "black", opacity:"0.5", display: "flex", justifyContent:"center"}}>
+            <p style={{color: "white"}}>Loading...</p>
+        </div>
+    )
+}
+
+export function PhotoPlaceholder () {
+    return ( 
+        <div style={{width: "100%", height: "600px", display: "flex", justifyContent: "center", alignItems: "center"}} >
+            <CircularProgress color="secondary" />
         </div>
     )
 }

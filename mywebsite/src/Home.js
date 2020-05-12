@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import video from './Media/2160p.mp4';
 import alt_background from './Media/IMG_1481.jpg'
 import './CSS/index.css';
 import './CSS/home.css';
 
 
-export default function Home(props) {
+export default function Home({showVideo, isMobile}) {
+  useEffect (()=> {
+    if (showVideo) {
+        document.getElementById("main_image").style.visibility = "hidden";
+    }
+    else {
+      document.getElementById("main_image").style.visibility = "visible";
+    }
+  })
+
   return (
     <div className="home" id="home">
-      {props.showVideo? 
+      {showVideo? 
       <video
           id="main_vid"
           autoPlay
@@ -19,9 +28,9 @@ export default function Home(props) {
           playsInline
           >          
       </video>
-      :
+      : null }
       <img 
-        id="main_vid"
+        id="main_image"
         autoPlay
         muted
         loop
@@ -29,7 +38,6 @@ export default function Home(props) {
         alt = "background"
         >  
         </img>
-      } 
       <div id="content">
           <h1>Charmaine Lam</h1>
           <h3>A little bit about my story</h3>

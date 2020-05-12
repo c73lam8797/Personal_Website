@@ -1,21 +1,28 @@
 .gallery .photo, .slide {
-    max-height: 100%;
-    object-fit: contain;
+    /* max-height: 100%; */
+    /* object-fit: contain; */
+    max-width: 100%;
     border-radius: 5px;
+    vertical-align: middle;
+    margin-top: 5px;
 }
 
 .gallery .gallery_column {
     display: flex;
-    max-height: 300px;
-    object-fit: contain;
+    flex-wrap: wrap;
+    /* max-height: 300px; */
+    /* object-fit: contain; */
     padding: 4px;
-    max-width: fit-content;
+    /* max-width: fit-content; */
+    max-width: 20%;
+    flex: 25%;
+    align-content: flex-start;
 }
 
 .gallery {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
     justify-content: center;
     margin: 50px 0px;
     align-content: center;

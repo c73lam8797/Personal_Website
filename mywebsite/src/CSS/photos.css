@@ -4,8 +4,7 @@
     position: relative;
     max-height: 500px;
     overflow: hidden;
-    transition: max-height 0.25s ease;
-    transition: opacity 0.25s ease-in-out;   
+    transition: opacity 0.5s ease-in-out, max-height 0.25s ease;   
 }
 
 .photos .overlay {
@@ -13,12 +12,9 @@
     position: absolute;
     left: 0px;
     right: 0px;
-    background: linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+    /* background-image: linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%); */
+    transition: 0.5s ease-in-out 0.25s;
 }
-
-/* .photos .expand_container {
-    border: 2px solid white;
-} */
 
 .photos .expand_button_container {
     display: flex;
@@ -27,13 +23,11 @@
     transform: translateY(-50%);
 }
 
-.photos .expand_button_container:hover {
-    opacity: 1;
-}
-
 .photos .expand_button {
-    background-color: white;
-    opacity: 1;
+    background-color:rgb(97, 97, 97);
+    outline: none;
+    /* border: none; */
+    opacity:0.9;
     z-index: 1000;
     animation: bounce 0.75s linear 0s infinite;
 }
