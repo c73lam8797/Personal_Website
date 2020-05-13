@@ -6,15 +6,26 @@ import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-export default function Gallery({media, mediaId, name, showSlideshow, changeShowSlideshow}) {
+export default function Gallery({media, mediaId, name, showSlideshow, changeShowSlideshow, maxHeight, calculateHeight}) {
     //this has to be a state because it bugs out otherwise :)
     let [slideshowMedia, changeImg_array] = useState([...media.map(item => {
-        return (React.cloneElement(item));
+        return (React.cloneElement(item,  {onLoad: () => calculateHeight()}));
     })]);
-
-   
     const [expanded, changeExpanded] = useState(false);
 
+    useEffect(()=> {
+        calculateHeight();
+        if (!expanded) {
+            setHeight();
+        }
+    }, [maxHeight])
+
+
+    const setHeight = () => {
+        const expand = document.getElementById(`expand_${name}`);
+        expand.style.maxHeight = maxHeight;
+    }
+    
 
 
     useEffect(() => {
@@ -60,22 +71,15 @@ export default function Gallery({media, mediaId, name, showSlideshow, changeShow
 
 
     const handleClickExpand = ()=> {
-        if ( expanded ) {
-            hideGallery();
-            
-        }
-        else {
-            showGallery();
-            
-        }
-       
+        if ( expanded ) { hideGallery(); }
+        else {  showGallery(); }       
     }
 
     const hideGallery = () => {
         if (!showSlideshow) {
             const expand = document.getElementById(`expand_${name}`)
             const overlay = document.getElementById(`overlay_${name}`);
-            expand.style.maxHeight = "500px";
+            expand.style.maxHeight = maxHeight;
             expand.style.opacity = 0.5;
             overlay.style.opacity = 1;
             overlay.style.backgroundImage = "linear-gradient(0deg, rgba(196,196,196,0.5970763305322129) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%)";
@@ -100,7 +104,6 @@ export default function Gallery({media, mediaId, name, showSlideshow, changeShow
     return ( 
         <div className="gallery">
             <div className="expand_container">
-                
                 <div className="expandable" id={`expand_${name}`}>
                 <div className="overlay" id={`overlay_${name}`}></div>    
                     {createGallery()}

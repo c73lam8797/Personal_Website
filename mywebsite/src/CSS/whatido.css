@@ -4,7 +4,7 @@
 }
 
 .whatido .row {
-    margin: 15px -7.5px;
+    margin: 30px -7.5px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -38,14 +38,19 @@
 
 .whatido .top, .bottom {
     font-family: 'Raleway', sans-serif;
-    margin: 5px;
+    margin: 0px;
+    padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.whatido .top {
+    margin-top: 30px;
+}
+
 .whatido .bottom {
-    font-size: 35px;
+    font-size: 40px;
     color: #8dbfff;
 }
 

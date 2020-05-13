@@ -17,6 +17,10 @@
     position: relative;
     display: flex;
     justify-content: center;
+    max-width: 90%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .about #description #image, #text {

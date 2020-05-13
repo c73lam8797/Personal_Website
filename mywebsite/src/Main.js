@@ -77,8 +77,8 @@ function Main () {
                             <Contact />
        
                             <Button id="scrollTop" onClick={scrollUp}><FontAwesomeIcon icon={faAngleUp} /></Button>
-                            <div className="placeholder"></div>
-                            <div className="placeholder"></div>
+                            <div className="placeholder_big"></div>
+                            <div className="placeholder_big"></div>
                         </div>
                         {/* <div style={{width: "100%", height: "2000px"}}></div> */}
                     </div>

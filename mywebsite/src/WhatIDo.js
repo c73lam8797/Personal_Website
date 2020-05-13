@@ -57,8 +57,8 @@ export default function WhatIDo() {
             <h1>— WHAT I DO —</h1>
 
             <div className="table">
-                <h3 className="top">Creating is My </h3>
-                <h3 className="bottom">PASSION</h3>
+                <h4 className="top">Creating is My </h4>
+                <h2 className="bottom">PASSION</h2>
                 <div className="row">
                     {row1.map((card,index) => {
                         return (
@@ -67,7 +67,8 @@ export default function WhatIDo() {
                     })}
                 </div>
 
-                <h3>Leadership + Involvement in the <i><span>Community</span></i></h3>
+                <h4 className="top">Leadership + Involvement in the</h4>
+                <h2 className="bottom">COMMUNITY</h2>
                 <div className="row">
                     {row2.map((card,index) => {
                         return (

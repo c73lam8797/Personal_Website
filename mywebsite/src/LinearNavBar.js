@@ -9,11 +9,13 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
         let navbar = document.getElementById("nb"); 
         navbar.addEventListener('mouseenter', hoverFunction);
         navbar.addEventListener('mouseleave', leaveFunction);
+
+        let backgroundColor = "#b7cfee";
     
         document.querySelectorAll('.nav').forEach(item => {
             item.addEventListener('touchstart', function(){
                 item.style.borderBottom= "2px solid white";
-                item.style.color = "#b7cfee"
+                item.style.color = backgroundColor
                 setTimeout(()=>{
                     item.style.borderBottom = "none";
                     item.style.color = "white";
@@ -21,7 +23,7 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
             }, {passive: true});
             item.addEventListener('mouseenter', function(){
                 item.style.borderBottom= "2px solid white";
-                item.style.color = "#b7cfee"   
+                item.style.color = backgroundColor   
             });
             item.addEventListener('mouseleave', function(){
                 item.style.borderBottom= "none";

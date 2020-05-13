@@ -14,15 +14,17 @@ export default function Contact () {
         icon.addEventListener('mouseleave', leaveFunction);
     });
 
+    const color = color;
+
     const handleTouch = ()=> {
         const icon = document.getElementById("icon");
-        icon.style.color = "#3e5d86";
+        icon.style.color = color;
         setTimeout(()=>icon.style.color="white", 2000);
     };
 
     const hoverFunction = () => {
         const navbar = document.getElementById("icon");
-        navbar.style.color = "#3e5d86";
+        navbar.style.color = color;
     };
 
     const leaveFunction = () => {        
