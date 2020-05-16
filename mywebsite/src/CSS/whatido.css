@@ -19,9 +19,10 @@
 }
 
 .whatido .card {
-    box-shadow: 0 4px 6px 0 rgb(104, 109, 110);
+    box-shadow: 0 6px 8px 0 rgb(104, 109, 110);
     text-align: center;
-    background-color: #f1f1f1;
+    /* background-color: #f1f1f1; */
+    background-color: white;
     padding: 5px;
     color: black;
     border-radius: 5px;
@@ -30,8 +31,9 @@
 }
 
 
-.whatido .row h3, h4, p {
+.whatido .row h3, .whatido .row h4, .whatido .row p {
     font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     margin: 0px;
     padding: 10px;
 }
@@ -47,11 +49,16 @@
 
 .whatido .top {
     margin-top: 30px;
+    font-size: initial;
+    color: black;
+    /* color: white; */
 }
 
 .whatido .bottom {
     font-size: 40px;
-    color: #8dbfff;
+    /* color: #8dbfff; */
+    color:#df5e5e;
+
 }
 
 @media screen and (max-width: 1000px) {

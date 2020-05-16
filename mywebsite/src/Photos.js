@@ -1,6 +1,7 @@
 import React from 'react';
 import Images from './Images';
 
+
 import './CSS/photogallery.css';
 
 import {
@@ -15,7 +16,7 @@ export default function Photos() {
             <h1>— PHOTOS —</h1>
             <Images media={art_dance} 
                         name="art_dance" 
-                        mediaId="slide"  
+                        mediaId="ad"  
                         />
 
             <Images media={photography} 

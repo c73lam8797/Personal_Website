@@ -3,6 +3,8 @@ import './CSS/index.css';
 import './CSS/header_footer.css';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhotoVideo } from '@fortawesome/free-solid-svg-icons';
 
 export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, hideNavBar, scrollFunction, isMobile}) {
     useEffect(() => {
@@ -10,8 +12,9 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
         navbar.addEventListener('mouseenter', hoverFunction);
         navbar.addEventListener('mouseleave', leaveFunction);
 
-        let backgroundColor = "#b7cfee";
-    
+        // let backgroundColor = "#b7cfee";
+        let backgroundColor = "#f7ba8e";
+        
         document.querySelectorAll('.nav').forEach(item => {
             item.addEventListener('touchstart', function(){
                 item.style.borderBottom= "2px solid white";
@@ -67,12 +70,13 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
                 <div id="switch_container">
                     <FormControlLabel style={{color: "white"}}
                                         labelPlacement="start"
-                                        label="Toggle Background"
+                                        label={<FontAwesomeIcon icon={faPhotoVideo} size="1x" /> }
+                                        id="toggle_background"
                                         control={
                                             <Switch checked={showVideo} 
                                                     size="small" 
                                                     classes={{root:'switch'}}
-                                                    color="primary"  
+                                                    color="secondary"  
                                                     onChange={handleChange}/>} />
                 </div>
             </ul> 

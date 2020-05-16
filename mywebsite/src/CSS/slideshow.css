@@ -55,7 +55,7 @@
     justify-content: center;
 }
 
-.photos #art_dance_cur_col .slide, #photography_cur_col .photo{
+.photos #art_dance_cur_col .ad, #photography_cur_col .photo{
     z-index: 99;
     margin: auto; 
 }
@@ -69,7 +69,7 @@
     }
 }
 
-.photos .slide, .photo {
+.photos .ad, .photo {
     text-align: center;
     max-height: 100%;
     width: auto;
@@ -89,7 +89,7 @@
         border: 0px;
     }
 
-    .photos .slideshow .slide, .photo {
+    .photos .slideshow .ad, .photo {
         max-width: 100%;
         height: 60%;
         /* display: block; */

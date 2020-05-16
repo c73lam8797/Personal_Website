@@ -13,12 +13,32 @@ export default function Home({showVideo, isMobile}) {
     else {
       document.getElementById("main_image").style.visibility = "visible";
     }
+    setDimensions();
   })
+
+  useEffect(()=> {
+    window.addEventListener('resize', setDimensions);
+  }, [])
+
+  const setDimensions = () => {
+    const media = Array.from(document.getElementsByClassName("main_media"));
+    media.forEach(m => {
+        m.style.height = "100%";  
+        m.style.width = "auto";
+
+        if (m.clientWidth < window.innerWidth) {
+          m.style.width = "100%";
+          m.style.height = "auto";
+        }
+
+    })
+  }
 
   return (
     <div className="home" id="home">
       {showVideo? 
       <video
+          className = "main_media"
           id="main_vid"
           autoPlay
           muted
@@ -26,16 +46,19 @@ export default function Home({showVideo, isMobile}) {
           controls={false}
           src = {video}
           playsInline
+          onLoad={setDimensions}
           >          
       </video>
       : null }
       <img 
+        className = "main_media"
         id="main_image"
         autoPlay
         muted
         loop
         src = {alt_background}
         alt = "background"
+        onLoad={setDimensions}
         >  
         </img>
       <div id="content">

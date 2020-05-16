@@ -22,12 +22,21 @@ export default function Gallery({media, mediaId, name, showSlideshow, changeShow
 
 
     const setHeight = () => {
-        const expand = document.getElementById(`expand_${name}`);
-        expand.style.maxHeight = maxHeight;
+        let imgs = document.getElementsByClassName(mediaId);
+
+        let doneLoading = false;
+        Array.from(imgs).forEach(img => {
+            if (img.complete) { doneLoading = true; }
+            else { doneLoading = false};
+        })
+
+        if (doneLoading) {
+            const expand = document.getElementById(`expand_${name}`);
+            expand.style.maxHeight = maxHeight;
+        }
+
     }
     
-
-
     useEffect(() => {
         hideGallery();
     },[showSlideshow])
@@ -38,7 +47,7 @@ export default function Gallery({media, mediaId, name, showSlideshow, changeShow
             imgs.forEach ((item) => {
                 item.style.maxHeight = "100%";
                 item.style.objectFit = "contain";
-                item.style.borderRadius = "5px";
+                // item.style.borderRadius = "5px";
             })
         }
     })

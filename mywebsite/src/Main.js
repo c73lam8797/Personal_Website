@@ -48,7 +48,7 @@ function Main () {
             div.style.marginRight = Math.abs(a.scrollWidth - div.clientWidth)*-1 + "px";
         }
         
-        console.log(Math.abs(a.scrollWidth - div.clientWidth)*-1 );
+        // console.log(Math.abs(a.scrollWidth - div.clientWidth)*-1 );
         // console.log(div.style.marginRight);
         // console.log(scrollbar.current.getClientWidth());
     }
@@ -76,7 +76,7 @@ function Main () {
                             <Photos />
                             <Contact />
        
-                            <Button id="scrollTop" onClick={scrollUp}><FontAwesomeIcon icon={faAngleUp} /></Button>
+                            <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button>
                             <div className="placeholder_big"></div>
                             <div className="placeholder_big"></div>
                         </div>

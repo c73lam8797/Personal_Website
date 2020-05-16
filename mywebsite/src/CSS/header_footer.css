@@ -1,5 +1,6 @@
 .NavBar, .DropNavBar, #toggle, .Socials {
-  font-family: 'Raleway', sans-serif;
+  /* font-family: 'Raleway', sans-serif; */
+  font-family: 'Lato', sans-serif;
   z-index: 999;
   position: relative;
 }
@@ -72,7 +73,8 @@
 }
 
 .DropNavBar a:hover {
-  background-color: #3e5d86 ;
+  /* background-color: #3e5d86 ; */
+  background-color: #717171;
 }
 
 .DropNavBar #placeholderBar {
@@ -86,6 +88,10 @@
   /* top: 50%;
   transform: translateY(-50%); */
   margin-left: 5px;
+}
+
+#toggle_background {
+  font-family: 'Lato', sans-serif;
 }
 
 #switch_container {

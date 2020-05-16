@@ -1,37 +1,48 @@
-import React, { useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
 import pdf from './Media/CharmaineLam_Resume.pdf'
+import Button from '@material-ui/core/Button';
+import { Toast } from 'react-bootstrap';
 import './CSS/index.css'
 import './CSS/contact.css'
 
 export default function Contact () {
+    const [emailCopied, setEmailCopied] = useState(false);
+
     useEffect(() => {
-        const icon = document.getElementById("icon");
-        icon.addEventListener('touchstart', handleTouch, {passive: true});
-        icon.addEventListener('mouseenter', hoverFunction);
-        icon.addEventListener('mouseleave', leaveFunction);
-    });
+        const icons = document.getElementsByClassName("contact_buttons");
+        Array.from(icons).forEach(icon => {
+            icon.addEventListener('touchstart', handleTouch, {passive: true});
+            icon.addEventListener('mouseenter', hoverFunction);
+            icon.addEventListener('mouseleave', leaveFunction);
+        })
+    }, []);
 
-    const color = color;
+    const color = "#f7ba8e";
 
-    const handleTouch = ()=> {
-        const icon = document.getElementById("icon");
-        icon.style.color = color;
-        setTimeout(()=>icon.style.color="white", 2000);
+    const handleTouch = (icon)=> {
+        icon.target.style.backgroundColor = color;
+        setTimeout(()=>icon.target.style.backgroundColor="transparent", 2000);
     };
 
-    const hoverFunction = () => {
-        const navbar = document.getElementById("icon");
-        navbar.style.color = color;
+    const hoverFunction = (icon) => {
+        icon.target.style.backgroundColor = color;
     };
 
-    const leaveFunction = () => {        
-        const navbar = document.getElementById("icon");
-        navbar.style.color = "white";
+    const leaveFunction = (icon) => {        
+        icon.target.style.backgroundColor = "transparent";
     };
     
+    const copyEmail = (e) => {  
+        let temp = document.createElement("input")
+        temp.setAttribute("type", "text");
+        temp.setAttribute("value", document.getElementById("email").value);
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        setEmailCopied(true);
+        document.body.removeChild(temp);
+    }
+
     return (
         <div className="contact" id="contact">
             <div className="placeholder"></div>
@@ -44,14 +55,18 @@ export default function Contact () {
 
                 <div className="contact_info"> 
                     <div id="info">
-                        <p id="email">
+                        {/* <p id="email">
                         <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
-                        c73lam@edu.waterloo.ca</p>   
-                        <p id="resume">
+                        c73lam@uwaterloo.ca</p>    */}
+                        <Button id="email" value="c73lam@uwaterloo.ca" className="contact_buttons" onClick={copyEmail} classes={{label: 'email'}}>c73lam@uwaterloo.ca</Button>
                         <a href={pdf} target="_blank" rel="noopener noreferrer">
-                            <FontAwesomeIcon id="icon" style={{marginRight: "10px", marginBottom:"-10px", color: "white"}} icon = {faDownload} size="3x" />
+                            <Button id="resume" className="contact_buttons">Download Resume</Button>
                         </a>
-                        Download Resume</p>
+        
+                        <Toast style={{color: "black"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} autohide>
+                            Email Successfully Copied!
+                        </Toast>
+              
                     </div>
                 </div>
             </div>

@@ -43,7 +43,7 @@ export default function AboutMe() {
                         id = "profile"
                         src = {pic}
                         alt = "Profile"
-                        border =  "3"
+                        border =  "2"
                         onLoad = {check}
                     /> 
                 </div>

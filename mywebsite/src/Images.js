@@ -5,6 +5,7 @@ import { PhotoPlaceholder } from './Load';
 
 const Gallery = lazy(() => import('./Gallery'));
 const Slideshow = lazy(() => import('./Slideshow'));
+const MyCarousel = lazy (() => import ('./Carousel'));
 
 
 
@@ -28,8 +29,6 @@ export default function Images({media, name, mediaId}) {
     const resizeFunction = () => {
         if (window.innerWidth < 800) {changeShowSlideshow(true); }
         else { calculateHeight(); changeShowSlideshow(false);}
-
-        
     }
 
     const calculateHeight = () => {
@@ -38,7 +37,6 @@ export default function Images({media, name, mediaId}) {
             const height = (expandable.scrollHeight/2) + "px";
 
             changeMaxHeight(height);
-            console.log(height);
         }
     }
 
@@ -46,9 +44,10 @@ export default function Images({media, name, mediaId}) {
         <div>
             { (showSlideshow )? 
                 <Suspense fallback={<PhotoPlaceholder />} >
-                    <Slideshow media={media} 
+                    {/* <Slideshow media={media} 
                         name={name} 
-                        mediaId={mediaId}/> 
+                        mediaId={mediaId}/>  */}
+                    <MyCarousel media={media} />
                 </Suspense>
                 :
                 <Suspense fallback={<PhotoPlaceholder />} >

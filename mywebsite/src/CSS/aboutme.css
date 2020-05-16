@@ -1,3 +1,10 @@
+.about {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
 .about img {
     width: 450px;
     float: left;
@@ -19,16 +26,20 @@
     justify-content: center;
     max-width: 90%;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    /* left: 50%;
+    transform: translateX(-50%); */
 }
 
-.about #description #image, #text {
+.about #description #image, #desciption #text {
     display: inline-block;
     position: relative;
     height: auto;
     text-align: justify;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
 }
+
 
 .about ul {
     list-style-type: decimal;
@@ -40,7 +51,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
     .about #description {
         display: block;
     }
@@ -67,5 +78,11 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about #description {
+        font-size: 15px;
     }
 }

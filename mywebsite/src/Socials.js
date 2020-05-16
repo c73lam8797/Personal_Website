@@ -6,13 +6,15 @@ import './CSS/header_footer.css';
 
 export default function Socials() {
     useEffect(() => {
+        const backgroundColor = "#3e5d86";
+        
         document.querySelectorAll('.social').forEach(item => {
             item.addEventListener('touchstart', function() {
-                item.style.backgroundColor = "#3e5d86";
+                item.style.backgroundColor = backgroundColor;
                 setTimeout(()=>item.style.backgroundColor="black", 2000);
             }, {passive: true})
             item.addEventListener('mouseenter', function() {
-                item.style.backgroundColor = "#3e5d86";
+                item.style.backgroundColor = backgroundColor;
             });
             item.addEventListener('mouseleave', function() {
                 item.style.backgroundColor = "black";
