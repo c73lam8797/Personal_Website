@@ -44,9 +44,6 @@ export default function Images({media, name, mediaId}) {
         <div>
             { (showSlideshow )? 
                 <Suspense fallback={<PhotoPlaceholder />} >
-                    {/* <Slideshow media={media} 
-                        name={name} 
-                        mediaId={mediaId}/>  */}
                     <MyCarousel media={media} />
                 </Suspense>
                 :

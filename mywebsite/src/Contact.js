@@ -58,7 +58,9 @@ export default function Contact () {
                         {/* <p id="email">
                         <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
                         c73lam@uwaterloo.ca</p>    */}
+                        <p style={{marginBottom: "0px", marginTop: "15px"}}>Click below to copy my email!</p>
                         <Button id="email" value="c73lam@uwaterloo.ca" className="contact_buttons" onClick={copyEmail} classes={{label: 'email'}}>c73lam@uwaterloo.ca</Button>
+                        
                         <a href={pdf} target="_blank" rel="noopener noreferrer">
                             <Button id="resume" className="contact_buttons">Download Resume</Button>
                         </a>

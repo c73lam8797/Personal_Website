@@ -40,6 +40,7 @@
     padding: 10px;
     text-decoration: none;
     border-radius: 0px;
+    outline: none;  
 }
 
 .contact .color {
