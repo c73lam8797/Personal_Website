@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import pdf from './Media/CharmaineLam_Resume.pdf'
+import pdf from './Media/Charmaine_Lam_Resume.pdf'
 import Button from '@material-ui/core/Button';
 import { Toast } from 'react-bootstrap';
 import './CSS/index.css'
