@@ -28,3 +28,5 @@ src/profile_pic.jpg
 src/CharmaineLam_Resume.pdf
 
 ../unedited_pics
+# Local Netlify folder
+.netlify
