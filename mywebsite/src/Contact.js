@@ -11,26 +11,20 @@ export default function Contact () {
     useEffect(() => {
         const icons = document.getElementsByClassName("contact_buttons");
         Array.from(icons).forEach(icon => {
-            icon.addEventListener('touchstart', handleTouch, {passive: true});
-            icon.addEventListener('mouseenter', hoverFunction);
-            icon.addEventListener('mouseleave', leaveFunction);
+                icon.addEventListener('click', handleTouch, {passive: true});
+
         })
     }, []);
 
     const color = "#f7ba8e";
 
-    const handleTouch = (icon)=> {
-        icon.target.style.backgroundColor = color;
-        setTimeout(()=>icon.target.style.backgroundColor="transparent", 2000);
+    const handleTouch = (e)=> {
+        let icon = e.target;
+        if (!icon.classList.contains("contact_buttons")) {icon = e.target.parentElement; }
+        icon.style.backgroundColor = color;
+        setTimeout(()=>icon.style.backgroundColor="transparent", 2000);
     };
 
-    const hoverFunction = (icon) => {
-        icon.target.style.backgroundColor = color;
-    };
-
-    const leaveFunction = (icon) => {        
-        icon.target.style.backgroundColor = "transparent";
-    };
     
     const copyEmail = (e) => {  
         let temp = document.createElement("input")
@@ -59,15 +53,16 @@ export default function Contact () {
                         <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
                         c73lam@uwaterloo.ca</p>    */}
                         <p style={{marginBottom: "0px", marginTop: "15px"}}>Click below to copy my email!</p>
-                        <Button id="email" value="c73lam@uwaterloo.ca" className="contact_buttons" onClick={copyEmail} classes={{label: 'email'}}>c73lam@uwaterloo.ca</Button>
-                        
-                        <a href={pdf} target="_blank" rel="noopener noreferrer">
-                            <Button id="resume" className="contact_buttons">Download Resume</Button>
-                        </a>
-        
-                        <Toast style={{color: "black", background: "white", borderRadius: "3px"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} autohide>
+                        <Toast style={{color: "black", background: "white", borderRadius: "3px"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} animation autohide>
                             Email Successfully Copied!
                         </Toast>
+                        <Button id="email" value="c73lam@uwaterloo.ca" onClick={copyEmail} classes={{label: 'email', root: 'contact_buttons'}}>c73lam@uwaterloo.ca</Button>
+                        
+                        <a href={pdf} target="_blank" rel="noopener noreferrer">
+                            <Button id="resume" classes={{root: 'contact_buttons'}}>Download Resume</Button>
+                        </a>
+        
+                     
               
                     </div>
                 </div>
