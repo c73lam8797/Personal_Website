@@ -44,13 +44,9 @@ function Main () {
         let a = document.getElementById("scrollbar");
         // let main = document.getElementById("main_content");
         let div = a.childNodes[0];
-        if (a.scrollWidth - div.clientWidth != 0) {
+        if (a.scrollWidth - div.clientWidth !== 0) {
             div.style.marginRight = Math.abs(a.scrollWidth - div.clientWidth)*-1 + "px";
         }
-        
-        // console.log(Math.abs(a.scrollWidth - div.clientWidth)*-1 );
-        // console.log(div.style.marginRight);
-        // console.log(scrollbar.current.getClientWidth());
     }
 
     const scrollUp = () => {
@@ -61,7 +57,7 @@ function Main () {
         <div className="main">
             <Suspense fallback={<Initial />}>
                 
-                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;} }  noScrollX universal
+                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;} }  noscrollx="true" universal
                     style={{ 
                         width: "100%", 
                         height: "100vh",

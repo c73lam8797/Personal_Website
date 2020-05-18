@@ -1,7 +1,15 @@
 :root {
     --max-height: 500px;
 }
-
+.photos .subtitle {
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: initial;
+    padding: 0px 20px;
+}
 .gallery .expandable{
     /* max-height: var(--max-height); */
     height: auto;

@@ -65,7 +65,7 @@ export default function Contact () {
                             <Button id="resume" className="contact_buttons">Download Resume</Button>
                         </a>
         
-                        <Toast style={{color: "black"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} autohide>
+                        <Toast style={{color: "black", background: "white", borderRadius: "3px"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} autohide>
                             Email Successfully Copied!
                         </Toast>
               

@@ -3,22 +3,12 @@ import Card from './Card';
 import './CSS/index.css';
 import './CSS/whatido.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
-
+import { faCode, faHeartbeat, faPalette, faCompass, faProjectDiagram, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function WhatIDo() {
     useEffect(()=> {
         Array.from(document.getElementsByClassName("column")).forEach(col => {
-
-            // col.addEventListener('touchstart', function() {
-            //     if (col.classList.contains("col_active")) {
-            //         col.classList.remove("col_active");
-            //     }
-            //     else {
-            //         col.classList.add("col_active");
-            //     }
-            // })
 
             col.addEventListener('click', function() {
                 if (col.classList.contains("col_active")) {
@@ -38,21 +28,21 @@ export default function WhatIDo() {
     const tech_back = {
         header: "Technology",
         body: [
-            "I code — I know C++, C#, Python, JS, HTML, CSS. Most of my work has involved web development (such as this site) on technologies including React, Node, Blazor Web Assembly, ASP.NET Core. I have also dabbled in ML using Tensorflow and Keras to classify Malaria cells and create a chatbot.",
-            "Currently, I am co-leading a design team to devise a Arduino based project that assists with gait retraining for people with Parkinson's disease."
+            "I code — I know C++, C#, Python, JS, HTML, CSS. So far, I have done most on my work on technologies such as React, Node, Blazor Web Assembly, ASP.NET Core, SQL Server, and Entity Framework with a focus in web development. I have also used Tensorflow to dabble in machine learning. Some of the things I've worked on include: experimenting with different sequence to sequence models to build a chatbot and using image classification to recognize cells infected with Malaria.",
+            "Currently, I am co-leading a design team to devise an Arduino based project that assists with gait retraining for people with Parkinson's disease."
         ]
     }
     const tech=[tech_front, tech_back];
 
     const dance_front = {
         header: "" ,
-        body: [""]
+        body: [<FontAwesomeIcon className="card_face" icon={faHeartbeat} size="5x"/>]
     }
     const dance_back = {
         header: "Dance",
         body: [
-            "I've danced competitvely since I was 8 years old in various genres, with a background in gymnastics. (My favourites are acrobatics and contemporary, but I would love to get more involved in hip-hop!) At 14, I competed with Team Canada, and brought home a bronze medal.",
-            "Why dance? — I dance because it has not only taught me to persevere and be resilient, but also how to express myself in a way that is unique to me. Oh and also, nothing replicates the feeling of being on stage and doing what you love."
+            "I've danced competitively since I was 8 years old in various genres. My favourite styles are acrobatics and contemporary (although I would love to get into hip-hop). At 14, I competed with Team Canada at the World Championships in Germany, and brought home a bronze medal.",
+            "Why dance? — I dance because it has not only taught me to persevere and be resilient, but also how to tell stories and express myself in a way that is unique to me. Oh and also, nothing replicates the feeling of being on stage and doing what you love."
         ]
     }
     const dance=[dance_front, dance_back];
@@ -60,13 +50,14 @@ export default function WhatIDo() {
 
     const art_design_front = {
         header: "" ,
-        body: [""]
+        body: [<FontAwesomeIcon className="card_face" icon={faPalette} size="5x"/>]
     }
     const art_design_back = {
         header: "Art + Design",
         body: [
-            "I draw, I guess. Through teaching myself, I've acquired a liking for black and white pencil sketches, but have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't have much time to do much art, so I make my school notes visually elaborate to satisfy my desire to draw.",
-            "For leisure, I've taken up photography and photo editing, and sometimes shoot short video clips."
+            "I draw, I guess. Though I've acquired a liking for black and white pencil sketches, I have explored with mediums such as watercolour, ink, and charcoal. Nowadays, I don't have much time to do much art, so I make my school notes visually elaborate to satisfy my desire to draw.",
+            "For leisure, I've taken up photography and photo editing, and sometimes shoot short video clips.",
+            "Fun fact: I'm self taught in both!"
         ]
     }
     const art_design = [art_design_front, art_design_back];
@@ -78,12 +69,12 @@ export default function WhatIDo() {
 
     const leadership_front = {
         header: "" ,
-        body: [""]
+        body: [<FontAwesomeIcon className="card_face" icon={faCompass} size="5x"/>]
     }
     const leadership_back = {
         header: "Leadership",
         body: [
-            "An alumnus of Vision Youth Leadership Program, I now volunteer as an Outdoor Leadership Coordinator. I teach foundational survival skills, develop safety procedures and plan training schedules and multi-night expeditions to help youth work towards their Duke of Edinburgh Awards."
+            "An alumnus of Vision Youth Leadership Program, I now give back to the program by volunteering as an Outdoor Leadership Coordinator. The work I do not only helps youth work towards their Duke of Edinburgh Awards, but emphasizes leadership development in an outdoor environment - I teach foundational survival skills, develop safety procedures, plan training schedules and lead multi-night expeditions."
         ]
     }
     const leadership = [leadership_front, leadership_back];
@@ -91,20 +82,20 @@ export default function WhatIDo() {
 
     const teaching_front = {
         header: "" ,
-        body: [""]
+        body: [<FontAwesomeIcon className="card_face" icon={faUsers} size="5x"/>]
     }
     const teaching_back = {
         header: "Teaching and Mentorship",
         body: [
             "To me, education is one of the most powerful tools that exists.",
-            "Though I'm not any Einstein, I actively try my best to share my experiences with others. Since I was 11, I've volunteered at my dance studio and have taught kids as young as 3 and as old as 15. I'm currently also planning an initiative to help students with preparation and transitioning to post-secondary through mentorship."
+            "Though I'm not any Einstein, I actively try my best to share my experiences with others. Since I was 11, I've volunteered at my dance studio and have taught kids as young as 3 and as old as 15. I'm currently also reaching out to students to assist with ther preparation and transitioning to post-secondary, and hope to carry this act out into an official initiative."
         ]
     }
-    const teaching = [teaching_front, teaching_back];
+    const teaching = [teaching_front, teaching_back]
 
     const projects_front = {
         header: "" ,
-        body: [""]
+        body: [<FontAwesomeIcon className="card_face" icon={faProjectDiagram} size="5x"/>]
     }
     const projects_back = {
         header: "Community Projects",
@@ -116,26 +107,21 @@ export default function WhatIDo() {
     
     const row2 = [leadership, teaching, projects];
 
-    // useEffect(()=>{
-        console.log(row2);
-    // })
-
     return (
         <div className="whatido" id="whatido">
             <div className="placeholder"></div>
 
             <h1>— WHAT I DO —</h1>
-
+            <h3 className="subtitle">Flip the cards to learn more!</h3>
             <div className="table">
                 <h4 className="top">Creating is My </h4>
                 <h2 className="bottom">PASSION</h2>
                 <div className="row">
                     {row1.map((card,index) => {
                         return (
-
-                            <div className="column">
-                            {card.map((face => {
-                                return <Card header={face.header} body={face.body} />
+                            <div className="column" key={index}> 
+                            {card.map(((face, i) => {
+                                return <Card header={face.header} body={face.body} key={i}/>
                             }))}
                             </div>
                         )
@@ -147,9 +133,9 @@ export default function WhatIDo() {
                 <div className="row">
                     {row2.map((card,index) => {
                         return (
-                            <div className="column">
-                            {card.map((face => {
-                                return <Card header={face.header} body={face.body} />
+                            <div className="column" key={index}>
+                            {card.map(((face, i) => {
+                                return <Card header={face.header} body={face.body} key={i}/>
                             }))}
                             </div>
                         )

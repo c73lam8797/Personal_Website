@@ -4,7 +4,7 @@ import './CSS/photogallery.css';
 import { PhotoPlaceholder } from './Load';
 
 const Gallery = lazy(() => import('./Gallery'));
-const Slideshow = lazy(() => import('./Slideshow'));
+// const Slideshow = lazy(() => import('./Slideshow'));
 const MyCarousel = lazy (() => import ('./Carousel'));
 
 

@@ -3,7 +3,6 @@ import './CSS/index.css';
 import './CSS/aboutme.css';
 import pic from './Media/profile_pic.jpg'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 export default function AboutMe() {
     const [isLoaded, changeLoaded] = useState(false);
@@ -48,11 +47,12 @@ export default function AboutMe() {
                     /> 
                 </div>
                 <div id="text">
-                    <p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student at the University of Waterloo.</p>
-                    <p>Here's some (perhaps, random) things about me that I would like to share with you! </p>
+                    <p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student pursuing an option in artificial intelligence at the University of Waterloo.</p>
+                    <p>Here's a few things about me that I would like to share with you! </p>
                     <ul>
                         <li>I love to create. Whether it's building a prototype, putting together a visual on Photoshop, or emptying my ideas out into a sketch, I challenge myself to find ways to explore my creative ability.</li>
-                        <li>I have a lot of interests. Perhaps too many. Software, robotics, visual art, dance, music, gymnastics, bouldering, yoga, food (as in eating...sometimes making it too), photography, videography, hiking, canoeing, reading — you name it.</li>
+                        <li>My favourite colour is maroon.</li>
+                        <li>I have a lot of interests. Perhaps too many. Software, robotics, visual art, dance, music, gymnastics, bouldering, yoga, tricking, food (as in eating...sometimes making it too), photography, hiking, canoeing, backpacking, reading — you name it.</li>
                         {/* <li>I believe education is one of the most important and powerful tools.</li> */}
                         <li>I am notorius for overthinking. At least I'm aware of it...but then I overthink about how much I overthink.</li>
                         <li>My goal is to ultimately drive change through innovation and creativity.</li>
