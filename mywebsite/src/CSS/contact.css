@@ -32,7 +32,7 @@
     /* float: left; */
     /* clear: both; */
     margin-bottom: 20px;
-    margin-top: 10px;
+    
     vertical-align: center;
     color: white;
     position: relative;
@@ -41,6 +41,15 @@
     text-decoration: none;
     border-radius: 0px;
     outline: none;  
+}
+
+.contact #email{
+    margin-top: 10px;
+}
+
+
+.contact #resume{
+    margin-top: 0px;
 }
 
 .contact .color {

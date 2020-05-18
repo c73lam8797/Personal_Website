@@ -53,17 +53,16 @@ export default function Contact () {
                         <FontAwesomeIcon style={{marginRight: "10px", marginBottom:"-10px"}} icon = {faEnvelope} size="3x" />
                         c73lam@uwaterloo.ca</p>    */}
                         <p style={{marginBottom: "0px", marginTop: "15px"}}>Click below to copy my email!</p>
-                        <Toast style={{color: "black", background: "white", borderRadius: "3px"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} animation autohide>
-                            Email Successfully Copied!
-                        </Toast>
                         <Button id="email" value="c73lam@uwaterloo.ca" onClick={copyEmail} classes={{label: 'email', root: 'contact_buttons'}}>c73lam@uwaterloo.ca</Button>
                         
                         <a href={pdf} target="_blank" rel="noopener noreferrer">
                             <Button id="resume" classes={{root: 'contact_buttons'}}>Download Resume</Button>
                         </a>
-        
+                        <Toast style={{color: "black", background: "white", borderRadius: "3px"}} show ={emailCopied} onClose={()=>setEmailCopied(false)} delay={2000} animation autohide>
+                            Email Successfully Copied!
+                        </Toast>
                      
-              
+                        {emailCopied? null : <div style={{height: "15px"}} />}
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ export function Initial() {
 export  function BlackBar() {
     return (
         <div style={{width: "100%", height: "30px", backgroundColor: "black", opacity:"0.5", display: "flex", justifyContent:"center"}}>
-            <p style={{color: "white"}}>Loading...</p>
+            {/* <p style={{color: "white"}}>Loading...</p> */}
         </div>
     )
 }

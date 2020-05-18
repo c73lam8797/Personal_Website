@@ -7,15 +7,15 @@ import './CSS/home.css';
 
 export default function Home({showVideo, isMobile}) {
   useEffect (()=> {
+    setDimensions();
     if (showVideo) {
         document.getElementById("main_image").style.visibility = "hidden";
     }
     else {
       document.getElementById("main_image").style.visibility = "visible";
     }
-    setDimensions();
+   
   })
-
   useEffect(()=> {
     window.addEventListener('resize', setDimensions);
   }, [])
@@ -23,17 +23,28 @@ export default function Home({showVideo, isMobile}) {
   const setDimensions = () => {
     const media = Array.from(document.getElementsByClassName("main_media"));
     media.forEach(m => {
-        m.style.height = "100%";  
-        m.style.width = "auto";
-
-        if (m.clientWidth < window.innerWidth) {
-          m.style.width = "100%";
-          m.style.height = "auto";
-        }
-
+        // if (!isMobile) {
+          m.style.height = "100%";  
+          m.style.width = "auto";
+  
+          if (m.clientWidth < window.innerWidth) {
+            m.style.width = "100%";
+            m.style.height = "auto";
+          }
+        // }
+        // else {
+        //   m.style.width = "100%";
+        //   m.style.height = "auto";
+  
+        //   if (m.clientHeight < window.innerHeight) {
+        //     m.style.height = "100%";  
+        //     m.style.width = "auto";
+  
+        //   }
+        // }
     })
   }
-
+  setDimensions();
   return (
     <div className="home" id="home">
       {showVideo? 
