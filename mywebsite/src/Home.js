@@ -6,47 +6,37 @@ import './CSS/home.css';
 
 
 export default function Home({showVideo, isMobile}) {
-  useEffect (()=> {
-    setDimensions();
-    if (showVideo) {
-        document.getElementById("main_image").style.visibility = "hidden";
-    }
-    else {
-      document.getElementById("main_image").style.visibility = "visible";
-    }
-   
-  })
-  useEffect(()=> {
-    window.addEventListener('resize', setDimensions);
-  }, [])
+  // useEffect (()=> {
+  //   setDimensions();
+  //   // if (showVideo) {
+  //   //     document.getElementById("main_image").style.visibility = "hidden";
+  //   // }
+  //   // else {
+  //   //   document.getElementById("main_image").style.visibility = "visible";
+  //   // }
+  // })
 
-  const setDimensions = () => {
-    const media = Array.from(document.getElementsByClassName("main_media"));
-    media.forEach(m => {
-        // if (!isMobile) {
-          m.style.height = "100%";  
-          m.style.width = "auto";
+  // useEffect(()=> {
+  //   window.addEventListener('resize', setDimensions);
+  // }, [])
+
+  // const setDimensions = () => {
+  //   const media = Array.from(document.getElementsByClassName("main_media"));
+  //   media.forEach(m => {
+  //       // if (!isMobile) {
+  //         m.style.height = "100%";  
+  //         m.style.width = "auto";
   
-          if (m.clientWidth < window.innerWidth) {
-            m.style.width = "100%";
-            m.style.height = "auto";
-          }
-        // }
-        // else {
-        //   m.style.width = "100%";
-        //   m.style.height = "auto";
-  
-        //   if (m.clientHeight < window.innerHeight) {
-        //     m.style.height = "100%";  
-        //     m.style.width = "auto";
-  
-        //   }
-        // }
-    })
-  }
-  setDimensions();
+  //         if (m.clientWidth < window.innerWidth) {
+  //           m.style.width = "100%";
+  //           m.style.height = "auto";
+  //         }
+  //   })
+  // }
+  // setDimensions();
+
   return (
-    <div className="home" id="home">
+    <div className="home_overlay" id="home_overlay">
       {showVideo? 
       <video
           className = "main_media"
@@ -57,11 +47,12 @@ export default function Home({showVideo, isMobile}) {
           controls={false}
           src = {video}
           playsInline
-          onLoad={setDimensions}
+          // onLoad={setDimensions}
           >          
       </video>
       : null }
-      <img 
+    <div className="home" id="home">
+      {/* <img 
         className = "main_media"
         id="main_image"
         autoPlay
@@ -71,11 +62,12 @@ export default function Home({showVideo, isMobile}) {
         alt = "background"
         onLoad={setDimensions}
         >  
-        </img>
+        </img> */}
       <div id="content">
           <h1>Charmaine Lam</h1>
           <h3>—  A little bit about my story —</h3>
       </div>
+    </div>
     </div>
   );
 };

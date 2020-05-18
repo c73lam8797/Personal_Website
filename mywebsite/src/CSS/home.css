@@ -1,30 +1,37 @@
-.home {
-    position: relative;
-    background-color: rgb(65, 73, 74);
-    top: 0px;
-
+.home_overlay {
+    background-image: url(../Media/IMG_1481.jpg);
+    background-size: cover;
     height: 100vh;
     overflow: hidden;
 }
 
-.main #main_vid {
+.home {
     position: absolute;
+    width: 100%;
+    background-color: rgba(65, 73, 74, 0.6);
+    top: 0px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main #main_vid {
+    position: relative;
+    height: 100%;
+    object-fit: cover;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
 }   
 
-/* .main #main_image {
-    max-height: 100vh;
-} */
-
+/* 
 .home .main_media{
     position: relative;
     top: 50%;
     opacity: 0.4;
-    /* height: 100vh; */
     left: 50%;
     transform: translate(-50%, -50%);
-    /* height: 100%; */
-    /* width: 100%; */
-}
+} */
 
 .home #content {
     position: absolute;
