@@ -37,7 +37,6 @@ export default function LinearNavBar ({sb, showVideo, handleShowVideo, showBar, 
 
     
     const handleChange = (e) => {
-        console.log(e.target.checked)
         if (e.target.checked) { handleShowVideo(true); }
         else { handleShowVideo(false); }
     }

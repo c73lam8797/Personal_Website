@@ -23,7 +23,6 @@ export default function DropdownNavBar ({sb, showVideo, handleShowVideo, clicked
     }, []);
     
     const handleChange = (e) => {
-        console.log(e.target.checked)
         if (e.target.checked) { handleShowVideo(true); }
         else { handleShowVideo(false); }
     }
