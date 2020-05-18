@@ -22,7 +22,8 @@
     "react-scripts": "^2.1.8",
     "react-youtube": "^7.11.2",
     "redux": "^4.0.5",
-    "video-react": "^0.14.1"
+    "video-react": "^0.14.1",
+    "yarn": "^1.22.4"
   },
   "scripts": {
     "start": "react-scripts start",
