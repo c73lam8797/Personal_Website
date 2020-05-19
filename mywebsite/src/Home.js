@@ -6,6 +6,20 @@ import './CSS/home.css';
 
 
 export default function Home({showVideo, isMobile}) {
+  useEffect(()=> {
+    document.getElementById("main_image").style.visibility = "hidden";
+  }, [])
+
+  useEffect(()=> {
+    setVisibility();
+  })
+
+  const setVisibility = (e) => {
+    if (!showVideo) {
+      document.getElementById("main_image").style.visibility = "visible";
+    }
+  }
+
   return (
     <div className="home_overlay" id="home_overlay">
       {showVideo? 
@@ -27,6 +41,7 @@ export default function Home({showVideo, isMobile}) {
         id="main_image"
         src = {alt_background}
         alt = "background"
+        onLoad = {setVisibility}
         >  
         </img>
     <div className="home" id="home">
