@@ -23,4 +23,4 @@
   * Contact
 
 ## Future Implementations
-* Asdf
+* Smooth out loading by lazy loading code and images
