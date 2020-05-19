@@ -6,13 +6,16 @@ export function Initial() {
         <div style={{ 
         width: "100%", 
         height: "100vh", 
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         }}>
             <CircularProgress color="secondary" style={{
                 zIndex: "999",
-                position: "relative",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)"
+                // position: "relative",
+                // top: "50%",
+                // left: "50%",
+                // transform: "translate(-50%, -50%)"
             }}/>
         </div>
     )
