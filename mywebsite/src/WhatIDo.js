@@ -28,7 +28,7 @@ export default function WhatIDo() {
     const tech_back = {
         header: "Technology",
         body: [
-            "I code — I know C++, C#, Python, JS, HTML, CSS. So far, I have done most on my work on technologies such as React, Node, Blazor Web Assembly, ASP.NET Core, SQL Server, and Entity Framework with a focus in web development. I have also used Tensorflow to dabble in machine learning. Some of the things I've worked on include: experimenting with different sequence to sequence models to build a chatbot and using image classification to recognize cells infected with Malaria.",
+            "I code — I know C++, C#, Python, TypeScript, JavaScript, HTML, CSS. So far, I have done most on my work on technologies such as React, LINQ, Node, Blazor Web Assembly, ASP.NET Core, SQL Server, and Entity Framework with a focus in web development. I have also used Tensorflow to dabble in machine learning - some of the things I've worked on include: experimenting with different sequence to sequence models to build a chatbot and using image classification to recognize cells infected with Malaria.",
             "Currently, I am co-leading a design team to devise an Arduino based project that assists with gait retraining for people with Parkinson's disease."
         ]
     }
