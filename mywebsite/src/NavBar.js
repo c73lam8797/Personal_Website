@@ -21,6 +21,11 @@ const NavBar = forwardRef(
         }
     }));
 
+    useEffect(()=> {
+        scrollFunction();
+        console.log(resize);
+    }, [resize])
+
 
     useEffect(() => {
         window.addEventListener('resize', resizeFunction);       

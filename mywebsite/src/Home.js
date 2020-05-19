@@ -6,35 +6,6 @@ import './CSS/home.css';
 
 
 export default function Home({showVideo, isMobile}) {
-  // useEffect (()=> {
-  //   setDimensions();
-  //   // if (showVideo) {
-  //   //     document.getElementById("main_image").style.visibility = "hidden";
-  //   // }
-  //   // else {
-  //   //   document.getElementById("main_image").style.visibility = "visible";
-  //   // }
-  // })
-
-  // useEffect(()=> {
-  //   window.addEventListener('resize', setDimensions);
-  // }, [])
-
-  // const setDimensions = () => {
-  //   const media = Array.from(document.getElementsByClassName("main_media"));
-  //   media.forEach(m => {
-  //       // if (!isMobile) {
-  //         m.style.height = "100%";  
-  //         m.style.width = "auto";
-  
-  //         if (m.clientWidth < window.innerWidth) {
-  //           m.style.width = "100%";
-  //           m.style.height = "auto";
-  //         }
-  //   })
-  // }
-  // setDimensions();
-
   return (
     <div className="home_overlay" id="home_overlay">
       {showVideo? 
@@ -47,22 +18,17 @@ export default function Home({showVideo, isMobile}) {
           controls={false}
           src = {video}
           playsInline
-          // onLoad={setDimensions}
           >          
       </video>
       : null }
-    <div className="home" id="home">
-      {/* <img 
+        <img 
         className = "main_media"
         id="main_image"
-        autoPlay
-        muted
-        loop
         src = {alt_background}
         alt = "background"
-        onLoad={setDimensions}
         >  
-        </img> */}
+        </img>
+    <div className="home" id="home">
       <div id="content">
           <h1>Charmaine Lam</h1>
           <h3>—  A little bit about my story —</h3>

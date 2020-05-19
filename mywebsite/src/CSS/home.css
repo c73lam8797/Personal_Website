@@ -1,8 +1,9 @@
 .home_overlay {
-    background-image: url(../Media/IMG_1481.jpg);
+    /* background-image: url(../Media/IMG_1481.jpg); */
     background-size: cover;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 .home {
@@ -12,17 +13,22 @@
     top: 0px;
     height: 100%;
     overflow: hidden;
+    z-index: 2;
 }
 
-.main #main_vid {
-    position: relative;
+.main .main_media {
+    position: absolute;
     height: 100%;
     object-fit: cover;
     left: 50%;
     top: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
-}   
+}
+
+.main #main_vid {
+    z-index: 1;
+}
 
 /* 
 .home .main_media{
