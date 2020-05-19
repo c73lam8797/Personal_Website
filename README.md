@@ -24,3 +24,4 @@
 
 ## Future Implementations
 * Smooth out loading by lazy loading code and images
+* Modify CSS etc. to provide support for all browsers
