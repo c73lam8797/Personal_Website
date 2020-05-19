@@ -2,7 +2,7 @@
 
 ## What is this?
 * A website showcasing a little bit of my story
-* Purpose: To have people know me outside of my academics or work 
+* Purpose: To have people know me for more than my involvement in school
 * Personal Choices/Goal: To challenge myself to build an interactive UI with limited usage of other libraries
 * Features/sections:
   * Video/photo background
