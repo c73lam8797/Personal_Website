@@ -17,7 +17,7 @@ export default function Gallery({media, mediaId, name, showSlideshow, changeShow
         if (!expanded) {
             setHeight();
         }
-    }, [maxHeight])
+    })
 
 
     const setHeight = () => {

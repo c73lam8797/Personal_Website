@@ -15,6 +15,7 @@ export default function Home({showVideo, isMobile}) {
           autoPlay
           muted
           loop
+          preload
           controls={false}
           src = {video}
           playsInline
