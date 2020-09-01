@@ -1,9 +1,9 @@
 # Personal Website
 
 ## What is this?
+* A complete rework of my personal website. The first version can be found at c73lam8797.github.io. 
 * A website showcasing a little bit of my story
 * Purpose: To have people know me for more than my involvement in school
-* Personal Choices/Goal: To challenge myself to build an interactive UI with limited usage of other libraries
 * Features/sections:
   * Video/photo background
   * About me
@@ -18,10 +18,14 @@
 * React
   * JavaScript (ES6+)
   * Hooks
-  * Lazy loading
 * Material-UI (https://material-ui.com/)
+* Ant Design (https://ant.design/)
 * Font Awesome Icons (https://fontawesome.com/license/free)
 * React-Bootstrap (https://react-bootstrap.github.io/)
+* React-Swiper & React-Id-Swiper (https://react-id-swiper.ashernguyen.site/)
+* React-Grid-Gallery (https://github.com/benhowell/react-grid-gallery)
+* React Image Lightbox (https://github.com/frontend-collective/react-image-lightbox)
+
 * HTML
 * CSS
 
