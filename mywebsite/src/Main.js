@@ -1,90 +1,111 @@
-import React, { useEffect, useRef, lazy, Suspense, useState } from 'react';
-import './CSS/index.css';
-import { Scrollbars } from 'react-custom-scrollbars';
+import React, { useEffect, useRef, useState } from 'react';
+// import { Scrollbars } from 'react-custom-scrollbars';
 import Button from '@material-ui/core/Button';
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Layout } from 'antd';
+import { Row, Col } from 'react-bootstrap';
+import * as Components from './Components';
+import './CSS/index.css';
+const Header = Layout.Header;
+const Content = Layout.Content;
+const layoutStyles = {margin:'0px', padding: '0px'};
+function Main() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
+  const [backgroundColor, setBackgroundColor] = useState("");
+  const [fontColor, setFontColor] = useState("");
+  const [curPanel, setCurPanel] = useState(""); 
+  
+  let scrollbar = useRef();
+  
+  useEffect(() => {
+    window.addEventListener('resize', resizeFunction);
+    window.addEventListener('scroll', scrollFunction);
 
-import { Initial } from './Load';
-const Home = lazy(() => import('./Home'));
-const NavBar = lazy(() => import('./NavBar'));
-const AboutMe = lazy(() => import('./AboutMe'));
-const Contact = lazy(() => import('./Contact'));
-const Socials = lazy(() => import('./Socials'));
-const WhatIDo = lazy(() => import('./WhatIDo'));
-const Photos = lazy(() => import('./Photos'));
+    scrollFunction();
+  },[])
 
+  useEffect(() => {
+    document.getElementById('content').style.backgroundColor = backgroundColor;
+  }, [backgroundColor])
 
-function Main () {
-    let scrollbar = useRef();
-    let navbar = useRef();
+  useEffect(() => {
+    document.getElementById('content').style.color = fontColor;
+    // console.log(document.getElementById('content').style.color)
+    // console.log(fontColor)
+  },[fontColor])
 
-    const [showVideo, handleShowVideo] = useState(true);
-    const [isMobile, handleIsMobile] = useState(window.innerWidth < 500 ? true : false);
+  // useEffect(() => {
+  //   console.log(curPanel)
+  // },[curPanel])
 
-    useEffect (() => {
-        window.addEventListener('resize', handleResize);
-        handleResize();
-    }, [])
+  const scrollFunction = () => {
+    const scrollPosition = document.body.scrollTop;
+    const checkPosition = scrollPosition + window.innerHeight/3;
+    const sections = Array.from(document.getElementsByClassName("page_section"));
+    const panel = sections.find(e => {
+      const rect = e.getBoundingClientRect();
+      const elementTop = rect.top + scrollPosition;
+      return (elementTop <= checkPosition && elementTop + e.scrollHeight > checkPosition) 
+    });
+    setCurPanel(panel !== undefined && panel !== null ? panel.id : "");
+  }
+  
+  const resizeFunction = () => {
+    setIsMobile(window.innerWidth <= 1024);
+    // setMargin();
+  }
 
-    const handleResize = () => {
-        if (window.innerWidth < 500) {
-            handleIsMobile(true);
-            handleShowVideo(false);
-        }
-        else {
-            handleShowVideo(true);
-            handleIsMobile(false);
-        }
-        setMargin();
+  //+ +const setMargin = () => {
+  //   let a = document.getElementById("scrollbar");
+  //   let div = a.childNodes[0];
+  //   if (a.scrollWidth - div.clientWidth !== 0) {
+  //     div.style.marginRight = Math.abs(a.scrollWidth - div.clientWidth)*-1 + "px";
+  //   }
+  // }
 
-    }
-
-    const setMargin = () => {
-        let a = document.getElementById("scrollbar");
-        // let main = document.getElementById("main_content");
-        let div = a.childNodes[0];
-        if (a.scrollWidth - div.clientWidth !== 0) {
-            div.style.marginRight = Math.abs(a.scrollWidth - div.clientWidth)*-1 + "px";
-        }
-    }
-
-    const scrollUp = () => {
-        scrollbar.current.scrollToTop();
-    }
-
-    return (
-        <div className="main">
-            <Suspense fallback={<Initial />}>
-                
-                <Scrollbars id="scrollbar" autoHide ref={e => {scrollbar.current = e;} }  noscrollx="true" universal
-                    style={{ 
-                        width: "100%", 
-                        height: "100vh",
-                        }} onScroll={() => navbar.current.scroll()}>
-
-                    <NavBar ref={navbar} sb={scrollbar} showVideo={showVideo} handleShowVideo={handleShowVideo} isMobile={isMobile} />
-                    <div className="main_content" id="main_content">
-                        <Home showVideo={showVideo} isMobile={isMobile}/>
-                        <div className="sub_content">
-                            <AboutMe />
-                            <WhatIDo />
-                            <Photos />
-                            <Contact />
-       
-                            <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button>
-                            <div className="placeholder_big"></div>
-                            <div className="placeholder_big"></div>
-                        </div>
-                        {/* <div style={{width: "100%", height: "2000px"}}></div> */}
-                    </div>
-                    <Socials />
-                </Scrollbars>
-               
-            </Suspense>
-        </div>
-    )
-    
-};
+  const scrollUp = () => {
+    // scrollbar.current.scrollToTop();
+    window.scrollTo(0,0);
+  }
+  
+  return (
+    // <div className="main" /*style={{height: '100vh'}}*/>
+      <>
+        <Header id="header">
+          <Components._Navbar isMobile={isMobile} curPanel={curPanel}/>
+        </Header>
+        <Content id="content">
+          <Row style={layoutStyles}>
+            <Col style={layoutStyles}>
+              <Components._Home id="home" showVideo={true} isMobile={isMobile} scrollbar={scrollbar} backgroundColor="rgb(65, 73, 74)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </Col>
+          </Row>
+          <Row style={layoutStyles}>
+            <Col style={layoutStyles}>
+              <Components._AboutMe id="about" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "rgb(131, 83, 83)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </Col>
+          </Row>
+          <Row style={layoutStyles}>
+            <Col style={layoutStyles}>
+              <Components._WhatIDo id="whatido" isMobile={isMobile} scrollbar={scrollbar} backgroundColor="" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </Col>
+          </Row>
+          <Row style={layoutStyles}>
+            <Col style={layoutStyles}>
+              <Components._Photos id="photos" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#4b3e46" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </Col>
+          </Row>
+          <Row style={layoutStyles}>
+            <Col style={layoutStyles}>
+              <Components._Contact id="contact" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#868194" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </Col>
+          </Row>
+        </Content>
+        {curPanel !== 'home' ? <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button> : null}
+      </>
+      
+  );
+}
 
 export default Main; 

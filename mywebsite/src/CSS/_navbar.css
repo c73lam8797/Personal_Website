@@ -1,0 +1,45 @@
+:root {
+  --color: #f7ba8e;
+}
+#navbar {
+  border: none;
+}
+
+#navbar .navItem .nav, #drawer .nav {
+  color: white;
+  text-decoration: none;
+}
+
+#drawer .nav {
+  padding: 3px;
+
+}
+
+#drawer .ant-drawer-content {
+  background-color: black;
+}
+
+#drawer .ant-drawer-close{
+  color: white;
+  outline: none;
+}
+
+#drawer .nav:hover {
+  background-color: rgb(50, 102, 168);
+}
+
+/* #navbar .navItem .ant-menu-item-selected {
+  border-bottom: solid 2px white !important;
+} */
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active {
+  border-bottom: solid 3px #df5e5e !important;
+  color: var(--color);
+}
+
+#toggle {
+  background-color: rgba(122, 128, 133, 0.5);
+  margin: 5px;
+  border: solid 1px white;
+  /* color: white; */
+}

@@ -1,0 +1,20 @@
+:root {
+  --color: #f7ba8e;
+}
+
+#contact #resume_a, #contact #contact #resume_a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+#contact .contact_buttons:hover{
+  background-color: var(--color);
+}
+
+#contact #github, #contact #linkedin {
+  color: white;
+}
+
+#contact #github:hover, #contact #linkedin:hover  {
+  color: var(--color);
+}

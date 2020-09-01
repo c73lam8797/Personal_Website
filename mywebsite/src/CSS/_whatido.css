@@ -1,0 +1,59 @@
+#whatido .section_title_bottom{
+  color: #df5e5e;
+}
+
+#whatido .section_title{
+  margin: 0px;
+  font-weight: bold;
+}
+
+#whatido .card_section_title {
+  font-weight: bold;
+}
+
+#whatido .front {
+  display: flex;
+  position: absolute;
+  backface-visibility: hidden;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+}
+
+#whatido .back {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  height: 100%; 
+}
+
+#whatido .card {
+  box-shadow: 0 6px 8px 0 rgb(104, 109, 110);
+  text-align: center;
+  background-color: white;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 5px;
+  word-wrap:break-word;
+}
+
+#whatido .column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0px 15px;
+  width: 30%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  justify-content: center;
+  position: relative;
+}
+
+#whatido .flip_row {
+  perspective: 1000px;
+}
+
+#whatido .col_active {
+  transform: rotateY(180deg);
+}
+
