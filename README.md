@@ -1,4 +1,4 @@
-# Personal Website
+# charmainelam.com : Personal Website
 
 ## What is this?
 * A complete rework of my personal website. The first version can be found at https://c73lam8797.github.io/Personal_Website_V0/
