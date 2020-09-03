@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'antd';
 import { Row, Col } from 'react-bootstrap';
 import * as Components from './Components';
+// import LazyLoad from 'react-lazyload';
 import './CSS/index.css';
 const Header = Layout.Header;
 const Content = Layout.Content;
@@ -31,13 +32,7 @@ function Main() {
 
   useEffect(() => {
     document.getElementById('content').style.color = fontColor;
-    // console.log(document.getElementById('content').style.color)
-    // console.log(fontColor)
   },[fontColor])
-
-  // useEffect(() => {
-  //   console.log(curPanel)
-  // },[curPanel])
 
   const scrollFunction = () => {
     const scrollPosition = document.body.scrollTop;
@@ -70,40 +65,45 @@ function Main() {
   }
   
   return (
-    // <div className="main" /*style={{height: '100vh'}}*/>
-      <>
-        <Header id="header">
-          <Components._Navbar isMobile={isMobile} curPanel={curPanel}/>
-        </Header>
-        <Content id="content">
-          <Row style={layoutStyles}>
-            <Col style={layoutStyles}>
-              <Components._Home id="home" showVideo={true} isMobile={isMobile} scrollbar={scrollbar} backgroundColor="rgb(65, 73, 74)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            </Col>
-          </Row>
-          <Row style={layoutStyles}>
-            <Col style={layoutStyles}>
-              <Components._AboutMe id="about" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "rgb(131, 83, 83)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            </Col>
-          </Row>
-          <Row style={layoutStyles}>
-            <Col style={layoutStyles}>
+    <>
+      <Header id="header">
+        <Components._Navbar isMobile={isMobile} curPanel={curPanel}/>
+      </Header>
+      <Content id="content">
+        <Row style={layoutStyles}>
+          <Col style={layoutStyles}>
+            <Components._Home id="home" showVideo={true} isMobile={isMobile} scrollbar={scrollbar} backgroundColor="rgb(65, 73, 74)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+          </Col>
+        </Row>
+        <Row style={layoutStyles}>
+          <Col style={layoutStyles}>
+            <Components._AboutMe id="about" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "rgb(131, 83, 83)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+          </Col>
+        </Row>
+        <Row style={layoutStyles}>
+          <Col style={layoutStyles}>
+            {/* <LazyLoad once offset={500} height="100vh"> */}
               <Components._WhatIDo id="whatido" isMobile={isMobile} scrollbar={scrollbar} backgroundColor="" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            </Col>
-          </Row>
-          <Row style={layoutStyles}>
-            <Col style={layoutStyles}>
+            {/* </LazyLoad> */}
+          </Col>
+        </Row>
+        <Row style={layoutStyles}>
+          <Col style={layoutStyles}>
+            {/* <LazyLoad once offset={1000} height="100vh"> */}
               <Components._Photos id="photos" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#4b3e46" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            </Col>
-          </Row>
-          <Row style={layoutStyles}>
-            <Col style={layoutStyles}>
+            {/* </LazyLoad> */}
+          </Col>
+        </Row>
+        <Row style={layoutStyles}>
+          <Col style={layoutStyles}>
+            {/* <LazyLoad once offset={500} height="100vh"> */}
               <Components._Contact id="contact" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#868194" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            </Col>
-          </Row>
-        </Content>
-        {curPanel !== 'home' ? <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button> : null}
-      </>
+            {/* </LazyLoad> */}
+          </Col>
+        </Row>
+      </Content>
+      {curPanel !== 'home' ? <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button> : null}
+    </>
       
   );
 }

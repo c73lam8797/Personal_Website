@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import * as Helper from './Helpers';
+import * as Helper from '../Helpers';
 import Container from 'react-bootstrap/Container'
-import { Row, Col } from 'react-bootstrap';
-import Gallery from 'react-grid-gallery';
+import { Row } from 'react-bootstrap';
+// import Gallery from 'react-grid-gallery';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Swiper from 'react-id-swiper';
 import { SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, EffectCoverflow, Lazy } from 'swiper';
 import Lightbox from 'react-image-lightbox';
-import '../CSS/_photos.css';
+import LazyLoad from 'react-lazyload';
+import '../../CSS/_photos.css';
+import { ExpandableGallery } from './ExpandableGallery';
 import {
   art_dance,
   photography
-} from '../Media/_export';
+} from '../../Media/_export';
+
+// const placeholder = <div style={{height: 'auto', width: '100%', display: 'flex', justifyContent: 'center', verticalAlign: 'center'}}>
+//    <Spinner animation="border" />
+//   </div>
 
 const params = {
   spaceBetween: 10,
@@ -79,39 +85,40 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
     <Container fluid id={id} style={{padding: '10px 0px'}} className="page_section">
       <Helper.SectionHeader title="PHOTOS" />
       <Helper.SectionSubtitle subtitle="Here are a few snips of my drawings/processes, dance media, and photos I've taken over the past few years! While the photo quality or edits may not be the best, I still think it's worthwhile to share how I see the world with everyone." />
+      <LazyLoad height="100vh" once offset={800}>
       {isMobile ? 
       <>
-      <Row style={layoutStyles} className="justify-content-center">
-        <h5 className="gallery_title">ART + DANCE</h5>
-      </Row>
+        <Row style={layoutStyles} className="justify-content-center">
+          <h5 className="gallery_title">ART + DANCE</h5>
+        </Row>
         <Jumbotron fluid>
           <Swiper {...params}>  
             {art_dance.map((x,i) => {
               return (
                 // <div style={{backgroundImage: x.src}} />
                 <SwiperSlide key={i} style={{display: 'flex', justifyContent: 'center'}}>
-                  <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
+                    <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
                   <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
                 </SwiperSlide>
-              )
-            })}
-          </Swiper>
-        </Jumbotron>
-        <Row style={layoutStyles} className="justify-content-center">
-          <h5 className="gallery_title">PHOTOGRAPHY</h5>
-        </Row>
-        <Jumbotron fluid>
-          <Swiper {...params}>  
-            {photography.map((x,i) => {
-              return (
-                <SwiperSlide key={i} style={{display: 'flex', justifyContent: 'center'}}>
-                  <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
-                  <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-        </Jumbotron>
+                )
+              })}
+            </Swiper>
+          </Jumbotron>
+          <Row style={layoutStyles} className="justify-content-center">
+            <h5 className="gallery_title">PHOTOGRAPHY</h5>
+          </Row>
+          <Jumbotron fluid>
+            <Swiper {...params}>  
+              {photography.map((x,i) => {
+                return (
+                  <SwiperSlide key={i} style={{display: 'flex', justifyContent: 'center'}}>
+                      <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
+                    <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+          </Jumbotron>
         {isOpen && 
           <Lightbox
             mainSrc={curPhoto}
@@ -125,7 +132,9 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
       </>
       :
       <>
-        <Jumbotron fluid>
+       <ExpandableGallery id="artdance" title="ART + DANCE" photos={art_dance}/>
+       <ExpandableGallery id="photography" title="PHOTOGRAPHY" photos={photography}/>
+        {/* <Jumbotron fluid className="gallery_wrapper">
           <Row style={layoutStyles} className="justify-content-center">
             <h5 className="gallery_title">ART + DANCE</h5>
           </Row>
@@ -135,7 +144,10 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
             </Col>
           </Row>
         </Jumbotron>
-        <Jumbotron fluid>
+        <Row style={layoutStyles} className="justify-content-center">
+          <Button className="expand_gallery"></Button>
+        </Row>
+        <Jumbotron fluid className="gallery_wrapper">
           <Row style={layoutStyles} className="justify-content-center">
             <h5 className="gallery_title">PHOTOGRAPHY</h5>
           </Row>
@@ -145,7 +157,16 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
             </Col>
           </Row>
         </Jumbotron>
-      </>}
+        <Row style={layoutStyles} className="justify-content-center">
+          <Button className="expand_gallery" onClick={handleClickExpand}>
+                        {expanded?
+                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleUp} size="2x" /> : 
+                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleDown} size="2x" /> }
+                    </Button>
+        </Row> */}
+      </>
+      }
+      </LazyLoad>
     </Container>
   );
 }
