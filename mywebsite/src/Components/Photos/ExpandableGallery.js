@@ -54,7 +54,7 @@ export function ExpandableGallery({ id, photos, title }) {
         <h5 className="gallery_title">{title}</h5>
       </Row>
       <Row className="justify-content-center" style={layoutStyles}>
-        <Col>
+        <Col style={{position: 'relative'}}>
           <div className="overlay" id={`overlay_${id}`}/>
           <Gallery images={photos} />
         </Col>
