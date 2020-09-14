@@ -18,16 +18,16 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --color: #f7ba8e;
+}
+
 #home h1, #home h3 {
   color: white;
 }
 
 .page_section .section_header, .page_section .section_subtitle {
   color: inherit;
-}
-
-#photos .jumbotron {
-  background-color: transparent;
 }
 
 .ant-layout-content {
@@ -55,6 +55,7 @@ html {
   right: 0px;
   margin: 10px;
   background-color: rgba(122, 128, 133, 0.5);
-  border: solid 1px white;
+  border: solid 1px var(--color);
+  color: white;
   outline: none;
 }

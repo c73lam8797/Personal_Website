@@ -50,7 +50,7 @@ export function _Contact({ id, isMobile, scrollbar, backgroundColor, setBackgrou
   }
 
   return (
-    <Container fluid id={id} style={{padding: '10px 10px 60px 10px', height: '100vh'}} className="page_section">
+    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%', height: '100vh'}} className="page_section">
       <Helper.SectionHeader title="CONTACT" />
       <Helper.SectionSubtitle subtitle="Let's Connect!"/>
       <Helper.SectionSubtitle subtitle="I am always looking to create new connections, whether it's for a bubble tea (or coffee) chat or an opportunity to collaborate." />

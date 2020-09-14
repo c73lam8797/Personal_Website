@@ -20,6 +20,10 @@
   height: 100%;
 }
 
+#photos .jumbotron {
+  background-color: transparent;
+}
+
 #photos .gallery_title {
   color: white;
   border-bottom: solid 2px #b56565;

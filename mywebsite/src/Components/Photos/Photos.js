@@ -55,20 +55,24 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
   },[curPanel])
   
   useEffect(() => {
-    if (isMobile) {
-      Array.from(document.getElementsByClassName("images")).forEach(x => {
-        x.addEventListener("click", handleImageClick);
-      });
-    }
+    // // if (isMobile) {
+    //   Array.from(document.getElementsByClassName("images")).forEach(x => {
+    //     x.addEventListener("click", handleImageClick);
+    //   });
+    // // }
     
-    return (() => {
-      if (isMobile) {
-        Array.from(document.getElementsByClassName("images")).forEach(x => {
-          x.removeEventListener("click", handleImageClick);
-        });
-      }
-    })
+    // return (() => {
+    //   // if (isMobile) {
+    //     Array.from(document.getElementsByClassName("images")).forEach(x => {
+    //       x.removeEventListener("click", handleImageClick);
+    //     });
+    //   // }
+    // })
   },[isMobile])
+
+  const addEventListener = (e) => {
+    e.target.addEventListener("click", handleImageClick);
+  }
 
   const handleImageClick = (e) => {
     if (e.target.parentElement.classList.contains("swiper-slide-active")) {
@@ -82,7 +86,7 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
   // },[curPhoto])
   
   return (
-    <Container fluid id={id} style={{padding: '10px 0px'}} className="page_section">
+    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%'}} className="page_section">
       <Helper.SectionHeader title="PHOTOS" />
       <Helper.SectionSubtitle subtitle="Here are a few snips of my drawings/processes, dance media, and photos I've taken over the past few years! While the photo quality or edits may not be the best, I still think it's worthwhile to share how I see the world with everyone." />
       <LazyLoad height="100vh" once offset={800}>
@@ -97,7 +101,7 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
               return (
                 // <div style={{backgroundImage: x.src}} />
                 <SwiperSlide key={i} style={{display: 'flex', justifyContent: 'center'}}>
-                    <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
+                    <img id={x.src} src={x.src} onLoad={addEventListener} className="swiper-lazy images" alt=""/>
                   <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
                 </SwiperSlide>
                 )

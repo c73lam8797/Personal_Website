@@ -15,7 +15,7 @@ export function _AboutMe({id, isMobile, scrollbar, backgroundColor, setBackgroun
 
 	const rowStyles = {margin: '0px'};
 	return (
-		<Container id={id} fluid style={{padding: '10px 10px 60px 10px'}} className="page_section">
+		<Container id={id} fluid style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%'}} className="page_section">
 			<Helper.SectionHeader title="ABOUT ME" />
 			<Row style={rowStyles} xs={1} sm={1} md={2} lg={2} xl={2}> 
 				<Col style={{alignSelf: 'center'}}>
