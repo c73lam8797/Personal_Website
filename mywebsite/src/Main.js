@@ -48,7 +48,7 @@ function Main() {
 
 
     //check if page is being scrolled up or down to set navbar transitions
-    if (!isMobile) {
+    if (!isMobile && window.innerWidth > 1024) {
       let navbar = document.getElementById('navbar');
       if (window.scrollY < lastScrollPosition) { //scrolled up
         navbar.classList.remove('scrolled_down');

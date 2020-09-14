@@ -24,7 +24,7 @@ export function _AboutMe({id, isMobile, scrollbar, backgroundColor, setBackgroun
 				<Col style={{alignSelf: 'center'}}>
 					<Image src={pic} rounded style={{maxWidth: '100%'}}/>
 				</Col>
-				<Col style={{padding: '15px'}}>
+				<Col style={{padding: '15px'}} className="card_wrapper">
 					<Card className="aboutme_card" variant="outlined">
 						<CardContent>
 							<Row style={rowStyles}><p>Born Canadian and proudly Asian — my name is Charmaine and I am a Biomedical Engineering student pursuing an option in artificial intelligence at the University of Waterloo.</p></Row>
