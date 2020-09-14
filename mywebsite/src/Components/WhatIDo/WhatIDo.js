@@ -41,8 +41,8 @@ function Section({ header = "", id="", front = null, back = [""], _fontColor="",
     id: "technology",
     front: <FontAwesomeIcon style={iconStyles} className="card_face" icon={faCode} size="5x" />,
     back: [
-      "I code — I know C++, C#, Python, TypeScript, JavaScript, HTML, CSS. So far, I have done most on my work on technologies such as React, LINQ, Node, Blazor Web Assembly, ASP.NET Core, SQL Server, and Entity Framework with a focus in web development. I have also used Tensorflow to dabble in machine learning - some of the things I've worked on include: experimenting with different sequence to sequence models to build a chatbot and using image classification to recognize cells infected with Malaria.",
-      "Currently, I am co-leading an engineering design team to devise an Arduino based project that assists with gait retraining for people with Parkinson's disease."
+      "I code — I know C++, C#, Python, TypeScript, JavaScript, HTML, CSS. So far, I have done most of my work on technologies such as React, Vue, LINQ, Node, Blazor Web Assembly, ASP.NET Core, SQL Server, and Entity Framework with a focus in web development. I have also used TensorFlow to dabble in machine learning - some of the things I've worked on include: experimenting with different sequence to sequence models to build a chatbot and using image classification to translate sign language.",
+      "I have also co-led an engineering design team to devise an Arduino based project that assists with gait retraining for people with Parkinson's disease."
     ],
     _fontColor: "#667292",
     _backgroundColor: "#f1e3dd",
