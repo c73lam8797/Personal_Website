@@ -8,16 +8,9 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import '../../CSS/_photos.css';
 
 const layoutStyles = {margin:'0px', padding: '0px'};
-const maxHeight = "500px";
 export function ExpandableGallery({ id, photos, title }) {
   const [expanded, setExpanded] = useState(false);
   const isMounted = useRef(false);
-
-  // useLayoutEffect(() => {
-  //   if (!isMounted.current) {
-  //     isMounted.current = true;
-  //   }
-  // })
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -32,13 +25,16 @@ export function ExpandableGallery({ id, photos, title }) {
     let container = document.getElementById(id);
     let overlay = document.getElementById(`overlay_${id}`);
     if(expanded) {
-      container.style.maxHeight = "unset";
-      overlay.style.visibility = "hidden";
+      container.classList.add("expanded");
+      overlay.classList.add("expanded");
+      container.classList.remove("not_expanded");
+      overlay.classList.remove("not_expanded");
     }
     else { //otherwise, limit
-      container.style.maxHeight = maxHeight;
-      container.style.overflow = "hidden";
-      overlay.style.visibility = "visible";
+      container.classList.add("not_expanded");
+      overlay.classList.add("not_expanded");
+      container.classList.remove("expanded");
+      overlay.classList.remove("expanded");
     }
     
   }
@@ -49,7 +45,7 @@ export function ExpandableGallery({ id, photos, title }) {
   
   return (
   <>
-   <Jumbotron fluid className="gallery_wrapper" id={id}>
+   <Jumbotron fluid className="gallery_wrapper not_expanded" id={id}>
       <Row style={layoutStyles} className="justify-content-center">
         <h5 className="gallery_title">{title}</h5>
       </Row>

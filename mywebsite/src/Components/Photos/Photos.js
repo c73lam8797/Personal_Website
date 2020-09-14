@@ -118,36 +118,6 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
       <>
        <ExpandableGallery id="artdance" title="ART + DANCE" photos={art_dance}/>
        <ExpandableGallery id="photography" title="PHOTOGRAPHY" photos={photography}/>
-        {/* <Jumbotron fluid className="gallery_wrapper">
-          <Row style={layoutStyles} className="justify-content-center">
-            <h5 className="gallery_title">ART + DANCE</h5>
-          </Row>
-          <Row className="justify-content-center" style={layoutStyles}>
-            <Col>
-              <Gallery images={art_dance}/>
-            </Col>
-          </Row>
-        </Jumbotron>
-        <Row style={layoutStyles} className="justify-content-center">
-          <Button className="expand_gallery"></Button>
-        </Row>
-        <Jumbotron fluid className="gallery_wrapper">
-          <Row style={layoutStyles} className="justify-content-center">
-            <h5 className="gallery_title">PHOTOGRAPHY</h5>
-          </Row>
-          <Row className="justify-content-center" style={layoutStyles}>
-            <Col>
-              <Gallery images={photography} />
-            </Col>
-          </Row>
-        </Jumbotron>
-        <Row style={layoutStyles} className="justify-content-center">
-          <Button className="expand_gallery" onClick={handleClickExpand}>
-                        {expanded?
-                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleUp} size="2x" /> : 
-                        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleDown} size="2x" /> }
-                    </Button>
-        </Row> */}
       </>
       }
       </LazyLoad>

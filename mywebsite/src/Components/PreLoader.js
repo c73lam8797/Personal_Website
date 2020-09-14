@@ -12,15 +12,15 @@ const StyledProgress = withStyles({
 
 
 export function PreLoader({id, isLoading, setIsLoading}) {
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(1);
   
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        if (oldProgress === 100) {
+        if (oldProgress > 100) {
           return setIsLoading(false);
         }
-        return oldProgress +1;
+        return oldProgress*1.05;
       });
     }, 30);
 
