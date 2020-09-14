@@ -116,7 +116,7 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
               {photography.map((x,i) => {
                 return (
                   <SwiperSlide key={i} style={{display: 'flex', justifyContent: 'center'}}>
-                      <img id={x.src} src={x.src} className="swiper-lazy images" alt=""/>
+                      <img id={x.src} onLoad={addEventListener} src={x.src} className="swiper-lazy images" alt=""/>
                     <div className="swiper-lazy-preloader swiper-lazy-preloader-white" />
                   </SwiperSlide>
                 )

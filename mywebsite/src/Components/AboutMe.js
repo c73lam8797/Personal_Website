@@ -4,6 +4,7 @@ import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import { Row, Col } from 'react-bootstrap';
 import * as Helper from './Helpers'; 
+import '../CSS/_aboutme.css';
 
 export function _AboutMe({id, isMobile, scrollbar, backgroundColor, setBackgroundColor, curPanel, setFontColor}) {
 	useEffect(() => {
@@ -17,7 +18,7 @@ export function _AboutMe({id, isMobile, scrollbar, backgroundColor, setBackgroun
 	return (
 		<Container id={id} fluid style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%'}} className="page_section">
 			<Helper.SectionHeader title="ABOUT ME" />
-			<Row style={rowStyles} xs={1} sm={1} md={2} lg={2} xl={2}> 
+			<Row style={rowStyles} xs={1} sm={1} md={1} lg={1} xl={2}> 
 				<Col style={{alignSelf: 'center'}}>
 					<Image src={pic} rounded style={{maxWidth: '100%'}}/>
 				</Col>

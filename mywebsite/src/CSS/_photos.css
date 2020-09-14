@@ -40,6 +40,10 @@
   outline: none;
   border: 0.5px solid white;
   z-index: 1000;
+  
+}
+
+#photos .expand_gallery:hover {
   animation: bounce 0.75s linear 0s infinite;
 }
 
