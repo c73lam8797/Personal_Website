@@ -11,6 +11,7 @@ import './CSS/index.css';
 const Header = Layout.Header;
 const Content = Layout.Content;
 const layoutStyles = {margin:'0px', padding: '0px'};
+let lastScrollPosition = 0;
 function Main() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
   const [backgroundColor, setBackgroundColor] = useState("");
@@ -44,8 +45,32 @@ function Main() {
       return (elementTop <= checkPosition && elementTop + e.scrollHeight > checkPosition) 
     });
     setCurPanel(panel !== undefined && panel !== null ? panel.id : "");
+
+
+    //check if page is being scrolled up or down to set navbar transitions
+    if (!isMobile) {
+      let navbar = document.getElementById('navbar');
+      if (window.scrollY < lastScrollPosition) { //scrolled up
+        navbar.classList.remove('scrolled_down');
+        navbar.classList.add('scrolled_up');
+        // Array.from(navbar.childNodes).forEach(x => {
+        //   x.classList.remove('scrolled_down');
+        //   x.classList.add('scrolled_up');
+        // })
+      }
+      else {
+        navbar.classList.remove('scrolled_up');
+        navbar.classList.add('scrolled_down');
+        // Array.from(navbar.childNodes).forEach(x => {
+        //   x.classList.add('scrolled_down');
+        //   x.classList.remove('scrolled_up');
+        // })
+      }
+      lastScrollPosition = window.scrollY;
+    }
   }
-  
+
+
   const resizeFunction = () => {
     setIsMobile(window.innerWidth <= 1024);
     // setMargin();

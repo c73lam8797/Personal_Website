@@ -30,6 +30,14 @@ html {
   color: inherit;
 }
 
+/* .page_section .section_header::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: white;
+  width: 10%;
+} */
+
 .ant-layout-content {
   background: rgb(65, 73, 74);
   transition: background-color 0.5s ease;

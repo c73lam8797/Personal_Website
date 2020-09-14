@@ -10,9 +10,18 @@
   text-decoration: none;
 }
 
+.scrolled_up{
+  transform: translateY(0) !important;
+  transition: transform 0.5s ease-in-out !important;
+}
+
+.scrolled_down{
+  transform: translateY(-110%) !important;
+  transition: transform 0.5s ease-in-out !important;
+}
+
 #drawer .nav {
   padding: 3px;
-
 }
 
 #drawer .ant-drawer-content {
@@ -27,10 +36,6 @@
 #drawer .nav:hover {
   background-color: rgb(50, 102, 168);
 }
-
-/* #navbar .navItem .ant-menu-item-selected {
-  border-bottom: solid 2px white !important;
-} */
 
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active {
   border-bottom: solid 3px #df5e5e !important;

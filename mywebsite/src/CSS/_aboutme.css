@@ -1,3 +1,27 @@
+:root {
+  --color: #f7ba8e;
+}
+
 #about li {
   margin: 5px 0px;
 }
+
+#about .aboutme_card {
+  height: 100%;
+  padding: 10px;
+  background-color: rgba(107, 103, 103, 0.5);
+  color: white;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+#about .aboutme_card ul{
+  list-style: none;
+}
+
+#about .aboutme_card ul li::before {
+  content: '▹';
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--color);
+}
+

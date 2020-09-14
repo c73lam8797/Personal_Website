@@ -11,6 +11,7 @@ export function _Navbar({isMobile = false, curPanel}) {
   const [selected, setSelected] = useState('0');
 
   const [showNav, setShowNav] = useState(false);
+
   useEffect(() => {
     setShowNav(curPanel !== "home");
   },[curPanel])
