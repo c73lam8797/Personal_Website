@@ -41,7 +41,7 @@ export function CardSection({sectionSubtitle, cardSection, isMobile, setBackgrou
 
   const cardStyles = {...layoutStyles, color: (isFlipped ? fontColorFlipped : fontColor)};
   return (
-    <Jumbotron className="card_section" id={id} fluid style={{height: '100vh', maxHeight: '100vh', margin: '0px', backgroundColor: (isFlipped ? backgroundColorFlipped : "transparent") }}>
+    <Jumbotron className="card_section" id={id} fluid style={{height: '100vh', maxHeight: '100vh', margin: '0px', backgroundColor: (isFlipped ? backgroundColorFlipped : "transparent"), padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%' }}>
       {isMobile ?
       <>
         <Row className="justify-content-center" style={{...layoutStyles}}> 

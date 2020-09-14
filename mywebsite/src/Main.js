@@ -50,21 +50,14 @@ function Main() {
     //check if page is being scrolled up or down to set navbar transitions
     if (!isMobile && window.innerWidth > 1024) {
       let navbar = document.getElementById('navbar');
-      if (window.scrollY < lastScrollPosition) { //scrolled up
+      if (navbar === null || navbar === undefined) return;
+      if (window.scrollY < lastScrollPosition || window.scrollY === 0) { //scrolled up
         navbar.classList.remove('scrolled_down');
         navbar.classList.add('scrolled_up');
-        // Array.from(navbar.childNodes).forEach(x => {
-        //   x.classList.remove('scrolled_down');
-        //   x.classList.add('scrolled_up');
-        // })
       }
       else {
         navbar.classList.remove('scrolled_up');
         navbar.classList.add('scrolled_down');
-        // Array.from(navbar.childNodes).forEach(x => {
-        //   x.classList.add('scrolled_down');
-        //   x.classList.remove('scrolled_up');
-        // })
       }
       lastScrollPosition = window.scrollY;
     }
