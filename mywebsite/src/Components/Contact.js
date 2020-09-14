@@ -50,7 +50,7 @@ export function _Contact({ id, isMobile, scrollbar, backgroundColor, setBackgrou
   }
 
   return (
-    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%', height: '100vh'}} className="page_section">
+    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%', minHeight: '100vh'}} className="page_section">
       <Helper.SectionHeader title="CONTACT" />
       <Helper.SectionSubtitle subtitle="Let's Connect!"/>
       <Helper.SectionSubtitle subtitle="I am always looking to create new connections, whether it's for a bubble tea (or coffee) chat or an opportunity to collaborate." />
@@ -74,6 +74,9 @@ export function _Contact({ id, isMobile, scrollbar, backgroundColor, setBackgrou
       <Row className="justify-content-center" style={{...layoutStyles, marginTop: '50px'}}>
         <a style={{margin: '10px'}} target="_blank" rel="noopener noreferrer" href = "https://www.github.com/c73lam8797"><FontAwesomeIcon id="github" icon={faGithub} size="4x" /></a>
         <a style={{margin: '10px'}} target="_blank" rel="noopener noreferrer" href = "https://www.linkedin.com/in/lam-charmaine/"><FontAwesomeIcon id="linkedin" icon={faLinkedin} size="4x" /></a>
+      </Row>
+      <Row className="justify-content-center" style={{...layoutStyles, margin: '50px 0px'}}>
+        <small>Built and designed by Charmaine Lam.</small>
       </Row>
     </Container>
   )
