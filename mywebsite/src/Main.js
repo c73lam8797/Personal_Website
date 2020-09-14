@@ -17,6 +17,7 @@ function Main() {
   const [backgroundColor, setBackgroundColor] = useState("");
   const [fontColor, setFontColor] = useState("");
   const [curPanel, setCurPanel] = useState(""); 
+
   
   let scrollbar = useRef();
   
@@ -122,7 +123,6 @@ function Main() {
       </Content>
       {curPanel !== 'home' ? <Button id="scrollTop" onClick={scrollUp} classes={{label: 'label'}}><FontAwesomeIcon icon={faAngleUp} /></Button> : null}
     </>
-      
   );
 }
 

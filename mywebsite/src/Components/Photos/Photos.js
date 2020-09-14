@@ -54,37 +54,17 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
     }
   },[curPanel])
   
-  useEffect(() => {
-    // // if (isMobile) {
-    //   Array.from(document.getElementsByClassName("images")).forEach(x => {
-    //     x.addEventListener("click", handleImageClick);
-    //   });
-    // // }
-    
-    // return (() => {
-    //   // if (isMobile) {
-    //     Array.from(document.getElementsByClassName("images")).forEach(x => {
-    //       x.removeEventListener("click", handleImageClick);
-    //     });
-    //   // }
-    // })
-  },[isMobile])
-
   const addEventListener = (e) => {
     e.target.addEventListener("click", handleImageClick);
   }
 
   const handleImageClick = (e) => {
-    if (e.target.parentElement.classList.contains("swiper-slide-active")) {
+    if (e.target.parentElement.WclassList.contains("swiper-slide-active")) {
       setIsOpen(true);
       setCurPhoto(e.target.id);
     }
   }
 
-  // useEffect(() => {
-  //   console.log(curPhoto)
-  // },[curPhoto])
-  
   return (
     <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%'}} className="page_section">
       <Helper.SectionHeader title="PHOTOS" />
