@@ -60,10 +60,14 @@ export function CardSection({sectionSubtitle, cardSection, isMobile, setBackgrou
       </>
       :
       <Row className="justify-content-center" style={{...layoutStyles, height: '100%'}}> 
-        <Col style={{...layoutStyles}}>
-          <Row className="justify-content-center" style={{...verticalAlign, margin: '0px 0px 15px 0px'}}>{sectionSubtitle}</Row> 
-          <Row className="justify-content-center" style={{...verticalAlign, color: (isFlipped ? fontColorFlipped : fontColor)}}>{header}</Row>
-          <Row className="justify-content-center" style={verticalAlign}><Switch size="small" checked={isFlipped} onChange={e => setIsFlipped(e.target.checked)} /></Row>
+        <Col style={{...layoutStyles, display: 'flex', alignItems: 'center'}}>
+          <Row className="justify-content-center" style={{...layoutStyles, width: '100%'}}> 
+            <Col style={{...layoutStyles}}>
+              <Row className="justify-content-center" style={{...layoutStyles, margin: '0px 0px 15px 0px'}}>{sectionSubtitle}</Row> 
+              <Row className="justify-content-center" style={{...layoutStyles, color: (isFlipped ? fontColorFlipped : fontColor)}}>{header}</Row>
+              <Row className="justify-content-center" style={layoutStyles}><Switch size="small" checked={isFlipped} onChange={e => setIsFlipped(e.target.checked)} /></Row>
+            </Col>
+          </Row>
         </Col>
         <Col style={{...layoutStyles}}>
           <Row className="flip_row justify-content-center" style={{...layoutStyles, position: (!isMobile ? 'relative' : ''), top: (!isMobile ? '50%' : ''), transform: (!isMobile ? 'translateY(-50%)' : '' )}}>

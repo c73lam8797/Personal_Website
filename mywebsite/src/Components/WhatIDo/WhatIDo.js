@@ -96,7 +96,7 @@ function Section({ header = "", id="", front = null, back = [""], _fontColor="",
   })
 
   const teaching = Section({
-    header: "Teaching and Volunteering",
+    header: "Teaching + Volunteering",
     id: "teachingvolunteering",
     front: <FontAwesomeIcon style={iconStyles} className="card_face" icon={faUsers} size="5x"/>,
     back: [

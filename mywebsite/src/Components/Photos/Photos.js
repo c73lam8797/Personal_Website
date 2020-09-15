@@ -21,19 +21,19 @@ export function _Photos({ id, isMobile, scrollbar, backgroundColor, setBackgroun
     }
   },[curPanel])
   return (
-    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 10% 60px 10%'}} className="page_section">
+    <Container fluid id={id} style={{padding: isMobile ?  '10px 10px 60px 10px' : '10px 15% 60px 15%'}} className="page_section">
       <Helper.SectionHeader title="PHOTOS" />
       <Helper.SectionSubtitle subtitle="Here are a few snips of my drawings/processes, dance media, and photos I've taken over the past few years! While the photo quality or edits may not be the best, I still think it's worthwhile to share how I see the world with everyone." />
       <LazyLoad height="100vh" once offset={800}>
       {isMobile ? 
       <>
-        <Gallery.SwipeGallery  title="ART + DANCE" photos={art_dance} link="https://flic.kr/s/aHsmQMmBhB" />
         <Gallery.SwipeGallery  title="PHOTOGRAPHY" photos={photography} link="https://flic.kr/s/aHsmQMmUxD"/>
+        <Gallery.SwipeGallery  title="ART + DANCE" photos={art_dance} link="https://flic.kr/s/aHsmQMmBhB" />
       </>
       :
       <>
-       <Gallery.PreviewGallery id="artdance" title="ART + DANCE" photos={art_dance} link="https://flic.kr/s/aHsmQMmBhB"/>
-       <Gallery.PreviewGallery id="photography" title="PHOTOGRAPHY" photos={photography} link="https://flic.kr/s/aHsmQMmUxD"/>
+        <Gallery.PreviewGallery id="photography" title="PHOTOGRAPHY" photos={photography} link="https://flic.kr/s/aHsmQMmUxD"/>
+        <Gallery.PreviewGallery id="artdance" title="ART + DANCE" photos={art_dance} link="https://flic.kr/s/aHsmQMmBhB"/>
       </>
       }
       </LazyLoad>
