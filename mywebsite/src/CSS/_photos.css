@@ -33,6 +33,12 @@
   z-index: 1000;
 }
 
+
+#photos .expand_gallery a {
+  text-decoration: none;
+  color: white;
+}
+
 #photos .expand_gallery:hover {
   animation: animate 0.75s linear 0s infinite;
 }
@@ -56,7 +62,7 @@
   z-index: 5;
 }
 
-#photos .gallery_wrapper {
+/* #photos .gallery_wrapper {
   max-height: 500px;
   overflow: hidden;
 }
@@ -82,4 +88,4 @@
   opacity: 0.6;
   transition: opacity .5s ease-in-out 0.5s, max-height 0.5s ease;
   overflow: hidden;
-}
+} */
