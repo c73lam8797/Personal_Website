@@ -1,7 +1,5 @@
-import React, { useState, /* useEffect, useRef */ } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
-// import { faAngleDoubleDown, faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@material-ui/core/Button';
 import Gallery from 'react-grid-gallery';
 import Jumbotron from 'react-bootstrap/Jumbotron';
@@ -36,40 +34,6 @@ const params = {
 }
 SwiperCore.use([EffectCoverflow, Pagination, Lazy]);
 export function PreviewGallery({ id, photos, title, link }) {
-  // const [expanded, setExpanded] = useState(false);
-  // const isMounted = useRef(false);
-
-  // useEffect(() => {
-  //   if (!isMounted.current) {
-  //     isMounted.current = true;
-  //   }
-  //   else {
-  //     // expand();
-  //   }
-  // },[expanded])
-
-  // const expand = () => {
-  //   let container = document.getElementById(id);
-  //   let overlay = document.getElementById(`overlay_${id}`);
-  //   if(expanded) {
-  //     container.classList.add("expanded");
-  //     overlay.classList.add("expanded");
-  //     container.classList.remove("not_expanded");
-  //     overlay.classList.remove("not_expanded");
-  //   }
-  //   else { //otherwise, limit
-  //     container.classList.add("not_expanded");
-  //     overlay.classList.add("not_expanded");
-  //     container.classList.remove("expanded");
-  //     overlay.classList.remove("expanded");
-  //   }
-    
-  // }
-  
-  // const handleClickExpand = () => { 
-  //   setExpanded(!expanded);
-  // }
-  
   return (
   <>
    <Jumbotron fluid className="gallery_wrapper not_expanded" id={id}>
@@ -84,10 +48,7 @@ export function PreviewGallery({ id, photos, title, link }) {
       </Row>
     </Jumbotron>
     <Row style={{...layoutStyles, transform: "translateY(-100%)"}} className="justify-content-center">
-      <Button className="expand_gallery"/*  onClick={handleClickExpand} */>
-        {/* {expanded?
-        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleUp} size="2x" /> : 
-        <FontAwesomeIcon style={{color: "white"}} icon={faAngleDoubleDown} size="2x" /> } */}
+      <Button className="expand_gallery">
         <a href={link} target="_blank" rel="noopener noreferrer">Click to See More!</a>
       </Button>
     </Row>
