@@ -29,10 +29,11 @@
 * React-Swiper & React-Id-Swiper (https://react-id-swiper.ashernguyen.site/)
 * React-Grid-Gallery (https://github.com/benhowell/react-grid-gallery)
 * React Image Lightbox (https://github.com/frontend-collective/react-image-lightbox)
+* React Animate On Scroll (https://github.com/dbramwell/react-animate-on-scroll)
+* Animate.css (https://animate.style/)
 
 * HTML
 * CSS
 
 ## Future Implementations
-* Smooth out loading by lazy loading code and images
 * Modify CSS etc. to provide support for all browsers
