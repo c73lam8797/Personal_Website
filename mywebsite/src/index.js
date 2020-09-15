@@ -9,6 +9,7 @@ import 'swiper/components/effect-coverflow/effect-coverflow.scss';
 import 'swiper/swiper-bundle.css';
 import 'react-image-lightbox/style.css';
 import './CSS/index.css';
+import "animate.css/animate.min.css";
 //import './CSS/old_index.css';
 
 

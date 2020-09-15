@@ -37,7 +37,9 @@ export function _Navbar({isMobile = false, curPanel}) {
         <Menu id="navbar" mode="horizontal" selectedKeys={[selected]} onClick={e => setSelected(e.key)} style={{background: (showNav ? "black" : "transparent")}}>
           {directories.map((dir, index) => {
             return (
-              <Menu.Item className="navItem" key={index.toString()}><a className="nav" href={`/#` + dir.replace(/\s/g, '')}>{dir.toUpperCase()}</a></Menu.Item>
+              <Menu.Item className="navItem" key={index.toString()}>
+                <a className="nav" href={`/#` + dir.replace(/\s/g, '')}>{dir.toUpperCase()}</a>
+              </Menu.Item>
             )}
           )}
         </Menu>

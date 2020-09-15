@@ -34,10 +34,10 @@
 }
 
 #photos .expand_gallery:hover {
-  animation: bounce 0.75s linear 0s infinite;
+  animation: animate 0.75s linear 0s infinite;
 }
 
-@keyframes bounce {
+@keyframes animate {
   0% {transform: translateY(0px);}
   25% {transform: translateY(-5px);}
   50% {transform: translateY( 0px); }

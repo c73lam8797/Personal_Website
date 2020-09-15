@@ -75,7 +75,7 @@ export function _Contact({ id, isMobile, scrollbar, backgroundColor, setBackgrou
         <a style={{margin: '10px'}} target="_blank" rel="noopener noreferrer" href = "https://www.github.com/c73lam8797"><FontAwesomeIcon id="github" icon={faGithub} size="4x" /></a>
         <a style={{margin: '10px'}} target="_blank" rel="noopener noreferrer" href = "https://www.linkedin.com/in/lam-charmaine/"><FontAwesomeIcon id="linkedin" icon={faLinkedin} size="4x" /></a>
       </Row>
-      <Row className="justify-content-center" style={{...layoutStyles, margin: '15% 0px'}}>
+      <Row className="justify-content-center" style={{marginRight: '0px', marginLeft: '0px'}} id="design_remark">
         <small>Built and designed by Charmaine Lam.</small>
       </Row>
     </Container>

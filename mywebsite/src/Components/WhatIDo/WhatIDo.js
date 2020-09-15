@@ -6,6 +6,7 @@ import { CardSection } from './CardSection';
 import Container from 'react-bootstrap/Container'
 import { Row, Col } from 'react-bootstrap';
 import * as Helper from '../Helpers'; 
+import ScrollAnimation from 'react-animate-on-scroll';
 import '../../CSS/_whatido.css';
 
 const layoutStyles = {margin:'0px', padding: '0px'};
@@ -164,18 +165,19 @@ export function _WhatIDo({ id, isMobile, scrollbar, backgroundColor, setBackgrou
         <Col style={layoutStyles}>
           {row1.map((x,i) => {
             return (
-              <CardSection key={i} cardSection={x}
-                isMobile={isMobile} setBackgroundColor={setBackgroundColor} curSection={curSection} setFontColor={setFontColor}
-                sectionSubtitle={<h6 style={{textAlign: 'center'}} className="section_title section_title_top">Creating is My <span className="section_title section_title_bottom">PASSION</span></h6>}
-              />
-            )
-          })}
-           {row2.map((x,i) => {
+              <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
+                <CardSection key={i} cardSection={x}
+                  isMobile={isMobile} setBackgroundColor={setBackgroundColor} curSection={curSection} setFontColor={setFontColor}
+                  sectionSubtitle={<h6 style={{textAlign: 'center'}} className="section_title section_title_top">Creating is My <span className="section_title section_title_bottom">PASSION</span></h6>}/>
+              </ScrollAnimation>
+          )})}
+          {row2.map((x,i) => {
             return (
-              <CardSection key={i} cardSection={x}
-                isMobile={isMobile} setBackgroundColor={setBackgroundColor} curSection={curSection} setFontColor={setFontColor}
-                sectionSubtitle={<h6 style={{textAlign: 'center'}} className="section_title section_title_top">Leadership + Involvement in the <span className="section_title section_title_bottom">COMMUNITY</span></h6>}
-              />
+              <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
+                <CardSection key={i} cardSection={x}
+                  isMobile={isMobile} setBackgroundColor={setBackgroundColor} curSection={curSection} setFontColor={setFontColor}
+                  sectionSubtitle={<h6 style={{textAlign: 'center'}} className="section_title section_title_top">Leadership + Involvement in the <span className="section_title section_title_bottom">COMMUNITY</span></h6>}/>
+              </ScrollAnimation>
             )
           })}
         </Col>

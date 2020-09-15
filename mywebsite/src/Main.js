@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'antd';
 import { Row, Col } from 'react-bootstrap';
 import * as Components from './Components';
+import ScrollAnimation from 'react-animate-on-scroll';
 // import LazyLoad from 'react-lazyload';
 import './CSS/index.css';
 const Header = Layout.Header;
@@ -96,28 +97,30 @@ function Main() {
         </Row>
         <Row style={layoutStyles}>
           <Col style={layoutStyles}>
-            <Components._AboutMe id="about" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "rgb(131, 83, 83)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
+              <Components._AboutMe id="about" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "rgb(131, 83, 83)" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
+            </ScrollAnimation>
           </Col>
         </Row>
         <Row style={layoutStyles}>
           <Col style={layoutStyles}>
-            {/* <LazyLoad once offset={500} height="100vh"> */}
+            <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
               <Components._WhatIDo id="whatido" isMobile={isMobile} scrollbar={scrollbar} backgroundColor="" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            {/* </LazyLoad> */}
+            </ScrollAnimation>
           </Col>
         </Row>
         <Row style={layoutStyles}>
           <Col style={layoutStyles}>
-            {/* <LazyLoad once offset={1000} height="100vh"> */}
+            <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
               <Components._Photos id="photos" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#4b3e46" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            {/* </LazyLoad> */}
+            </ScrollAnimation>
           </Col>
         </Row>
         <Row style={layoutStyles}>
           <Col style={layoutStyles}>
-            {/* <LazyLoad once offset={500} height="100vh"> */}
+            <ScrollAnimation animateIn='animate__fadeIn' animateOnce>
               <Components._Contact id="contact" isMobile={isMobile} scrollbar={scrollbar} backgroundColor = "#868194" setBackgroundColor={setBackgroundColor} setFontColor={setFontColor} curPanel={curPanel}/>
-            {/* </LazyLoad> */}
+            </ScrollAnimation>
           </Col>
         </Row>
       </Content>

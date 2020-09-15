@@ -3,6 +3,7 @@ import video from '../Media/2160p.mp4';
 import alt_background from '../Media/IMG_7078-Edit.jpg'
 import { Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container'
+import ScrollAnimation from 'react-animate-on-scroll';
 import '../CSS/index.css';
 
 export function _Home({id, showVideo, isMobile, scrollbar, backgroundColor, setBackgroundColor, curPanel, setFontColor}) {
@@ -49,10 +50,12 @@ export function _Home({id, showVideo, isMobile, scrollbar, backgroundColor, setB
         // onLoad = {setVisibility}
         >  
         </img>}
-      <div style={{position: 'absolute', zIndex: 2, top: '50%', left: '50%', transform: "translate(-50%, -50%)"}}>
-        <Row className="justify-content-center"><h1 style={{textAlign: 'center'}}>Charmaine Lam</h1></Row>
-        <Row className="justify-content-center"><h3><span>—</span></h3><h3 style={{textAlign: 'center', margin: "0px 10px"}}>A little bit about my story</h3><h3><span>—</span></h3></Row>      
-      </div>
+        <div style={{position: 'absolute', zIndex: 2, top: '50%', left: '50%', transform: "translate(-50%, -50%)"}}>
+          <ScrollAnimation animateIn='animate__zoomIn' animateOnce>
+            <Row className="justify-content-center"><h1 style={{textAlign: 'center'}}>Charmaine Lam</h1></Row>
+            <Row className="justify-content-center"><h3><span>—</span></h3><h3 style={{textAlign: 'center', margin: "0px 10px"}}>A little bit about my story</h3><h3><span>—</span></h3></Row>      
+          </ScrollAnimation>
+        </div>
     </Container>
   );
 };
