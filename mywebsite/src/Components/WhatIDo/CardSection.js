@@ -6,7 +6,7 @@ import Switch from '@material-ui/core/Switch';
 import { Card} from './Card';
 
 const layoutStyles = {margin: '0px', padding: '0px'};
-const verticalAlign = {...layoutStyles, position: 'relative', top: '50%', transform: 'translateY(-50%)'};
+// const verticalAlign = {...layoutStyles, position: 'relative', top: '50%', transform: 'translateY(-50%)'};
 
 export function CardSection({sectionSubtitle, cardSection, isMobile, setBackgroundColor, curSection="", setFontColor}) {
   const [isFlipped, setIsFlipped] = useState(false);
